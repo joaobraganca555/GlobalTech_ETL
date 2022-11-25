@@ -14,6 +14,11 @@ with open('data.csv', 'w', encoding='UTF8', newline='') as f:
 
     while i < 207:
         # write the data
-        writer.writerow([random.randint(1,107), 'REFUNDED'])
-        # print(i + ',' + random.randint(1, 319))
+        customerInfo = random.randint(1,3)
+        if customerInfo == 1:
+            writer.writerow(['REFUNDED', random.randint(1,107)])
+        elif customerInfo == 2:
+            writer.writerow(['REFUNDED', random.randint(1,107)])
+        else:
+            writer.writerow(['REFUNDED', random.randint(1,107)])
         i += 1
