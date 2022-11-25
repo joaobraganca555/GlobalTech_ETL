@@ -141,6 +141,7 @@ CREATE TABLE transactions (
   [transaction_id] int PRIMARY KEY,
   [payment_id] int NOT NULL,
   [method_id] int NOT NULL,
+  [date] DATETIME NOT NULL,
   [value] DECIMAL(8,2) NOT NULL
   CONSTRAINT fk_transactions_payments FOREIGN KEY( payment_id )
     REFERENCES payments( payment_id ),
