@@ -1,0 +1,13 @@
+customer_email,customer_phone,status,order_date,employee_corporate_id,product_id,quantity,unit_price,payment_method
+vernia.hayes@drhorton.com,,REFUNDED,2014-04-29 04:32:03,49,257,136,756,Cash
+ocie.walton@express-scripts.com,,REFUNDED,2015-12-20 05:26:22,95,209,141,4747,Credit Card
+lashonda.cunningham@wellcare.com,,REFUNDED,2013-07-11 03:14:19,88,30,132,6414,Bank Transfer
+,+39 49 012 4409,REFUNDED,2017-06-18 02:24:59,59,113,60,1158,Credit Card
+evita.dickerson@thekrogerco.com,+1 717 123 4692,REFUNDED,2014-11-29 08:45:37,5,78,75,3928,Credit Card
+kellee.molina@hp.com,,REFUNDED,2013-12-15 22:30:24,67,34,179,193,Credit Card
+katia.case@wm.com,+39 6 012 4535,REFUNDED,2017-10-30 02:48:35,24,279,117,506,Bank Transfer
+francisco.cummings@nrgenergy.com,,REFUNDED,2016-01-12 22:13:31,45,118,93,6928,Credit Card
+fransisca.reeves@bakerhughes.com,,REFUNDED,2017-05-14 04:06:48,104,37,158,3777,Bank Transfer
+colleen.estrada@rgare.com,+91 80 012 3741,REFUNDED,2017-05-31 06:13:06,62,10,144,3042,Bank Transfer
+,+41 61 012 3537,REFUNDED,2014-09-28 11:34:31,82,208,55,6080,Check
+catherina.haney@ielp.com,+1 218 123 4429,REFUNDED,2017-05-25 07:51:07,83,186,85,2568,Credit Card
