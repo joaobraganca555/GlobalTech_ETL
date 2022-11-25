@@ -1,2 +1,13 @@
 customer_email,customer_phone,status,order_date,employee_corporate_id,product_id,quantity,unit_price,payment_method
-,+39 10 012 4363,REFUNDED,2017-04-08 17:42:33,26,25,60,5974,Check
+verena.hopper@generalmills.com,,REFUNDED,2016-11-01 00:28:23,13,264,179,2477,Cash
+aurea.sanders@pepsico.com,+1 301 123 4809,REFUNDED,2016-07-12 09:27:04,50,221,154,4252,Cash
+dell.wilkinson@wellsfargo.com,+1 717 123 4730,REFUNDED,2013-08-03 23:35:28,84,95,50,2454,Cash
+princess.jones@uhsinc.com,,REFUNDED,2016-02-14 13:43:27,34,273,92,6539,Cash
+dorotha.wong@firstdata.com,,REFUNDED,2016-01-18 13:29:44,22,218,155,5268,Check
+bill.stein@devonenergy.com,,REFUNDED,2015-06-25 17:32:28,85,91,96,4269,Bank Transfer
+melany.mcmahon@goodyear.com,+1 414 123 4347,REFUNDED,2017-05-02 14:07:42,43,52,176,3044,Credit Card
+,+1 507 123 4387,REFUNDED,2014-03-02 17:37:35,107,219,101,1859,Bank Transfer
+,+91 80 012 3699,REFUNDED,2014-06-02 17:52:07,34,247,129,5546,Cash
+alvaro.hooper@adm.com,+1 410 123 4800,REFUNDED,2016-12-12 09:19:56,9,18,99,3868,Cash
+,+1 914 123 4578,REFUNDED,2015-04-13 14:41:21,42,140,80,4646,Bank Transfer
+annice.boyer@walmart.com,+1 518 123 4618,REFUNDED,2016-10-19 18:47:14,37,7,131,4206,Bank Transfer
