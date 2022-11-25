@@ -1,4 +1,4 @@
-USE oracle_test
+USE GlobalTech
 GO
 
 ALTER TABLE countries NOCHECK CONSTRAINT fk_countries_regions;
@@ -13,6 +13,10 @@ ALTER TABLE order_items NOCHECK CONSTRAINT fk_order_items_products;
 ALTER TABLE order_items NOCHECK CONSTRAINT fk_order_items_orders;
 ALTER TABLE inventories NOCHECK CONSTRAINT fk_inventories_products;
 ALTER TABLE inventories NOCHECK CONSTRAINT fk_inventories_warehouses;
+
+ALTER TABLE orders NOCHECK CONSTRAINT fk_orders_payments;
+ALTER TABLE transactions NOCHECK CONSTRAINT fk_transactions_payments;
+ALTER TABLE transactions NOCHECK CONSTRAINT fk_transactions_payment_methods;
 
 Insert into REGIONS (REGION_ID,REGION_NAME) values (1,'Europe');
 Insert into REGIONS (REGION_ID,REGION_NAME) values (2,'Americas');
@@ -186,7 +190,6 @@ Insert into EMPLOYEES (EMPLOYEE_ID,CORPORATE_ID,FIRST_NAME,LAST_NAME,EMAIL,PHONE
 Insert into EMPLOYEES (EMPLOYEE_ID,CORPORATE_ID,FIRST_NAME,LAST_NAME,EMAIL,PHONE,HIRE_DATE,MANAGER_ID,JOB_TITLE) values (105,105,'Gracie','Gardner','gracie.gardner@example.com','515.123.8888',convert(DATETIME, '07-JUN-16',101),2,'Public Relations Representative');
 Insert into EMPLOYEES (EMPLOYEE_ID,CORPORATE_ID,FIRST_NAME,LAST_NAME,EMAIL,PHONE,HIRE_DATE,MANAGER_ID,JOB_TITLE) values (106,106,'Rose','Stephens','rose.stephens@example.com','515.123.8080',convert(DATETIME, '07-JUN-16',101),2,'Accounting Manager');
 Insert into EMPLOYEES (EMPLOYEE_ID,CORPORATE_ID,FIRST_NAME,LAST_NAME,EMAIL,PHONE,HIRE_DATE,MANAGER_ID,JOB_TITLE) values (107,107,'Summer','Payne','summer.payne@example.com','515.123.8181',convert(DATETIME, '07-JUN-16',101),106,'Public Accountant');
-
 
 Insert into PRODUCT_CATEGORIES (CATEGORY_ID,CATEGORY_NAME) values (1,'CPU');
 Insert into PRODUCT_CATEGORIES (CATEGORY_ID,CATEGORY_NAME) values (2,'Video Card');
@@ -802,8 +805,6 @@ Insert into CUSTOMERS (CUSTOMER_ID,NAME,ADDRESS,CREDIT_LIMIT,WEBSITE) values (31
 Insert into CUSTOMERS (CUSTOMER_ID,NAME,ADDRESS,CREDIT_LIMIT,WEBSITE) values (317,'Public Service Enterprise Group','1621 Gargon! Blvd, Bangalore - India, Kar',600,'http://www.pseg.com');
 Insert into CUSTOMERS (CUSTOMER_ID,NAME,ADDRESS,CREDIT_LIMIT,WEBSITE) values (318,'Cameron International','1667 2010 St, Batavia, IL',200,'http://www.c-a-m.com');
 Insert into CUSTOMERS (CUSTOMER_ID,NAME,ADDRESS,CREDIT_LIMIT,WEBSITE) values (319,'BB&T Corp.','1668 Chong Tao, Beijing, ',200,'http://www.bbt.com');
-
-
 
 Insert into CONTACTS (CONTACT_ID,FIRST_NAME,LAST_NAME,EMAIL,PHONE,CUSTOMER_ID) values (1,'Flor','Stone','flor.stone@raytheon.com','+1 317 123 4104',1);
 Insert into CONTACTS (CONTACT_ID,FIRST_NAME,LAST_NAME,EMAIL,PHONE,CUSTOMER_ID) values (2,'Lavera','Emerson','lavera.emerson@plainsallamerican.com','+1 317 123 4111',2);
@@ -1548,6 +1549,10 @@ Insert into INVENTORIES (PRODUCT_ID,WAREHOUSE_ID,QUANTITY) values (286,7,189);
 Insert into INVENTORIES (PRODUCT_ID,WAREHOUSE_ID,QUANTITY) values (287,6,212);
 Insert into INVENTORIES (PRODUCT_ID,WAREHOUSE_ID,QUANTITY) values (288,6,213);
 
+Insert into PAYMENT_METHODS (METHOD_ID,METHOD) values (1,'Credit Card');
+Insert into PAYMENT_METHODS (METHOD_ID,METHOD) values (2,'Cash');
+Insert into PAYMENT_METHODS (METHOD_ID,METHOD) values (3,'Check');
+Insert into PAYMENT_METHODS (METHOD_ID,METHOD) values (4,'Bank Transfer');
 
 ALTER TABLE countries CHECK CONSTRAINT fk_countries_regions;
 ALTER TABLE locations CHECK CONSTRAINT fk_locations_countries;
@@ -1561,3 +1566,7 @@ ALTER TABLE order_items CHECK CONSTRAINT fk_order_items_products;
 ALTER TABLE order_items CHECK CONSTRAINT fk_order_items_orders;
 ALTER TABLE inventories CHECK CONSTRAINT fk_inventories_products;
 ALTER TABLE inventories CHECK CONSTRAINT fk_inventories_warehouses;
+
+ALTER TABLE orders CHECK CONSTRAINT fk_orders_payments;
+ALTER TABLE transactions CHECK CONSTRAINT fk_transactions_payments;
+ALTER TABLE transactions CHECK CONSTRAINT fk_transactions_payment_methods;
