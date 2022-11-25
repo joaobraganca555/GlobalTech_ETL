@@ -1,0 +1,2 @@
+customer_email,customer_phone,status,order_date,employee_corporate_id,product_id,quantity,unit_price,payment_method
+,+39 10 012 4363,REFUNDED,2017-04-08 17:42:33,26,25,60,5974,Check

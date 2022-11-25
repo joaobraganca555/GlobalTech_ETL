@@ -24,12 +24,12 @@ header = ['customer_email', 'customer_phone', 'status', 'order_date', 'employee_
 contacts = []
 payment_method = ['Credit Card', 'Cash', 'Check', 'Bank Transfer']
 
-with open('contacts.csv') as f:
+with open('csv/contacts.csv') as f:
     for line in f:
         line = line.strip().split(',')
         contacts.append((line[3], line[4]))
 
-with open('sheet.csv', 'w', encoding='UTF8', newline='') as f:
+with open('csv/refundedSheet.csv', 'w', encoding='UTF8', newline='') as f:
     writer = csv.writer(f)
 
     # write the header
