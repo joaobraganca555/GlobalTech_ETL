@@ -1,0 +1,108 @@
+email,phone,employee_id,first_name,last_name,hire_date,manager_id,job_title
+tommy.bailey@example.com,515.123.4567,1,Tommy,Bailey,2016-06-17 00:00:00.000,NULL,President
+jude.rivera@example.com,515.123.4568,2,Jude,Rivera,2016-09-21 00:00:00.000,1,Administration Vice President
+blake.cooper@example.com,515.123.4569,3,Blake,Cooper,2016-01-13 00:00:00.000,1,Administration Vice President
+louie.richardson@example.com,590.423.4567,4,Louie,Richardson,2016-01-03 00:00:00.000,3,Programmer
+nathan.cox@example.com,590.423.4568,5,Nathan,Cox,2016-05-21 00:00:00.000,4,Programmer
+gabriel.howard@example.com,590.423.4569,6,Gabriel,Howard,2016-06-25 00:00:00.000,4,Programmer
+charles.ward@example.com,590.423.4560,7,Charles,Ward,2016-02-05 00:00:00.000,4,Programmer
+bobby.torres@example.com,590.423.5567,8,Bobby,Torres,2016-02-07 00:00:00.000,4,Programmer
+mohammad.peterson@example.com,515.124.4569,9,Mohammad,Peterson,2016-08-17 00:00:00.000,2,Finance Manager
+ryan.gray@example.com,515.124.4169,10,Ryan,Gray,2016-08-16 00:00:00.000,9,Accountant
+tyler.ramirez@example.com,515.124.4269,11,Tyler,Ramirez,2016-09-28 00:00:00.000,9,Accountant
+elliott.james@example.com,515.124.4369,12,Elliott,James,2016-09-30 00:00:00.000,9,Accountant
+albert.watson@example.com,515.124.4469,13,Albert,Watson,2016-03-07 00:00:00.000,9,Accountant
+elliot.brooks@example.com,515.124.4567,14,Elliot,Brooks,2016-12-07 00:00:00.000,9,Accountant
+rory.kelly@example.com,515.127.4561,15,Rory,Kelly,2016-12-07 00:00:00.000,1,Purchasing Manager
+alex.sanders@example.com,515.127.4562,16,Alex,Sanders,2016-05-18 00:00:00.000,15,Purchasing Clerk
+frederick.price@example.com,515.127.4563,17,Frederick,Price,2016-12-24 00:00:00.000,15,Purchasing Clerk
+ollie.bennett@example.com,515.127.4564,18,Ollie,Bennett,2016-07-24 00:00:00.000,15,Purchasing Clerk
+louis.wood@example.com,515.127.4565,19,Louis,Wood,2016-11-15 00:00:00.000,15,Purchasing Clerk
+dexter.barnes@example.com,515.127.4566,20,Dexter,Barnes,2016-08-10 00:00:00.000,15,Purchasing Clerk
+jaxon.ross@example.com,650.123.1234,21,Jaxon,Ross,2016-07-18 00:00:00.000,1,Stock Manager
+liam.henderson@example.com,650.123.2234,22,Liam,Henderson,2016-04-10 00:00:00.000,1,Stock Manager
+jackson.coleman@example.com,650.123.3234,23,Jackson,Coleman,2016-05-01 00:00:00.000,1,Stock Manager
+callum.jenkins@example.com,650.123.4234,24,Callum,Jenkins,2016-10-10 00:00:00.000,1,Stock Manager
+ronnie.perry@example.com,650.123.5234,25,Ronnie,Perry,2016-11-16 00:00:00.000,1,Stock Manager
+leon.powell@example.com,650.124.1214,26,Leon,Powell,2016-07-16 00:00:00.000,21,Stock Clerk
+kai.long@example.com,650.124.1224,27,Kai,Long,2016-09-28 00:00:00.000,21,Stock Clerk
+aaron.patterson@example.com,650.124.1334,28,Aaron,Patterson,2016-01-14 00:00:00.000,21,Stock Clerk
+roman.hughes@example.com,650.124.1434,29,Roman,Hughes,2016-03-08 00:00:00.000,21,Stock Clerk
+austin.flores@example.com,650.124.5234,30,Austin,Flores,2016-08-20 00:00:00.000,22,Stock Clerk
+ellis.washington@example.com,650.124.6234,31,Ellis,Washington,2016-10-30 00:00:00.000,22,Stock Clerk
+jamie.butler@example.com,650.124.7234,32,Jamie,Butler,2016-02-16 00:00:00.000,22,Stock Clerk
+reggie.simmons@example.com,650.124.8234,33,Reggie,Simmons,2016-04-10 00:00:00.000,22,Stock Clerk
+seth.foster@example.com,650.127.1934,34,Seth,Foster,2016-06-14 00:00:00.000,23,Stock Clerk
+carter.gonzales@example.com,650.127.1834,35,Carter,Gonzales,2016-08-26 00:00:00.000,23,Stock Clerk
+felix.bryant@example.com,650.127.1734,36,Felix,Bryant,2016-12-12 00:00:00.000,23,Stock Clerk
+ibrahim.alexander@example.com,650.127.1634,37,Ibrahim,Alexander,2016-02-06 00:00:00.000,23,Stock Clerk
+sonny.russell@example.com,650.121.1234,38,Sonny,Russell,2016-07-14 00:00:00.000,24,Stock Clerk
+kian.griffin@example.com,650.121.2034,39,Kian,Griffin,2016-10-26 00:00:00.000,24,Stock Clerk
+caleb.diaz@example.com,650.121.2019,40,Caleb,Diaz,2016-02-12 00:00:00.000,24,Stock Clerk
+connor.hayes@example.com,650.121.1834,41,Connor,Hayes,2016-04-06 00:00:00.000,24,Stock Clerk
+amelia.myers@example.com,650.121.8009,42,Amelia,Myers,2016-10-17 00:00:00.000,25,Stock Clerk
+olivia.ford@example.com,650.121.2994,43,Olivia,Ford,2016-01-29 00:00:00.000,25,Stock Clerk
+emily.hamilton@example.com,650.121.2874,44,Emily,Hamilton,2016-03-15 00:00:00.000,25,Stock Clerk
+isla.graham@example.com,650.121.2004,45,Isla,Graham,2016-07-09 00:00:00.000,25,Stock Clerk
+ava.sullivan@example.com,011.44.1344.429268,46,Ava,Sullivan,2016-10-01 00:00:00.000,1,Sales Manager
+ella.wallace@example.com,011.44.1344.467268,47,Ella,Wallace,2016-01-05 00:00:00.000,1,Sales Manager
+jessica.woods@example.com,011.44.1344.429278,48,Jessica,Woods,2016-03-10 00:00:00.000,1,Sales Manager
+isabella.cole@example.com,011.44.1344.619268,49,Isabella,Cole,2016-10-15 00:00:00.000,1,Sales Manager
+mia.west@example.com,011.44.1344.429018,50,Mia,West,2016-01-29 00:00:00.000,1,Sales Manager
+poppy.jordan@example.com,011.44.1344.129268,51,Poppy,Jordan,2016-01-30 00:00:00.000,46,Sales Representative
+sophie.owens@example.com,011.44.1344.345268,52,Sophie,Owens,2016-03-24 00:00:00.000,46,Sales Representative
+sophia.reynolds@example.com,011.44.1344.478968,53,Sophia,Reynolds,2016-08-20 00:00:00.000,46,Sales Representative
+lily.fisher@example.com,011.44.1344.498718,54,Lily,Fisher,2016-03-30 00:00:00.000,46,Sales Representative
+grace.ellis@example.com,011.44.1344.987668,55,Grace,Ellis,2016-12-09 00:00:00.000,46,Sales Representative
+evie.harrison@example.com,011.44.1344.486508,56,Evie,Harrison,2016-11-23 00:00:00.000,46,Sales Representative
+scarlett.gibson@example.com,011.44.1345.429268,57,Scarlett,Gibson,2016-01-30 00:00:00.000,47,Sales Representative
+ruby.mcdonald@example.com,011.44.1345.929268,58,Ruby,Mcdonald,2016-03-04 00:00:00.000,47,Sales Representative
+chloe.cruz@example.com,011.44.1345.829268,59,Chloe,Cruz,2016-08-01 00:00:00.000,47,Sales Representative
+isabelle.marshall@example.com,011.44.1345.729268,60,Isabelle,Marshall,2016-03-10 00:00:00.000,47,Sales Representative
+daisy.ortiz@example.com,011.44.1345.629268,61,Daisy,Ortiz,2016-12-15 00:00:00.000,47,Sales Representative
+freya.gomez@example.com,011.44.1345.529268,62,Freya,Gomez,2016-11-03 00:00:00.000,47,Sales Representative
+phoebe.murray@example.com,011.44.1346.129268,63,Phoebe,Murray,2016-11-11 00:00:00.000,48,Sales Representative
+florence.freeman@example.com,011.44.1346.229268,64,Florence,Freeman,2016-03-19 00:00:00.000,48,Sales Representative
+alice.wells@example.com,011.44.1346.329268,65,Alice,Wells,2016-01-24 00:00:00.000,48,Sales Representative
+charlotte.webb@example.com,011.44.1346.529268,66,Charlotte,Webb,2016-02-23 00:00:00.000,48,Sales Representative
+sienna.simpson@example.com,011.44.1346.629268,67,Sienna,Simpson,2016-03-24 00:00:00.000,48,Sales Representative
+matilda.stevens@example.com,011.44.1346.729268,68,Matilda,Stevens,2016-04-21 00:00:00.000,48,Sales Representative
+evelyn.tucker@example.com,011.44.1343.929268,69,Evelyn,Tucker,2016-03-11 00:00:00.000,49,Sales Representative
+eva.porter@example.com,011.44.1343.829268,70,Eva,Porter,2016-03-23 00:00:00.000,49,Sales Representative
+millie.hunter@example.com,011.44.1343.729268,71,Millie,Hunter,2016-01-24 00:00:00.000,49,Sales Representative
+sofia.hicks@example.com,011.44.1343.629268,72,Sofia,Hicks,2016-02-23 00:00:00.000,49,Sales Representative
+lucy.crawford@example.com,011.44.1343.529268,73,Lucy,Crawford,2016-03-24 00:00:00.000,49,Sales Representative
+elsie.henry@example.com,011.44.1343.329268,74,Elsie,Henry,2016-04-21 00:00:00.000,49,Sales Representative
+imogen.boyd@example.com,011.44.1644.429267,75,Imogen,Boyd,2016-05-11 00:00:00.000,50,Sales Representative
+layla.mason@example.com,011.44.1644.429266,76,Layla,Mason,2016-03-19 00:00:00.000,50,Sales Representative
+rosie.morales@example.com,011.44.1644.429265,77,Rosie,Morales,2016-03-24 00:00:00.000,50,Sales Representative
+maya.kennedy@example.com,011.44.1644.429264,78,Maya,Kennedy,2016-04-23 00:00:00.000,50,Sales Representative
+esme.warren@example.com,011.44.1644.429263,79,Esme,Warren,2016-05-24 00:00:00.000,50,Sales Representative
+elizabeth.dixon@example.com,011.44.1644.429262,80,Elizabeth,Dixon,2016-01-04 00:00:00.000,50,Sales Representative
+lola.ramos@example.com,650.507.9876,81,Lola,Ramos,2016-01-24 00:00:00.000,21,Shipping Clerk
+willow.reyes@example.com,650.507.9877,82,Willow,Reyes,2016-02-23 00:00:00.000,21,Shipping Clerk
+ivy.burns@example.com,650.507.9878,83,Ivy,Burns,2016-06-21 00:00:00.000,21,Shipping Clerk
+erin.gordon@example.com,650.507.9879,84,Erin,Gordon,2016-02-03 00:00:00.000,21,Shipping Clerk
+holly.shaw@example.com,650.509.1876,85,Holly,Shaw,2016-01-27 00:00:00.000,22,Shipping Clerk
+emilia.holmes@example.com,650.509.2876,86,Emilia,Holmes,2016-02-20 00:00:00.000,22,Shipping Clerk
+molly.rice@example.com,650.509.3876,87,Molly,Rice,2016-06-24 00:00:00.000,22,Shipping Clerk
+ellie.robertson@example.com,650.509.4876,88,Ellie,Robertson,2016-02-07 00:00:00.000,22,Shipping Clerk
+jasmine.hunt@example.com,650.505.1876,89,Jasmine,Hunt,2016-06-14 00:00:00.000,23,Shipping Clerk
+eliza.black@example.com,650.505.2876,90,Eliza,Black,2016-08-13 00:00:00.000,23,Shipping Clerk
+lilly.daniels@example.com,650.505.3876,91,Lilly,Daniels,2016-07-11 00:00:00.000,23,Shipping Clerk
+abigail.palmer@example.com,650.505.4876,92,Abigail,Palmer,2016-12-19 00:00:00.000,23,Shipping Clerk
+georgia.mills@example.com,650.501.1876,93,Georgia,Mills,2016-02-04 00:00:00.000,24,Shipping Clerk
+maisie.nichols@example.com,650.501.2876,94,Maisie,Nichols,2016-03-03 00:00:00.000,24,Shipping Clerk
+eleanor.grant@example.com,650.501.3876,95,Eleanor,Grant,2016-07-01 00:00:00.000,24,Shipping Clerk
+hannah.knight@example.com,650.501.4876,96,Hannah,Knight,2016-03-17 00:00:00.000,24,Shipping Clerk
+harriet.ferguson@example.com,650.507.9811,97,Harriet,Ferguson,2016-04-24 00:00:00.000,25,Shipping Clerk
+amber.rose@example.com,650.507.9822,98,Amber,Rose,2016-05-23 00:00:00.000,25,Shipping Clerk
+bella.stone@example.com,650.507.9833,99,Bella,Stone,2016-06-21 00:00:00.000,25,Shipping Clerk
+thea.hawkins@example.com,650.507.9844,100,Thea,Hawkins,2016-01-13 00:00:00.000,25,Shipping Clerk
+annabelle.dunn@example.com,515.123.4444,101,Annabelle,Dunn,2016-09-17 00:00:00.000,2,Administration Assistant
+emma.perkins@example.com,515.123.5555,102,Emma,Perkins,2016-02-17 00:00:00.000,1,Marketing Manager
+amelie.hudson@example.com,603.123.6666,103,Amelie,Hudson,2016-08-17 00:00:00.000,102,Marketing Representative
+harper.spencer@example.com,515.123.7777,104,Harper,Spencer,2016-06-07 00:00:00.000,2,Human Resources Representative
+gracie.gardner@example.com,515.123.8888,105,Gracie,Gardner,2016-06-07 00:00:00.000,2,Public Relations Representative
+rose.stephens@example.com,515.123.8080,106,Rose,Stephens,2016-06-07 00:00:00.000,2,Accounting Manager
+summer.payne@example.com,515.123.8181,107,Summer,Payne,2016-06-07 00:00:00.000,106,Public Accountant
