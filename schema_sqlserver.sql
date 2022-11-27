@@ -142,20 +142,13 @@ CREATE TABLE payment_methods
 CREATE TABLE payments
 (
   [payment_id] int PRIMARY KEY,
-  limit_payment_date DATETIME,
-  [status] VARCHAR(20) NOT NULL,
-);
-
-CREATE TABLE transactions
-(
-  [transaction_id] int PRIMARY KEY,
-  [payment_id] int NOT NULL,
+  [order_id] int NOT NULL,
   [method_id] int NOT NULL,
-  [date] DATETIME NOT NULL,
+  [payment_date] DATETIME NOT NULL,
   [value] DECIMAL(8,2) NOT NULL
-    CONSTRAINT fk_transactions_payments FOREIGN KEY( payment_id )
-    REFERENCES payments( payment_id ),
-  CONSTRAINT fk_transactions_payment_methods FOREIGN KEY( method_id )
+    CONSTRAINT fk_payments_orders FOREIGN KEY( order_id )
+    REFERENCES orders ( order_id ),
+  CONSTRAINT fk_payments_payment_methods FOREIGN KEY( method_id )
     REFERENCES payment_methods( method_id )
 );
 
@@ -168,7 +161,9 @@ CREATE TABLE orders
   status VARCHAR( 20 ) NOT NULL ,
   salesman_id INT,
   order_date DATETIME NOT NULL,
-  payment_id INT NULL,
+  shipped_date DATETIME NOT NULL,
+  canceled_date DATETIME NOT NULL,
+  limit_payment_date DATETIME NOT NULL,
   CONSTRAINT fk_orders_customers 
       FOREIGN KEY( customer_id )
       REFERENCES customers( customer_id )
@@ -176,9 +171,7 @@ CREATE TABLE orders
   CONSTRAINT fk_orders_employees 
       FOREIGN KEY( salesman_id )
       REFERENCES employees( employee_id ) 
-      ON DELETE SET NULL,
-  CONSTRAINT fk_orders_payments FOREIGN KEY( payment_id )
-      REFERENCES payments( payment_id )
+      ON DELETE SET NULL
 );
 -- order items
 -- SQLINES LICENSE FOR EVALUATION USE ONLY
