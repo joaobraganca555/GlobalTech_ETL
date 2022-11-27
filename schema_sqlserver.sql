@@ -141,9 +141,9 @@ CREATE TABLE orders
   status VARCHAR( 20 ) NOT NULL ,
   salesman_id INT,
   order_date DATETIME NOT NULL,
-  shipped_date DATETIME NOT NULL,
-  canceled_date DATETIME NOT NULL,
-  limit_payment_date DATETIME NOT NULL,
+  shipped_date DATETIME NULL,
+  canceled_date DATETIME NULL,
+  limit_payment_date DATETIME NULL,
   CONSTRAINT fk_orders_customers 
       FOREIGN KEY( customer_id )
       REFERENCES customers( customer_id )

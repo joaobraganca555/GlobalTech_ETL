@@ -14,9 +14,8 @@ ALTER TABLE order_items NOCHECK CONSTRAINT fk_order_items_orders;
 ALTER TABLE inventories NOCHECK CONSTRAINT fk_inventories_products;
 ALTER TABLE inventories NOCHECK CONSTRAINT fk_inventories_warehouses;
 
-ALTER TABLE orders NOCHECK CONSTRAINT fk_orders_payments;
-ALTER TABLE transactions NOCHECK CONSTRAINT fk_transactions_payments;
-ALTER TABLE transactions NOCHECK CONSTRAINT fk_transactions_payment_methods;
+ALTER TABLE payments NOCHECK CONSTRAINT fk_payments_orders;
+ALTER TABLE payments NOCHECK CONSTRAINT fk_payments_payment_methods;
 
 Insert into REGIONS (REGION_ID,REGION_NAME) values (1,'Europe');
 Insert into REGIONS (REGION_ID,REGION_NAME) values (2,'Americas');
@@ -1567,6 +1566,5 @@ ALTER TABLE order_items CHECK CONSTRAINT fk_order_items_orders;
 ALTER TABLE inventories CHECK CONSTRAINT fk_inventories_products;
 ALTER TABLE inventories CHECK CONSTRAINT fk_inventories_warehouses;
 
-ALTER TABLE orders CHECK CONSTRAINT fk_orders_payments;
-ALTER TABLE transactions CHECK CONSTRAINT fk_transactions_payments;
-ALTER TABLE transactions CHECK CONSTRAINT fk_transactions_payment_methods;
+ALTER TABLE payments CHECK CONSTRAINT fk_payments_orders;
+ALTER TABLE payments CHECK CONSTRAINT fk_payments_payment_methods;
