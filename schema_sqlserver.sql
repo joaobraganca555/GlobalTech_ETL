@@ -132,26 +132,6 @@ CREATE TABLE contacts
       ON DELETE CASCADE
 );
 
-
-CREATE TABLE payment_methods
-(
-  [method_id] int PRIMARY KEY,
-  [method] VARCHAR(20) NOT NULL
-);
-
-CREATE TABLE payments
-(
-  [payment_id] int PRIMARY KEY,
-  [order_id] int NOT NULL,
-  [method_id] int NOT NULL,
-  [payment_date] DATETIME NOT NULL,
-  [value] DECIMAL(8,2) NOT NULL
-    CONSTRAINT fk_payments_orders FOREIGN KEY( order_id )
-    REFERENCES orders ( order_id ),
-  CONSTRAINT fk_payments_payment_methods FOREIGN KEY( method_id )
-    REFERENCES payment_methods( method_id )
-);
-
 -- orders table
 -- SQLINES LICENSE FOR EVALUATION USE ONLY
 CREATE TABLE orders
@@ -173,6 +153,26 @@ CREATE TABLE orders
       REFERENCES employees( employee_id ) 
       ON DELETE SET NULL
 );
+
+CREATE TABLE payment_methods
+(
+  [method_id] int PRIMARY KEY,
+  [method] VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE payments
+(
+  [payment_id] int PRIMARY KEY,
+  [order_id] int NOT NULL,
+  [method_id] int NOT NULL,
+  [payment_date] DATETIME NOT NULL,
+  [value] DECIMAL(8,2) NOT NULL
+    CONSTRAINT fk_payments_orders FOREIGN KEY( order_id )
+    REFERENCES orders ( order_id ),
+  CONSTRAINT fk_payments_payment_methods FOREIGN KEY( method_id )
+    REFERENCES payment_methods( method_id )
+);
+
 -- order items
 -- SQLINES LICENSE FOR EVALUATION USE ONLY
 CREATE TABLE order_items
