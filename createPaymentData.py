@@ -8,7 +8,10 @@ payment_method = ['Credit Card', 'Cash', 'Check', 'Bank Transfer']
 
 
 # noinspection SqlNoDataSourceInspection
-def generate_payment_order(amount, credit_limit, customer_id, date_order, limit_payment_date, order_id, status, payments_id_itr, mode):
+def generate_payment_order(date_dict, date, customer_id, payments_id_itr, mode):
+    date_order, order_id, status, amount, credit_limit, limit_payment_date, canceled_date, shipped_date = get_atributes_order(date_dict, date)
+    # print(customer_id, order_id, date_order, limit_payment_date, amount, credit_limit)
+
     payments = []
     current_payment_id = payments_id_itr
     n_needed_payments = random.randint(1, 4)
@@ -18,6 +21,7 @@ def generate_payment_order(amount, credit_limit, customer_id, date_order, limit_
     n_payments = n_needed_payments
 
     if status == 'Canceled':
+        end = canceled_date
         print(f'CANCELED')
 
     if mode == 'random':
@@ -46,15 +50,11 @@ def generatePayment():
 
     for customer_id, date_dict in read_orders().items():
         for date in list(date_dict.keys())[:-1]:
-            date_order, order_id, status, amount, credit_limit, limit_payment_date = get_atributes_order(date_dict, date)
-            # print(customer_id, order_id, date_order, limit_payment_date, amount, credit_limit)
-            new_payments, payment_id_itr = generate_payment_order(amount, credit_limit, customer_id, date_order, limit_payment_date, order_id, status, payment_id_itr, 'complete')
+            new_payments, payment_id_itr = generate_payment_order(date_dict, date, customer_id, payment_id_itr, 'complete')
             payments = payments + new_payments
 
         # The last customer order
-        date_order, order_id, status, amount, credit_limit, limit_payment_date = get_atributes_order(date_dict, list(date_dict.keys())[-1])
-        # print(customer_id, order_id, date_order, limit_payment_date, amount, credit_limit)
-        new_payments, payment_id_itr = generate_payment_order(amount, credit_limit, customer_id, date_order, limit_payment_date, order_id, status, payment_id_itr, 'random')
+        new_payments, payment_id_itr = generate_payment_order(date_dict, list(date_dict.keys())[-1], customer_id, payment_id_itr, 'random')
         payments = payments + new_payments
 
     return payments
