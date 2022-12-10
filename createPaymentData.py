@@ -64,7 +64,7 @@ def generatePayment():
 
 payments = generatePayment()
 
-with open('payments.txt', 'w') as f:
-    f.write('\n'.join(payments))
+# with open('payments.txt', 'w') as f:
+#     f.write('\n'.join(payments))
 
 # print('\n'.join(payments))
