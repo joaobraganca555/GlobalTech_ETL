@@ -27,11 +27,9 @@ def get_atributes_order(dictionary, key):
     amount = float(dictionary[key][2])
     credit_limit = dictionary[key][3]
     canceled_date = dictionary[key][4]
-    # CORRIGIR DATAS CASOS SEJA NULL
-    shipped_date_string = dictionary[key][5]
-    shipped_date = datetime.strptime(shipped_date_string[:10], '%Y-%m-%d') if shipped_date_string == 'NULL' else 'NULL'
-    limit_payment_date = datetime.strptime(dictionary[key][6][:10], '%Y-%m-%d')
-    # limit_payment_date = date_order + timedelta(weeks=random.randint(1, 4))
+    shipped_date = dictionary[key][5]
+    limit_payment_date = dictionary[key][6]
+
     return date_order, order_id, status, amount, credit_limit, limit_payment_date, canceled_date, shipped_date
 
 
@@ -46,9 +44,13 @@ def read_orders():
             amount = float(order[3])
             customer_id = order[4]
             credit_limit = float(order[5])
-            canceled_date = order[6]
-            shipped_date = order[7]
-            limit_payment_date = order[8]
+            canceled_date_string = order[6]
+            shipped_date_string = order[7]
+            limit_payment_date = datetime.strptime(order[8][:10], '%Y-%m-%d')
+
+            shipped_date = 'NULL' if shipped_date_string == 'NULL' else datetime.strptime(shipped_date_string[:10], '%Y-%m-%d')
+            canceled_date = 'NULL' if canceled_date_string == 'NULL' else datetime.strptime(canceled_date_string[:10], '%Y-%m-%d')
+
             if customer_id in orders.keys():
                 orders[customer_id][date] = [order_id, status, amount, credit_limit, canceled_date, shipped_date, limit_payment_date]
             else:
