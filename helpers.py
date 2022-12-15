@@ -35,7 +35,7 @@ def get_atributes_order(dictionary, key):
 
 def read_orders():
     orders = {}
-    with open('csv/order_amounts.csv') as fp:
+    with open('csv/order_amounts_2.csv') as fp:
         for order in fp:
             order = order.strip().split(',')
             order_id = order[0]
