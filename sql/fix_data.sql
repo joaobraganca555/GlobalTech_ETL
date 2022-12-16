@@ -1,3 +1,5 @@
+USE GlobalTech
+GO
 -- AUMENTAR O LIMITE DE CREDITO DOS CLIENTES
 DECLARE customer_cursor CURSOR LOCAL FOR SELECT customer_id
 FROM customers
