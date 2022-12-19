@@ -11,8 +11,9 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="6"
-  DTS:VersionGUID="{76DB31B6-6026-4416-8550-0A34CA252D85}">
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{25ACFF82-ABA5-4C7B-940F-71510EE6D8CB}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -25,12 +26,7 @@
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=10.211.55.4;User ID=sa;Initial Catalog=GlobalTech;Provider=SQLNCLI11.1;Persist Security Info=True;Application Name=SSIS-Package-{AFAB08A8-26E7-46DE-B648-AF0AC276E03F}10.211.55.4.GlobalTech.sa;Auto Translate=False;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAsiE/Cv57zUSrvediCsEgOgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADvM4xNqp3clMatnbUvsb4hT3Y2o0wCUO5f3lNqYnZ1HgAAAAAOgAAAAAIAACAAAAAFLFtgsjkYHMDQI16R55ree+KG/9Nyhj2TooYPEHy+MiAAAABZWVDssV9y9ALfCSAUQvd9vq7Yb/c6KDMBj6azAiCcAkAAAAAeI5EOSk3/Lo+dA7whdwb9pkXkne//F3X0PLFgQe/zeJF00JWyfojB7saGGlazdDuYlvLUtt9eUB2ECLxKvFNs</DTS:Password>
-        </DTS:ConnectionManager>
+          DTS:ConnectionString="Data Source=10.211.55.4;User ID=sa;Initial Catalog=GlobalTech;Provider=SQLNCLI11.1;Persist Security Info=True;Application Name=SSIS-Package-{AFAB08A8-26E7-46DE-B648-AF0AC276E03F}10.211.55.4.GlobalTech.sa;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -40,12 +36,7 @@
       DTS:ObjectName="10.211.55.4.sa">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=10.211.55.4;User ID=sa;Initial Catalog=GlobalTech;Integrated Security=False;Persist Security Info=True;TrustServerCertificate=True;Authentication=Sql Password;Application Name=SSIS-Package-{6F68A3D5-B944-4AF5-8212-91DB0DA8692F}10.211.55.4.sa;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAsiE/Cv57zUSrvediCsEgOgAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABGKBDl7fbiVNrOXhQ4n0pIy+jb+eVUFT4r3hJv5JecJgAAAAAOgAAAAAIAACAAAAD8ncARtxg1zp8RrMMip4CSzsQs3+5pFAxc/Fm2paHzvSAAAACLBRypyy3PjjCjjkLLSbe8lbshPQdYn/FWeb4B2bTAYUAAAAD21sQ9dfDwNYCxje7KvxZRSidT4wyBfFvTWFSQaLVE7NUZI5Kr+a49TdYgzLoc/esHgcFiOtC8oT9rufbmuPnM</DTS:Password>
-        </DTS:ConnectionManager>
+          DTS:ConnectionString="Data Source=10.211.55.4;User ID=sa;Initial Catalog=GlobalTech;Integrated Security=False;Persist Security Info=True;TrustServerCertificate=True;Authentication=Sql Password;Application Name=SSIS-Package-{6F68A3D5-B944-4AF5-8212-91DB0DA8692F}10.211.55.4.sa;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
