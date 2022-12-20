@@ -1,4 +1,23 @@
 USE master
+<<<<<<< HEAD
+GO
+
+--Caso a database esteja em uso
+IF EXISTS (SELECT name
+FROM sys.databases
+WHERE name = N'DW_GlobalTech')
+ALTER DATABASE DW_GlobalTech SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+GO
+
+DROP DATABASE  IF EXISTS DW_GlobalTech
+GO
+
+CREATE DATABASE DW_GlobalTech
+GO
+
+USE DW_GlobalTech
+=======
+>>>>>>> a7371c65b491693402b2d953ea5eed7a1d2b03af
 GO
 
 --Caso a database esteja em uso
@@ -16,6 +35,7 @@ GO
 
 USE DW_GlobalTech
 GO
+
 -------------------------------
 CREATE SCHEMA DW
 GO
