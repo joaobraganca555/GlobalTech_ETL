@@ -2,13 +2,18 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>GlobalTechETL</Name>
-    <LastWriteTime>2022-12-19T00:23:52.9078316Z</LastWriteTime>
+    <LastWriteTime>2022-12-20T00:02:37.6378271Z</LastWriteTime>
     <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
     <ProjectBuildItemInfo>
       <Name>DataProfiling.dtsx</Name>
-      <LastWriteTime>2022-12-19T00:23:52.8402854Z</LastWriteTime>
+      <LastWriteTime>2022-12-20T00:00:08.3325749Z</LastWriteTime>
+      <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>DateDimension.dtsx</Name>
+      <LastWriteTime>2022-12-20T00:08:40.1596373Z</LastWriteTime>
       <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>

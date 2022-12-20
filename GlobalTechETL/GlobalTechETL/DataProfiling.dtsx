@@ -12,8 +12,8 @@
   DTS:ObjectName="Package"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="8"
-  DTS:VersionGUID="{25ACFF82-ABA5-4C7B-940F-71510EE6D8CB}">
+  DTS:VersionBuild="18"
+  DTS:VersionGUID="{E53931D4-3E12-4E60-BDB3-6327FC2FDE3A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -26,11 +26,7 @@
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=10.211.55.4;User ID=sa;Initial Catalog=GlobalTech;Provider=SQLNCLI11.1;Persist Security Info=True;Application Name=SSIS-Package-{AFAB08A8-26E7-46DE-B648-AF0AC276E03F}10.211.55.4.GlobalTech.sa;Auto Translate=False;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"></DTS:Password>
-        </DTS:ConnectionManager>
+          DTS:ConnectionString="Data Source=10.211.55.4;User ID=sa;Initial Catalog=GlobalTech;Provider=SQLNCLI11.1;Persist Security Info=True;Application Name=SSIS-Package-{AFAB08A8-26E7-46DE-B648-AF0AC276E03F}10.211.55.4.GlobalTech.sa;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -40,11 +36,7 @@
       DTS:ObjectName="10.211.55.4.sa">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=10.211.55.4;User ID=sa;Initial Catalog=GlobalTech;Integrated Security=False;Persist Security Info=True;TrustServerCertificate=True;Authentication=Sql Password;Application Name=SSIS-Package-{6F68A3D5-B944-4AF5-8212-91DB0DA8692F}10.211.55.4.sa;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"></DTS:Password>
-        </DTS:ConnectionManager>
+          DTS:ConnectionString="Data Source=10.211.55.4;User ID=sa;Initial Catalog=GlobalTech;Integrated Security=False;Persist Security Info=True;TrustServerCertificate=True;Authentication=Sql Password;Application Name=SSIS-Package-{6F68A3D5-B944-4AF5-8212-91DB0DA8692F}10.211.55.4.sa;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -626,9 +618,9 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="167.5,42"
+          Size="168,42"
           Id="Package\Data Profiling Task"
-          TopLeft="284.5,229.6666655259" />
+          TopLeft="136.5,150.6666655259" />
       </GraphLayout>
     </LayoutInfo>
   </Package>

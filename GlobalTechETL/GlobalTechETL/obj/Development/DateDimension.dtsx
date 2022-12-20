@@ -1,0 +1,2410 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/19/2022 11:33:11 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-519P8RM"
+  DTS:CreatorName="DESKTOP-519P8RM\tiago"
+  DTS:DTSID="{34E5A81A-AE44-4D01-A043-A4BE8EA30F6D}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.845.0"
+  DTS:LocaleID="4105"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="18"
+  DTS:VersionGUID="{9A607121-6088-4DA5-8E22-72CF41D88CCF}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[10.211.55.4.GlobalTech.sa]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{19A25481-00B4-4F61-893F-2BF4D6F9BB01}"
+      DTS:ObjectName="10.211.55.4.GlobalTech.sa">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=10.211.55.4;User ID=sa;Initial Catalog=GlobalTech;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;Application Name=SSIS-Package1-{19A25481-00B4-4F61-893F-2BF4D6F9BB01}10.211.55.4.GlobalTech.sa;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost.GlobalTech.sa]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{94D1CCE9-92C0-40BB-B4C6-3443D4411BA8}"
+      DTS:ObjectName="localhost.GlobalTech.sa">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=localhost;User ID=sa;Initial Catalog=GlobalTech;Provider=SQLNCLI11.1;Persist Security Info=True;Application Name=SSIS-Package1-{94D1CCE9-92C0-40BB-B4C6-3443D4411BA8}localhost.GlobalTech.sa;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{BB7A84BC-EB0A-448F-A29D-2F5772668291}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="anoFim">
+      <DTS:VariableValue
+        DTS:DataType="3">2017</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E4E90618-896D-436F-A8F8-0D3F7E7AD99A}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="anoInicio">
+      <DTS:VariableValue
+        DTS:DataType="3">2013</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7A6A46B3-C839-4E85-8950-2365E76B19F4}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="contadorAno">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\For Loop Container"
+      DTS:AssignExpression="@contadorAno = @contadorAno +1"
+      DTS:CreationName="STOCK:FORLOOP"
+      DTS:Description="For Loop Container"
+      DTS:DTSID="{3afdedaa-0e53-4358-a797-4fad1065e992}"
+      DTS:EvalExpression="@contadorAno &lt; @anoFim"
+      DTS:ExecutableType="STOCK:FORLOOP"
+      DTS:InitExpression="@contadorAno = @anoInicio"
+      DTS:LocaleID="-1"
+      DTS:MaxConcurrent="1"
+      DTS:ObjectName="For Loop Container">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\For Loop Container\Gerar Registos DimDay"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{61e0f3e2-0ab9-4e84-9e32-6fc6af7962ef}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:ISOLevel="-1"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Gerar Registos DimDay"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Gerar dados"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">EXEC PopulateDateDimensionForYear ?
+WITH RESULT SETS
+(
+    (
+        [Date] [date] NOT NULL,
+		[DateKey] [int] NOT NULL,
+		[Day Number] [int] NOT NULL,
+		[Day] [nvarchar](10) NOT NULL,
+		[Day of Year] [nvarchar](5) NOT NULL,
+		[Day of Year Number] [int] NOT NULL,
+		[Day of Week] [nvarchar](20) NOT NULL,
+		[Day of Week Number] [int] NOT NULL,
+		[Week of Year] [nvarchar](5) NOT NULL,
+		[Month] [nvarchar](10) NOT NULL,
+		[Short Month] [nvarchar](3) NOT NULL,
+		[Quarter] [nvarchar](2) NOT NULL,
+		[Half of Year] [nvarchar](3) NOT NULL,
+		[Beginning of Month] [date] NOT NULL,
+		[Beginning of Quarter] [date] NOT NULL,
+		[Beginning of Half Year] [date] NOT NULL,
+		[Beginning of Year] [date] NOT NULL,
+		[Beginning of Month Label] [nvarchar](40) NOT NULL,
+		[Beginning of Month Label Short] [nvarchar](40) NOT NULL,
+		[Beginning of Quarter Label] [nvarchar](40) NOT NULL,
+		[Beginning of Quarter Label Short] [nvarchar](40) NOT NULL,
+		[Beginning of Half Year Label] [nvarchar](40) NOT NULL,
+		[Beginning of Half Year Label Short] [nvarchar](40) NOT NULL,
+		[Beginning of Year Label] [nvarchar](40) NOT NULL,
+		[Beginning of Year Label Short] [nvarchar](40) NOT NULL,
+		[Calendar Day Label] [nvarchar](20) NOT NULL,
+		[Calendar Day Label Short] [nvarchar](20) NOT NULL,
+		[Calendar Week Number] [int] NOT NULL,
+		[Calendar Week Label] [nvarchar](20) NOT NULL,
+		[Calendar Month Number] [int] NOT NULL,
+		[Calendar Month Label] [nvarchar](20) NOT NULL,
+		[Calendar Month Year Label] [nvarchar](20) NOT NULL,
+		[Calendar Quarter Number] [int] NOT NULL,
+		[Calendar Quarter Label] [nvarchar](20) NOT NULL,
+		[Calendar Quarter Year Label] [nvarchar](20) NOT NULL,
+		[Calendar Half of Year Number] [int] NOT NULL,
+		[Calendar Half of Year Label] [nvarchar](20) NOT NULL,
+		[Calendar Year Half of Year Label] [nvarchar](20) NOT NULL,
+		[Calendar Year] [int] NOT NULL,
+		[Calendar Year Label] [nvarchar](10) NOT NULL,
+		[Fiscal Month Number] [int] NOT NULL,
+		[Fiscal Month Label] [nvarchar](20) NOT NULL,
+		[Fiscal Quarter Number] [int] NOT NULL,
+		[Fiscal Quarter Label] [nvarchar](20) NOT NULL,
+		[Fiscal Half of Year Number] [int] NOT NULL,
+		[Fiscal Half of Year Label] [nvarchar](20) NOT NULL,
+		[Fiscal Year] [int] NOT NULL,
+		[Fiscal Year Label] [nvarchar](10) NOT NULL,
+		[Date Key] [int] NOT NULL,
+		[Year Week Key] [int] NOT NULL,
+		[Year Month Key] [int] NOT NULL,
+		[Year Quarter Key] [int] NOT NULL,
+		[Year Half of Year Key] [int] NOT NULL,
+		[Year Key] [int] NOT NULL,
+		[Beginning of Month Key] [int] NOT NULL,
+		[Beginning of Quarter Key] [int] NOT NULL,
+		[Beginning of Half Year Key] [int] NOT NULL,
+		[Beginning of Year Key] [int] NOT NULL,
+		[Fiscal Year Month Key] [int] NOT NULL,
+		[Fiscal Year Quarter Key] [int] NOT NULL,
+		[Fiscal Year Half of Year Key] [int] NOT NULL,
+		[ISO Week Number] [int] NOT NULL
+    )
+);</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping">"@YearNumber:Input",{7A6A46B3-C839-4E85-8950-2365E76B19F4};</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[10.211.55.4.GlobalTech.sa]"
+                      connectionManagerRefId="Package.ConnectionManagers[10.211.55.4.GlobalTech.sa]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Date]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Date]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Date]"
+                          name="Date"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[DateKey]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[DateKey]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[DateKey]"
+                          name="DateKey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Day Number]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Day Number]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Day Number]"
+                          name="Day Number"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Day]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Day]"
+                          length="10"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Day]"
+                          name="Day"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Day of Year]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Day of Year]"
+                          length="5"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Day of Year]"
+                          name="Day of Year"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Day of Year Number]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Day of Year Number]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Day of Year Number]"
+                          name="Day of Year Number"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Day of Week]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Day of Week]"
+                          length="20"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Day of Week]"
+                          name="Day of Week"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Day of Week Number]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Day of Week Number]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Day of Week Number]"
+                          name="Day of Week Number"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Week of Year]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Week of Year]"
+                          length="5"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Week of Year]"
+                          name="Week of Year"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Month]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Month]"
+                          length="10"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Month]"
+                          name="Month"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Short Month]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Short Month]"
+                          length="3"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Short Month]"
+                          name="Short Month"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Quarter]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Quarter]"
+                          length="2"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Quarter]"
+                          name="Quarter"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Half of Year]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Half of Year]"
+                          length="3"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Half of Year]"
+                          name="Half of Year"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Beginning of Month]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Beginning of Month]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Beginning of Month]"
+                          name="Beginning of Month"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Beginning of Quarter]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Beginning of Quarter]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Beginning of Quarter]"
+                          name="Beginning of Quarter"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Beginning of Half Year]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Beginning of Half Year]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Beginning of Half Year]"
+                          name="Beginning of Half Year"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Beginning of Year]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Beginning of Year]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Beginning of Year]"
+                          name="Beginning of Year"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Beginning of Month Label]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Beginning of Month Label]"
+                          length="40"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Beginning of Month Label]"
+                          name="Beginning of Month Label"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Beginning of Month Label Short]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Beginning of Month Label Short]"
+                          length="40"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Beginning of Month Label Short]"
+                          name="Beginning of Month Label Short"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Beginning of Quarter Label]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Beginning of Quarter Label]"
+                          length="40"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Beginning of Quarter Label]"
+                          name="Beginning of Quarter Label"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Beginning of Quarter Label Short]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Beginning of Quarter Label Short]"
+                          length="40"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Beginning of Quarter Label Short]"
+                          name="Beginning of Quarter Label Short"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Beginning of Half Year Label]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Beginning of Half Year Label]"
+                          length="40"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Beginning of Half Year Label]"
+                          name="Beginning of Half Year Label"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Beginning of Half Year Label Short]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Beginning of Half Year Label Short]"
+                          length="40"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Beginning of Half Year Label Short]"
+                          name="Beginning of Half Year Label Short"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Beginning of Year Label]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Beginning of Year Label]"
+                          length="40"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Beginning of Year Label]"
+                          name="Beginning of Year Label"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Beginning of Year Label Short]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Beginning of Year Label Short]"
+                          length="40"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Beginning of Year Label Short]"
+                          name="Beginning of Year Label Short"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Calendar Day Label]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Calendar Day Label]"
+                          length="20"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Calendar Day Label]"
+                          name="Calendar Day Label"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Calendar Day Label Short]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Calendar Day Label Short]"
+                          length="20"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Calendar Day Label Short]"
+                          name="Calendar Day Label Short"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Calendar Week Number]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Calendar Week Number]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Calendar Week Number]"
+                          name="Calendar Week Number"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Calendar Week Label]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Calendar Week Label]"
+                          length="20"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Calendar Week Label]"
+                          name="Calendar Week Label"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Calendar Month Number]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Calendar Month Number]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Calendar Month Number]"
+                          name="Calendar Month Number"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Calendar Month Label]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Calendar Month Label]"
+                          length="20"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Calendar Month Label]"
+                          name="Calendar Month Label"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Calendar Month Year Label]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Calendar Month Year Label]"
+                          length="20"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Calendar Month Year Label]"
+                          name="Calendar Month Year Label"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Calendar Quarter Number]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Calendar Quarter Number]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Calendar Quarter Number]"
+                          name="Calendar Quarter Number"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Calendar Quarter Label]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Calendar Quarter Label]"
+                          length="20"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Calendar Quarter Label]"
+                          name="Calendar Quarter Label"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Calendar Quarter Year Label]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Calendar Quarter Year Label]"
+                          length="20"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Calendar Quarter Year Label]"
+                          name="Calendar Quarter Year Label"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Calendar Half of Year Number]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Calendar Half of Year Number]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Calendar Half of Year Number]"
+                          name="Calendar Half of Year Number"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Calendar Half of Year Label]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Calendar Half of Year Label]"
+                          length="20"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Calendar Half of Year Label]"
+                          name="Calendar Half of Year Label"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Calendar Year Half of Year Label]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Calendar Year Half of Year Label]"
+                          length="20"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Calendar Year Half of Year Label]"
+                          name="Calendar Year Half of Year Label"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Calendar Year]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Calendar Year]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Calendar Year]"
+                          name="Calendar Year"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Calendar Year Label]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Calendar Year Label]"
+                          length="10"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Calendar Year Label]"
+                          name="Calendar Year Label"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Fiscal Month Number]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Fiscal Month Number]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Fiscal Month Number]"
+                          name="Fiscal Month Number"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Fiscal Month Label]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Fiscal Month Label]"
+                          length="20"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Fiscal Month Label]"
+                          name="Fiscal Month Label"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Fiscal Quarter Number]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Fiscal Quarter Number]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Fiscal Quarter Number]"
+                          name="Fiscal Quarter Number"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Fiscal Quarter Label]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Fiscal Quarter Label]"
+                          length="20"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Fiscal Quarter Label]"
+                          name="Fiscal Quarter Label"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Fiscal Half of Year Number]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Fiscal Half of Year Number]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Fiscal Half of Year Number]"
+                          name="Fiscal Half of Year Number"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Fiscal Half of Year Label]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Fiscal Half of Year Label]"
+                          length="20"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Fiscal Half of Year Label]"
+                          name="Fiscal Half of Year Label"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Fiscal Year]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Fiscal Year]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Fiscal Year]"
+                          name="Fiscal Year"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Fiscal Year Label]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Fiscal Year Label]"
+                          length="10"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Fiscal Year Label]"
+                          name="Fiscal Year Label"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Date Key]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Date Key]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Date Key]"
+                          name="Date Key"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Year Week Key]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Year Week Key]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Year Week Key]"
+                          name="Year Week Key"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Year Month Key]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Year Month Key]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Year Month Key]"
+                          name="Year Month Key"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Year Quarter Key]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Year Quarter Key]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Year Quarter Key]"
+                          name="Year Quarter Key"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Year Half of Year Key]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Year Half of Year Key]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Year Half of Year Key]"
+                          name="Year Half of Year Key"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Year Key]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Year Key]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Year Key]"
+                          name="Year Key"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Beginning of Month Key]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Beginning of Month Key]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Beginning of Month Key]"
+                          name="Beginning of Month Key"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Beginning of Quarter Key]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Beginning of Quarter Key]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Beginning of Quarter Key]"
+                          name="Beginning of Quarter Key"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Beginning of Half Year Key]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Beginning of Half Year Key]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Beginning of Half Year Key]"
+                          name="Beginning of Half Year Key"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Beginning of Year Key]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Beginning of Year Key]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Beginning of Year Key]"
+                          name="Beginning of Year Key"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Fiscal Year Month Key]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Fiscal Year Month Key]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Fiscal Year Month Key]"
+                          name="Fiscal Year Month Key"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Fiscal Year Quarter Key]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Fiscal Year Quarter Key]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Fiscal Year Quarter Key]"
+                          name="Fiscal Year Quarter Key"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Fiscal Year Half of Year Key]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Fiscal Year Half of Year Key]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Fiscal Year Half of Year Key]"
+                          name="Fiscal Year Half of Year Key"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[ISO Week Number]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[ISO Week Number]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[ISO Week Number]"
+                          name="ISO Week Number"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Date]"
+                          dataType="dbDate"
+                          name="Date" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[DateKey]"
+                          dataType="i4"
+                          name="DateKey" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Day Number]"
+                          dataType="i4"
+                          name="Day Number" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Day]"
+                          dataType="wstr"
+                          length="10"
+                          name="Day" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Day of Year]"
+                          dataType="wstr"
+                          length="5"
+                          name="Day of Year" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Day of Year Number]"
+                          dataType="i4"
+                          name="Day of Year Number" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Day of Week]"
+                          dataType="wstr"
+                          length="20"
+                          name="Day of Week" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Day of Week Number]"
+                          dataType="i4"
+                          name="Day of Week Number" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Week of Year]"
+                          dataType="wstr"
+                          length="5"
+                          name="Week of Year" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Month]"
+                          dataType="wstr"
+                          length="10"
+                          name="Month" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Short Month]"
+                          dataType="wstr"
+                          length="3"
+                          name="Short Month" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Quarter]"
+                          dataType="wstr"
+                          length="2"
+                          name="Quarter" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Half of Year]"
+                          dataType="wstr"
+                          length="3"
+                          name="Half of Year" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Beginning of Month]"
+                          dataType="dbDate"
+                          name="Beginning of Month" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Beginning of Quarter]"
+                          dataType="dbDate"
+                          name="Beginning of Quarter" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Beginning of Half Year]"
+                          dataType="dbDate"
+                          name="Beginning of Half Year" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Beginning of Year]"
+                          dataType="dbDate"
+                          name="Beginning of Year" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Beginning of Month Label]"
+                          dataType="wstr"
+                          length="40"
+                          name="Beginning of Month Label" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Beginning of Month Label Short]"
+                          dataType="wstr"
+                          length="40"
+                          name="Beginning of Month Label Short" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Beginning of Quarter Label]"
+                          dataType="wstr"
+                          length="40"
+                          name="Beginning of Quarter Label" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Beginning of Quarter Label Short]"
+                          dataType="wstr"
+                          length="40"
+                          name="Beginning of Quarter Label Short" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Beginning of Half Year Label]"
+                          dataType="wstr"
+                          length="40"
+                          name="Beginning of Half Year Label" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Beginning of Half Year Label Short]"
+                          dataType="wstr"
+                          length="40"
+                          name="Beginning of Half Year Label Short" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Beginning of Year Label]"
+                          dataType="wstr"
+                          length="40"
+                          name="Beginning of Year Label" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Beginning of Year Label Short]"
+                          dataType="wstr"
+                          length="40"
+                          name="Beginning of Year Label Short" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Calendar Day Label]"
+                          dataType="wstr"
+                          length="20"
+                          name="Calendar Day Label" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Calendar Day Label Short]"
+                          dataType="wstr"
+                          length="20"
+                          name="Calendar Day Label Short" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Calendar Week Number]"
+                          dataType="i4"
+                          name="Calendar Week Number" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Calendar Week Label]"
+                          dataType="wstr"
+                          length="20"
+                          name="Calendar Week Label" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Calendar Month Number]"
+                          dataType="i4"
+                          name="Calendar Month Number" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Calendar Month Label]"
+                          dataType="wstr"
+                          length="20"
+                          name="Calendar Month Label" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Calendar Month Year Label]"
+                          dataType="wstr"
+                          length="20"
+                          name="Calendar Month Year Label" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Calendar Quarter Number]"
+                          dataType="i4"
+                          name="Calendar Quarter Number" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Calendar Quarter Label]"
+                          dataType="wstr"
+                          length="20"
+                          name="Calendar Quarter Label" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Calendar Quarter Year Label]"
+                          dataType="wstr"
+                          length="20"
+                          name="Calendar Quarter Year Label" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Calendar Half of Year Number]"
+                          dataType="i4"
+                          name="Calendar Half of Year Number" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Calendar Half of Year Label]"
+                          dataType="wstr"
+                          length="20"
+                          name="Calendar Half of Year Label" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Calendar Year Half of Year Label]"
+                          dataType="wstr"
+                          length="20"
+                          name="Calendar Year Half of Year Label" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Calendar Year]"
+                          dataType="i4"
+                          name="Calendar Year" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Calendar Year Label]"
+                          dataType="wstr"
+                          length="10"
+                          name="Calendar Year Label" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Fiscal Month Number]"
+                          dataType="i4"
+                          name="Fiscal Month Number" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Fiscal Month Label]"
+                          dataType="wstr"
+                          length="20"
+                          name="Fiscal Month Label" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Fiscal Quarter Number]"
+                          dataType="i4"
+                          name="Fiscal Quarter Number" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Fiscal Quarter Label]"
+                          dataType="wstr"
+                          length="20"
+                          name="Fiscal Quarter Label" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Fiscal Half of Year Number]"
+                          dataType="i4"
+                          name="Fiscal Half of Year Number" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Fiscal Half of Year Label]"
+                          dataType="wstr"
+                          length="20"
+                          name="Fiscal Half of Year Label" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Fiscal Year]"
+                          dataType="i4"
+                          name="Fiscal Year" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Fiscal Year Label]"
+                          dataType="wstr"
+                          length="10"
+                          name="Fiscal Year Label" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Date Key]"
+                          dataType="i4"
+                          name="Date Key" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Year Week Key]"
+                          dataType="i4"
+                          name="Year Week Key" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Year Month Key]"
+                          dataType="i4"
+                          name="Year Month Key" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Year Quarter Key]"
+                          dataType="i4"
+                          name="Year Quarter Key" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Year Half of Year Key]"
+                          dataType="i4"
+                          name="Year Half of Year Key" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Year Key]"
+                          dataType="i4"
+                          name="Year Key" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Beginning of Month Key]"
+                          dataType="i4"
+                          name="Beginning of Month Key" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Beginning of Quarter Key]"
+                          dataType="i4"
+                          name="Beginning of Quarter Key" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Beginning of Half Year Key]"
+                          dataType="i4"
+                          name="Beginning of Half Year Key" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Beginning of Year Key]"
+                          dataType="i4"
+                          name="Beginning of Year Key" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Fiscal Year Month Key]"
+                          dataType="i4"
+                          name="Fiscal Year Month Key" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Fiscal Year Quarter Key]"
+                          dataType="i4"
+                          name="Fiscal Year Quarter Key" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[Fiscal Year Half of Year Key]"
+                          dataType="i4"
+                          name="Fiscal Year Half of Year Key" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].ExternalColumns[ISO Week Number]"
+                          dataType="i4"
+                          name="ISO Week Number" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Date]"
+                          dataType="dbDate"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Date]"
+                          name="Date" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[DateKey]"
+                          dataType="i4"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[DateKey]"
+                          name="DateKey" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Day Number]"
+                          dataType="i4"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Day Number]"
+                          name="Day Number" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Day]"
+                          dataType="wstr"
+                          length="10"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Day]"
+                          name="Day" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Day of Year]"
+                          dataType="wstr"
+                          length="5"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Day of Year]"
+                          name="Day of Year" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Day of Year Number]"
+                          dataType="i4"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Day of Year Number]"
+                          name="Day of Year Number" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Day of Week]"
+                          dataType="wstr"
+                          length="20"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Day of Week]"
+                          name="Day of Week" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Day of Week Number]"
+                          dataType="i4"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Day of Week Number]"
+                          name="Day of Week Number" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Week of Year]"
+                          dataType="wstr"
+                          length="5"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Week of Year]"
+                          name="Week of Year" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Month]"
+                          dataType="wstr"
+                          length="10"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Month]"
+                          name="Month" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Short Month]"
+                          dataType="wstr"
+                          length="3"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Short Month]"
+                          name="Short Month" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Quarter]"
+                          dataType="wstr"
+                          length="2"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Quarter]"
+                          name="Quarter" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Half of Year]"
+                          dataType="wstr"
+                          length="3"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Half of Year]"
+                          name="Half of Year" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Beginning of Month]"
+                          dataType="dbDate"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Beginning of Month]"
+                          name="Beginning of Month" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Beginning of Quarter]"
+                          dataType="dbDate"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Beginning of Quarter]"
+                          name="Beginning of Quarter" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Beginning of Half Year]"
+                          dataType="dbDate"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Beginning of Half Year]"
+                          name="Beginning of Half Year" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Beginning of Year]"
+                          dataType="dbDate"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Beginning of Year]"
+                          name="Beginning of Year" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Beginning of Month Label]"
+                          dataType="wstr"
+                          length="40"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Beginning of Month Label]"
+                          name="Beginning of Month Label" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Beginning of Month Label Short]"
+                          dataType="wstr"
+                          length="40"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Beginning of Month Label Short]"
+                          name="Beginning of Month Label Short" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Beginning of Quarter Label]"
+                          dataType="wstr"
+                          length="40"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Beginning of Quarter Label]"
+                          name="Beginning of Quarter Label" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Beginning of Quarter Label Short]"
+                          dataType="wstr"
+                          length="40"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Beginning of Quarter Label Short]"
+                          name="Beginning of Quarter Label Short" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Beginning of Half Year Label]"
+                          dataType="wstr"
+                          length="40"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Beginning of Half Year Label]"
+                          name="Beginning of Half Year Label" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Beginning of Half Year Label Short]"
+                          dataType="wstr"
+                          length="40"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Beginning of Half Year Label Short]"
+                          name="Beginning of Half Year Label Short" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Beginning of Year Label]"
+                          dataType="wstr"
+                          length="40"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Beginning of Year Label]"
+                          name="Beginning of Year Label" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Beginning of Year Label Short]"
+                          dataType="wstr"
+                          length="40"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Beginning of Year Label Short]"
+                          name="Beginning of Year Label Short" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Calendar Day Label]"
+                          dataType="wstr"
+                          length="20"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Calendar Day Label]"
+                          name="Calendar Day Label" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Calendar Day Label Short]"
+                          dataType="wstr"
+                          length="20"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Calendar Day Label Short]"
+                          name="Calendar Day Label Short" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Calendar Week Number]"
+                          dataType="i4"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Calendar Week Number]"
+                          name="Calendar Week Number" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Calendar Week Label]"
+                          dataType="wstr"
+                          length="20"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Calendar Week Label]"
+                          name="Calendar Week Label" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Calendar Month Number]"
+                          dataType="i4"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Calendar Month Number]"
+                          name="Calendar Month Number" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Calendar Month Label]"
+                          dataType="wstr"
+                          length="20"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Calendar Month Label]"
+                          name="Calendar Month Label" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Calendar Month Year Label]"
+                          dataType="wstr"
+                          length="20"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Calendar Month Year Label]"
+                          name="Calendar Month Year Label" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Calendar Quarter Number]"
+                          dataType="i4"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Calendar Quarter Number]"
+                          name="Calendar Quarter Number" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Calendar Quarter Label]"
+                          dataType="wstr"
+                          length="20"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Calendar Quarter Label]"
+                          name="Calendar Quarter Label" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Calendar Quarter Year Label]"
+                          dataType="wstr"
+                          length="20"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Calendar Quarter Year Label]"
+                          name="Calendar Quarter Year Label" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Calendar Half of Year Number]"
+                          dataType="i4"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Calendar Half of Year Number]"
+                          name="Calendar Half of Year Number" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Calendar Half of Year Label]"
+                          dataType="wstr"
+                          length="20"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Calendar Half of Year Label]"
+                          name="Calendar Half of Year Label" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Calendar Year Half of Year Label]"
+                          dataType="wstr"
+                          length="20"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Calendar Year Half of Year Label]"
+                          name="Calendar Year Half of Year Label" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Calendar Year]"
+                          dataType="i4"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Calendar Year]"
+                          name="Calendar Year" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Calendar Year Label]"
+                          dataType="wstr"
+                          length="10"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Calendar Year Label]"
+                          name="Calendar Year Label" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Fiscal Month Number]"
+                          dataType="i4"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Fiscal Month Number]"
+                          name="Fiscal Month Number" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Fiscal Month Label]"
+                          dataType="wstr"
+                          length="20"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Fiscal Month Label]"
+                          name="Fiscal Month Label" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Fiscal Quarter Number]"
+                          dataType="i4"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Fiscal Quarter Number]"
+                          name="Fiscal Quarter Number" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Fiscal Quarter Label]"
+                          dataType="wstr"
+                          length="20"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Fiscal Quarter Label]"
+                          name="Fiscal Quarter Label" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Fiscal Half of Year Number]"
+                          dataType="i4"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Fiscal Half of Year Number]"
+                          name="Fiscal Half of Year Number" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Fiscal Half of Year Label]"
+                          dataType="wstr"
+                          length="20"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Fiscal Half of Year Label]"
+                          name="Fiscal Half of Year Label" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Fiscal Year]"
+                          dataType="i4"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Fiscal Year]"
+                          name="Fiscal Year" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Fiscal Year Label]"
+                          dataType="wstr"
+                          length="10"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Fiscal Year Label]"
+                          name="Fiscal Year Label" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Date Key]"
+                          dataType="i4"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Date Key]"
+                          name="Date Key" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Year Week Key]"
+                          dataType="i4"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Year Week Key]"
+                          name="Year Week Key" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Year Month Key]"
+                          dataType="i4"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Year Month Key]"
+                          name="Year Month Key" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Year Quarter Key]"
+                          dataType="i4"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Year Quarter Key]"
+                          name="Year Quarter Key" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Year Half of Year Key]"
+                          dataType="i4"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Year Half of Year Key]"
+                          name="Year Half of Year Key" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Year Key]"
+                          dataType="i4"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Year Key]"
+                          name="Year Key" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Beginning of Month Key]"
+                          dataType="i4"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Beginning of Month Key]"
+                          name="Beginning of Month Key" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Beginning of Quarter Key]"
+                          dataType="i4"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Beginning of Quarter Key]"
+                          name="Beginning of Quarter Key" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Beginning of Half Year Key]"
+                          dataType="i4"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Beginning of Half Year Key]"
+                          name="Beginning of Half Year Key" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Beginning of Year Key]"
+                          dataType="i4"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Beginning of Year Key]"
+                          name="Beginning of Year Key" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Fiscal Year Month Key]"
+                          dataType="i4"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Fiscal Year Month Key]"
+                          name="Fiscal Year Month Key" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Fiscal Year Quarter Key]"
+                          dataType="i4"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Fiscal Year Quarter Key]"
+                          name="Fiscal Year Quarter Key" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Fiscal Year Half of Year Key]"
+                          dataType="i4"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[Fiscal Year Half of Year Key]"
+                          name="Fiscal Year Half of Year Key" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[ISO Week Number]"
+                          dataType="i4"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[ISO Week Number]"
+                          name="ISO Week Number" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Guardar dados"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[DW].[DateDimension]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[10.211.55.4.GlobalTech.sa]"
+                      connectionManagerRefId="Package.ConnectionManagers[10.211.55.4.GlobalTech.sa]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Date]"
+                          cachedDataType="dbDate"
+                          cachedName="Date"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Date]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[DateKey]"
+                          cachedDataType="i4"
+                          cachedName="DateKey"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[DateKey]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[DateKey]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Day Number]"
+                          cachedDataType="i4"
+                          cachedName="Day Number"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Day Number]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Day Number]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Day]"
+                          cachedDataType="wstr"
+                          cachedLength="10"
+                          cachedName="Day"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Day]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Day]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Day of Year]"
+                          cachedDataType="wstr"
+                          cachedLength="5"
+                          cachedName="Day of Year"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Day of Year]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Day of Year]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Day of Year Number]"
+                          cachedDataType="i4"
+                          cachedName="Day of Year Number"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Day of Year Number]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Day of Year Number]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Day of Week Number]"
+                          cachedDataType="i4"
+                          cachedName="Day of Week Number"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Day of Week Number]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Day of Week Number]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Week of Year]"
+                          cachedDataType="wstr"
+                          cachedLength="5"
+                          cachedName="Week of Year"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Week of Year]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Week of Year]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Short Month]"
+                          cachedDataType="wstr"
+                          cachedLength="3"
+                          cachedName="Short Month"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Short Month]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Short Month]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Quarter]"
+                          cachedDataType="wstr"
+                          cachedLength="2"
+                          cachedName="Quarter"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Quarter]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Quarter]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Half of Year]"
+                          cachedDataType="wstr"
+                          cachedLength="3"
+                          cachedName="Half of Year"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Half of Year]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Half of Year]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Beginning of Month]"
+                          cachedDataType="dbDate"
+                          cachedName="Beginning of Month"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Beginning of Month]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Beginning of Month]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Beginning of Quarter]"
+                          cachedDataType="dbDate"
+                          cachedName="Beginning of Quarter"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Beginning of Quarter]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Beginning of Quarter]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Beginning of Half Year]"
+                          cachedDataType="dbDate"
+                          cachedName="Beginning of Half Year"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Beginning of Half Year]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Beginning of Half Year]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Beginning of Year]"
+                          cachedDataType="dbDate"
+                          cachedName="Beginning of Year"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Beginning of Year]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Beginning of Year]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Beginning of Month Label]"
+                          cachedDataType="wstr"
+                          cachedLength="40"
+                          cachedName="Beginning of Month Label"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Beginning of Month Label]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Beginning of Month Label]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Beginning of Month Label Short]"
+                          cachedDataType="wstr"
+                          cachedLength="40"
+                          cachedName="Beginning of Month Label Short"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Beginning of Month Label Short]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Beginning of Month Label Short]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Beginning of Quarter Label]"
+                          cachedDataType="wstr"
+                          cachedLength="40"
+                          cachedName="Beginning of Quarter Label"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Beginning of Quarter Label]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Beginning of Quarter Label]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Beginning of Quarter Label Short]"
+                          cachedDataType="wstr"
+                          cachedLength="40"
+                          cachedName="Beginning of Quarter Label Short"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Beginning of Quarter Label Short]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Beginning of Quarter Label Short]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Beginning of Half Year Label]"
+                          cachedDataType="wstr"
+                          cachedLength="40"
+                          cachedName="Beginning of Half Year Label"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Beginning of Half Year Label]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Beginning of Half Year Label]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Beginning of Half Year Label Short]"
+                          cachedDataType="wstr"
+                          cachedLength="40"
+                          cachedName="Beginning of Half Year Label Short"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Beginning of Half Year Label Short]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Beginning of Half Year Label Short]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Beginning of Year Label]"
+                          cachedDataType="wstr"
+                          cachedLength="40"
+                          cachedName="Beginning of Year Label"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Beginning of Year Label]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Beginning of Year Label]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Beginning of Year Label Short]"
+                          cachedDataType="wstr"
+                          cachedLength="40"
+                          cachedName="Beginning of Year Label Short"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Beginning of Year Label Short]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Beginning of Year Label Short]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Calendar Day Label]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="Calendar Day Label"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Calendar Day Label]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Calendar Day Label]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Calendar Day Label Short]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="Calendar Day Label Short"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Calendar Day Label Short]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Calendar Day Label Short]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Calendar Week Number]"
+                          cachedDataType="i4"
+                          cachedName="Calendar Week Number"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Calendar Week Number]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Calendar Week Number]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Calendar Week Label]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="Calendar Week Label"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Calendar Week Label]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Calendar Week Label]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Calendar Month Number]"
+                          cachedDataType="i4"
+                          cachedName="Calendar Month Number"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Calendar Month Number]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Calendar Month Number]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Calendar Month Label]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="Calendar Month Label"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Calendar Month Label]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Calendar Month Label]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Calendar Month Year Label]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="Calendar Month Year Label"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Calendar Month Year Label]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Calendar Month Year Label]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Calendar Quarter Number]"
+                          cachedDataType="i4"
+                          cachedName="Calendar Quarter Number"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Calendar Quarter Number]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Calendar Quarter Number]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Calendar Quarter Label]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="Calendar Quarter Label"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Calendar Quarter Label]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Calendar Quarter Label]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Calendar Quarter Year Label]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="Calendar Quarter Year Label"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Calendar Quarter Year Label]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Calendar Quarter Year Label]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Calendar Half of Year Number]"
+                          cachedDataType="i4"
+                          cachedName="Calendar Half of Year Number"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Calendar Half of Year Number]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Calendar Half of Year Number]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Calendar Half of Year Label]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="Calendar Half of Year Label"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Calendar Half of Year Label]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Calendar Half of Year Label]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Calendar Year Half of Year Label]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="Calendar Year Half of Year Label"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Calendar Year Half of Year Label]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Calendar Year Half of Year Label]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Calendar Year]"
+                          cachedDataType="i4"
+                          cachedName="Calendar Year"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Calendar Year]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Calendar Year]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Calendar Year Label]"
+                          cachedDataType="wstr"
+                          cachedLength="10"
+                          cachedName="Calendar Year Label"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Calendar Year Label]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Calendar Year Label]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Fiscal Month Number]"
+                          cachedDataType="i4"
+                          cachedName="Fiscal Month Number"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Fiscal Month Number]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Fiscal Month Number]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Fiscal Month Label]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="Fiscal Month Label"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Fiscal Month Label]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Fiscal Month Label]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Fiscal Quarter Number]"
+                          cachedDataType="i4"
+                          cachedName="Fiscal Quarter Number"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Fiscal Quarter Number]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Fiscal Quarter Number]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Fiscal Quarter Label]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="Fiscal Quarter Label"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Fiscal Quarter Label]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Fiscal Quarter Label]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Fiscal Half of Year Number]"
+                          cachedDataType="i4"
+                          cachedName="Fiscal Half of Year Number"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Fiscal Half of Year Number]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Fiscal Half of Year Number]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Fiscal Half of Year Label]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="Fiscal Half of Year Label"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Fiscal Half of Year Label]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Fiscal Half of Year Label]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Fiscal Year]"
+                          cachedDataType="i4"
+                          cachedName="Fiscal Year"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Fiscal Year]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Fiscal Year]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Fiscal Year Label]"
+                          cachedDataType="wstr"
+                          cachedLength="10"
+                          cachedName="Fiscal Year Label"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Fiscal Year Label]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Fiscal Year Label]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Date Key]"
+                          cachedDataType="i4"
+                          cachedName="Date Key"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Date Key]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Date Key]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Year Week Key]"
+                          cachedDataType="i4"
+                          cachedName="Year Week Key"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Year Week Key]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Year Week Key]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Year Month Key]"
+                          cachedDataType="i4"
+                          cachedName="Year Month Key"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Year Month Key]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Year Month Key]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Year Quarter Key]"
+                          cachedDataType="i4"
+                          cachedName="Year Quarter Key"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Year Quarter Key]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Year Quarter Key]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Year Half of Year Key]"
+                          cachedDataType="i4"
+                          cachedName="Year Half of Year Key"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Year Half of Year Key]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Year Half of Year Key]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Year Key]"
+                          cachedDataType="i4"
+                          cachedName="Year Key"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Year Key]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Year Key]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Beginning of Month Key]"
+                          cachedDataType="i4"
+                          cachedName="Beginning of Month Key"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Beginning of Month Key]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Beginning of Month Key]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Beginning of Quarter Key]"
+                          cachedDataType="i4"
+                          cachedName="Beginning of Quarter Key"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Beginning of Quarter Key]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Beginning of Quarter Key]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Beginning of Half Year Key]"
+                          cachedDataType="i4"
+                          cachedName="Beginning of Half Year Key"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Beginning of Half Year Key]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Beginning of Half Year Key]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Beginning of Year Key]"
+                          cachedDataType="i4"
+                          cachedName="Beginning of Year Key"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Beginning of Year Key]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Beginning of Year Key]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Fiscal Year Month Key]"
+                          cachedDataType="i4"
+                          cachedName="Fiscal Year Month Key"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Fiscal Year Month Key]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Fiscal Year Month Key]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Fiscal Year Quarter Key]"
+                          cachedDataType="i4"
+                          cachedName="Fiscal Year Quarter Key"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Fiscal Year Quarter Key]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Fiscal Year Quarter Key]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[Fiscal Year Half of Year Key]"
+                          cachedDataType="i4"
+                          cachedName="Fiscal Year Half of Year Key"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Fiscal Year Half of Year Key]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[Fiscal Year Half of Year Key]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].Columns[ISO Week Number]"
+                          cachedDataType="i4"
+                          cachedName="ISO Week Number"
+                          externalMetadataColumnId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[ISO Week Number]"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output].Columns[ISO Week Number]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
+                          dataType="dbDate"
+                          name="Date" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[DateKey]"
+                          dataType="i4"
+                          name="DateKey" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Day Number]"
+                          dataType="i4"
+                          name="Day Number" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Day]"
+                          dataType="wstr"
+                          length="10"
+                          name="Day" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Day of Year]"
+                          dataType="wstr"
+                          length="5"
+                          name="Day of Year" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Day of Year Number]"
+                          dataType="i4"
+                          name="Day of Year Number" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Day of Week English]"
+                          dataType="wstr"
+                          length="20"
+                          name="Day of Week English" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Day of Week Portuguese]"
+                          dataType="wstr"
+                          length="30"
+                          name="Day of Week Portuguese" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Day of Week Number]"
+                          dataType="i4"
+                          name="Day of Week Number" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Week of Year]"
+                          dataType="wstr"
+                          length="5"
+                          name="Week of Year" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Month English]"
+                          dataType="wstr"
+                          length="10"
+                          name="Month English" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Month Portuguese]"
+                          dataType="wstr"
+                          length="10"
+                          name="Month Portuguese" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Short Month]"
+                          dataType="wstr"
+                          length="3"
+                          name="Short Month" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Quarter]"
+                          dataType="wstr"
+                          length="2"
+                          name="Quarter" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Half of Year]"
+                          dataType="wstr"
+                          length="3"
+                          name="Half of Year" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Beginning of Month]"
+                          dataType="dbDate"
+                          name="Beginning of Month" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Beginning of Quarter]"
+                          dataType="dbDate"
+                          name="Beginning of Quarter" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Beginning of Half Year]"
+                          dataType="dbDate"
+                          name="Beginning of Half Year" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Beginning of Year]"
+                          dataType="dbDate"
+                          name="Beginning of Year" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Beginning of Month Label]"
+                          dataType="wstr"
+                          length="40"
+                          name="Beginning of Month Label" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Beginning of Month Label Short]"
+                          dataType="wstr"
+                          length="40"
+                          name="Beginning of Month Label Short" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Beginning of Quarter Label]"
+                          dataType="wstr"
+                          length="40"
+                          name="Beginning of Quarter Label" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Beginning of Quarter Label Short]"
+                          dataType="wstr"
+                          length="40"
+                          name="Beginning of Quarter Label Short" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Beginning of Half Year Label]"
+                          dataType="wstr"
+                          length="40"
+                          name="Beginning of Half Year Label" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Beginning of Half Year Label Short]"
+                          dataType="wstr"
+                          length="40"
+                          name="Beginning of Half Year Label Short" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Beginning of Year Label]"
+                          dataType="wstr"
+                          length="40"
+                          name="Beginning of Year Label" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Beginning of Year Label Short]"
+                          dataType="wstr"
+                          length="40"
+                          name="Beginning of Year Label Short" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Calendar Day Label]"
+                          dataType="wstr"
+                          length="20"
+                          name="Calendar Day Label" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Calendar Day Label Short]"
+                          dataType="wstr"
+                          length="20"
+                          name="Calendar Day Label Short" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Calendar Week Number]"
+                          dataType="i4"
+                          name="Calendar Week Number" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Calendar Week Label]"
+                          dataType="wstr"
+                          length="20"
+                          name="Calendar Week Label" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Calendar Month Number]"
+                          dataType="i4"
+                          name="Calendar Month Number" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Calendar Month Label]"
+                          dataType="wstr"
+                          length="20"
+                          name="Calendar Month Label" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Calendar Month Year Label]"
+                          dataType="wstr"
+                          length="20"
+                          name="Calendar Month Year Label" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Calendar Quarter Number]"
+                          dataType="i4"
+                          name="Calendar Quarter Number" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Calendar Quarter Label]"
+                          dataType="wstr"
+                          length="20"
+                          name="Calendar Quarter Label" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Calendar Quarter Year Label]"
+                          dataType="wstr"
+                          length="20"
+                          name="Calendar Quarter Year Label" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Calendar Half of Year Number]"
+                          dataType="i4"
+                          name="Calendar Half of Year Number" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Calendar Half of Year Label]"
+                          dataType="wstr"
+                          length="20"
+                          name="Calendar Half of Year Label" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Calendar Year Half of Year Label]"
+                          dataType="wstr"
+                          length="20"
+                          name="Calendar Year Half of Year Label" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Calendar Year]"
+                          dataType="i4"
+                          name="Calendar Year" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Calendar Year Label]"
+                          dataType="wstr"
+                          length="10"
+                          name="Calendar Year Label" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Fiscal Month Number]"
+                          dataType="i4"
+                          name="Fiscal Month Number" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Fiscal Month Label]"
+                          dataType="wstr"
+                          length="20"
+                          name="Fiscal Month Label" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Fiscal Quarter Number]"
+                          dataType="i4"
+                          name="Fiscal Quarter Number" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Fiscal Quarter Label]"
+                          dataType="wstr"
+                          length="20"
+                          name="Fiscal Quarter Label" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Fiscal Half of Year Number]"
+                          dataType="i4"
+                          name="Fiscal Half of Year Number" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Fiscal Half of Year Label]"
+                          dataType="wstr"
+                          length="20"
+                          name="Fiscal Half of Year Label" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Fiscal Year]"
+                          dataType="i4"
+                          name="Fiscal Year" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Fiscal Year Label]"
+                          dataType="wstr"
+                          length="10"
+                          name="Fiscal Year Label" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Date Key]"
+                          dataType="i4"
+                          name="Date Key" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Year Week Key]"
+                          dataType="i4"
+                          name="Year Week Key" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Year Month Key]"
+                          dataType="i4"
+                          name="Year Month Key" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Year Quarter Key]"
+                          dataType="i4"
+                          name="Year Quarter Key" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Year Half of Year Key]"
+                          dataType="i4"
+                          name="Year Half of Year Key" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Year Key]"
+                          dataType="i4"
+                          name="Year Key" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Beginning of Month Key]"
+                          dataType="i4"
+                          name="Beginning of Month Key" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Beginning of Quarter Key]"
+                          dataType="i4"
+                          name="Beginning of Quarter Key" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Beginning of Half Year Key]"
+                          dataType="i4"
+                          name="Beginning of Half Year Key" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Beginning of Year Key]"
+                          dataType="i4"
+                          name="Beginning of Year Key" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Fiscal Year Month Key]"
+                          dataType="i4"
+                          name="Fiscal Year Month Key" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Fiscal Year Quarter Key]"
+                          dataType="i4"
+                          name="Fiscal Year Quarter Key" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Fiscal Year Half of Year Key]"
+                          dataType="i4"
+                          name="Fiscal Year Half of Year Key" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[ISO Week Number]"
+                          dataType="i4"
+                          name="ISO Week Number" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Portuguese Holiday Flag]"
+                          dataType="ui1"
+                          name="Portuguese Holiday Flag" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Portuguese Holiday Name]"
+                          dataType="wstr"
+                          length="50"
+                          name="Portuguese Holiday Name" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input].ExternalColumns[Portuguese Holiday Type]"
+                          dataType="wstr"
+                          length="50"
+                          name="Portuguese Holiday Type" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\For Loop Container\Gerar Registos DimDay.Paths[OLE DB Source Output]"
+                  endId="Package\For Loop Container\Gerar Registos DimDay\Guardar dados.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\For Loop Container\Gerar Registos DimDay\Gerar dados.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate Table DimDimension"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{6e95f8f0-a13f-4dcd-899a-af699a641508}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate Table DimDimension"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{19A25481-00B4-4F61-893F-2BF4D6F9BB01}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE DW.DateDimension" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{dd4b2b7e-1dcd-44f8-9bab-dd7d72b65dfc}"
+      DTS:From="Package\Truncate Table DimDimension"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\For Loop Container" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="195,42"
+          Id="Package\For Loop Container\Gerar Registos DimDay"
+          TopLeft="54,35" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="266,138"
+          Size="266,181"
+          Id="Package\For Loop Container"
+          TopLeft="495,262" />
+        <NodeLayout
+          Size="228,42"
+          Id="Package\Truncate Table DimDimension"
+          TopLeft="520,54" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="631,96">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,166"
+              Start="0,0"
+              End="0,158.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,158.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\For Loop Container\Gerar Registos DimDay">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="140,42"
+          Id="Package\For Loop Container\Gerar Registos DimDay\Gerar dados"
+          TopLeft="526,151" />
+        <NodeLayout
+          Size="152,42"
+          Id="Package\For Loop Container\Gerar Registos DimDay\Guardar dados"
+          TopLeft="515,291" />
+        <EdgeLayout
+          Id="Package\For Loop Container\Gerar Registos DimDay.Paths[OLE DB Source Output]"
+          TopLeft="593.5,193">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,98"
+              Start="0,0"
+              End="0,90.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,90.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\For Loop Container\Gerar Registos DimDay\Gerar dados">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\For Loop Container\Gerar Registos DimDay\Guardar dados">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

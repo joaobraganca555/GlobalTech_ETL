@@ -12,8 +12,8 @@
   DTS:ObjectName="Package"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="8"
-  DTS:VersionGUID="{25ACFF82-ABA5-4C7B-940F-71510EE6D8CB}">
+  DTS:VersionBuild="16"
+  DTS:VersionGUID="{AA743657-5E8C-4E31-9028-50DF0A265401}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -87,11 +87,12 @@
       DTS:refId="Package\Data Profiling Task"
       DTS:CreationName="Microsoft.DataProfilingTask"
       DTS:Description="Data Profiling Task"
+      DTS:Disabled="True"
       DTS:DTSID="{39138943-3480-4B19-BB88-104B5AB68AEA}"
       DTS:ExecutableType="Microsoft.DataProfilingTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Data Profiling Task"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <DataProfilingTaskData
@@ -604,6 +605,22 @@
         </DataProfilingTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate Table DimDimension"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{758508b5-ae08-4697-b1eb-2352e71902df}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate Table DimDimension"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{AFAB08A8-26E7-46DE-B648-AF0AC276E03F}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE DW.DateDimension" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -618,9 +635,13 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="167.5,42"
+          Size="168,42"
           Id="Package\Data Profiling Task"
-          TopLeft="284.5,229.6666655259" />
+          TopLeft="136.5,150.6666655259" />
+        <NodeLayout
+          Size="228,42"
+          Id="Package\Truncate Table DimDimension"
+          TopLeft="484.5,210.6666655259" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
