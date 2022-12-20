@@ -2,19 +2,25 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>GlobalTechETL</Name>
-    <LastWriteTime>2022-12-20T00:02:37.6378271Z</LastWriteTime>
-    <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
+    <LastWriteTime>2022-12-20T01:04:30.5509081Z</LastWriteTime>
+    <LastKnownProtectionLevel>EncryptAllWithPassword</LastKnownProtectionLevel>
+    <Salt>k3vvX20b</Salt>
+    <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAztvOWO8ue0u0+gVwn6A2dQAAAAACAAAAAAAQZgAAAAEAACAAAADblDomkvO7Qvi9SEsyq05svl+Rehy6KgUpCDTi5YCs2wAAAAAOgAAAAAIAACAAAAA2zV65rQfZqQa7k8FJgZVBBSgkvuPv+qpAiXZvGlBeHDAAAADjfq2Loz8onK6/vGHk+poxoHvrU6yBFCZGJKPFKclSASdinbYePw/seKbk5gedgiRAAAAAtA9V+hVS/9vgCw4r4xhFGUinSzYNCDpj45GgvQKp4dQJbFm77UlO516A637V8+tJPUmU+4Sjg5Url9MDRBlkrA==</LastKnownProtectedHashedPassword>
   </ProjectInfo>
   <LastBuildInfos>
     <ProjectBuildItemInfo>
       <Name>DataProfiling.dtsx</Name>
-      <LastWriteTime>2022-12-20T00:09:45.9426825Z</LastWriteTime>
-      <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
+      <LastWriteTime>2022-12-20T00:49:02.7195833Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptAllWithPassword</LastKnownProtectionLevel>
+      <Salt>Pv3+EpdI</Salt>
+      <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAztvOWO8ue0u0+gVwn6A2dQAAAAACAAAAAAAQZgAAAAEAACAAAAD1tIpvRErEEhjNUBXW34hGhXYzNCD/M+bOLYilIgXb3gAAAAAOgAAAAAIAACAAAADBo6xLBL8pGI2VSD1pbMLVAFrcCv2AqY2dWan5BMqufDAAAAAfmgRy64ky1pxGBGbzSwhHC83Fh1FDIwNUD5U9PK+867Z4OOFv3rIoqTFflvSWVx1AAAAAQ7WwuJWY9+jkrwWecqD7yU24yk0UhWDWPDpAGaY6Mn3HJhKaECKbzgs8uj9BDFizNuKgwiQhHQzoJMtJ8PRFcw==</LastKnownProtectedHashedPassword>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>DateDimension.dtsx</Name>
-      <LastWriteTime>2022-12-20T00:10:07.5288095Z</LastWriteTime>
-      <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
+      <LastWriteTime>2022-12-20T01:04:30.5119594Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptAllWithPassword</LastKnownProtectionLevel>
+      <Salt>XxAwMgyt</Salt>
+      <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAztvOWO8ue0u0+gVwn6A2dQAAAAACAAAAAAAQZgAAAAEAACAAAACGlvvtL/5YT7GmX590PKnkU8ZlD8gkenPZa/064cFPjQAAAAAOgAAAAAIAACAAAABDNvIuj187SCL0GVQyCUAjv2apa0abYTQ/Y1Jqt82p/jAAAAC2Djl5epSsyjQp27qV2cCGHCZ+owDcnA4OZAEgcCxC+5vIYmEp6L46ORq2y8hXGrBAAAAAjTygIY9b7/5TjzoU0mMOAdkoBX+GFluqUjg9+yd7+IEuaQzF3d3fK0S6rCb9OORZHVvYq6qkyaNCqVADBEhs2Q==</LastKnownProtectedHashedPassword>
     </ProjectBuildItemInfo>
   </LastBuildInfos>
 </BuildLog>
