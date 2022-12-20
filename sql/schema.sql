@@ -61,7 +61,6 @@ CREATE TABLE employees
   hire_date DATETIME NOT NULL          ,
   manager_id int        ,
   job_title VARCHAR( 255 ) NOT NULL,
-  corporate_id int NOT NULL
   CONSTRAINT fk_employees_manager FOREIGN KEY( manager_id ) REFERENCES employees( employee_id ) ON DELETE NO ACTION
 );
 -- product category
