@@ -1,0 +1,58 @@
+Project GlobalTech {
+  database_type: 'SQL Server'
+}
+
+Table warehouses{
+  sk_warehouse int  [pk]
+  city varchar(20) [not null]
+  name varchar(20) [not null]
+  state varchar(30) [not null]
+  country varchar(25) [not null]
+  region varchar(25) [not null]
+}
+
+Table product {
+  sk_product int [pk]
+  name varchar(45)
+  category varchar(15)  [not null]
+  description varchar(70)  [not null]
+}
+
+Table customer {
+  sk_customer int [pk]
+  phone varchar(16)  [not null]
+  name varchar(40) [not null]
+  address varchar(50) [not null]
+  credit_limit int [not null]
+}
+
+Table date {
+  sk_date varchar(8) [pk]
+}
+
+Table employee{
+  sk_empoyee int [pk]
+  first_name varchar(15)
+  last_name varchar(15)
+  hire_date datetime [not null]
+  manager int [not null]
+}
+
+Table order_facts {
+  sk_warehouse int
+  sk_product int
+  sk_customer int 
+  sk_date varchar(8)
+  sk_empoyee int
+  status varchar(8)
+  standard_cost decimal(9,2)
+  unit_price decimal(9,2)
+  quantity int
+}
+
+ref: order_facts.sk_warehouse > warehouses.sk_warehouse
+ref: order_facts.sk_empoyee > employee.sk_empoyee
+ref: order_facts.sk_date > date.sk_date
+ref: order_facts.sk_customer > customer.sk_customer
+ref: order_facts.sk_product > product.sk_product
+ref: employee.sk_empoyee - employee.manager
