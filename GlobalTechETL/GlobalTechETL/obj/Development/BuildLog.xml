@@ -2,25 +2,25 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>GlobalTechETL</Name>
-    <LastWriteTime>2022-12-20T01:19:03.1703027Z</LastWriteTime>
+    <LastWriteTime>2022-12-21T00:49:49.7614692Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptAllWithPassword</LastKnownProtectionLevel>
-    <Salt>sBfb2I4s</Salt>
-    <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAsiE/Cv57zUSrvediCsEgOgAAAAACAAAAAAAQZgAAAAEAACAAAACxSdLajBOg9kZtBj82oA4hD4fICEbU4oApEDE8fyWJugAAAAAOgAAAAAIAACAAAACe+9Y/xx2itf9mWQ06K+k00OiIIk+kU89hCSpWLZ6BazAAAAC8oqHA2t1quCppjc4Q9sue5T7csO7fNoQRLamnAMWirKr4bI6I1BOBzsd65r9rMTVAAAAAg0lB5XmeNCbdjnGhvSgH2eOPflh+CNi2P3hvbPsIt4JmvesS20WYaEKsdG0elxvbAvdt+sE8MuvJroOFCxFB4w==</LastKnownProtectedHashedPassword>
+    <Salt>J17TEdOJ</Salt>
+    <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAztvOWO8ue0u0+gVwn6A2dQAAAAACAAAAAAAQZgAAAAEAACAAAABFBEy/kLhUIypzIsBYFJcDk5SNqZRHabmuq2ejzfNoHwAAAAAOgAAAAAIAACAAAAB1bFUX9ph70rCUVmuYq1wveHimjp2+mBgfZ8fWm694ATAAAACnJ+Sd3yF+vpXc8hbxxzC8ZZxqUZEwdHRjt1k+J87SB0sGAMDQcSiQwAnD8Her1wBAAAAAS2+GQCU/OZ1XYVxmD2/nAX76tNcWo2T5xa7Fj7ARzqx8DCfSQJa0Wn7sZ3V0mqPcuVovvxAOoGUEHmf4oPouLQ==</LastKnownProtectedHashedPassword>
   </ProjectInfo>
   <LastBuildInfos>
     <ProjectBuildItemInfo>
       <Name>DataProfiling.dtsx</Name>
-      <LastWriteTime>2022-12-20T01:08:42.1531772Z</LastWriteTime>
+      <LastWriteTime>2022-12-20T00:49:02.7195833Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptAllWithPassword</LastKnownProtectionLevel>
-      <Salt>2RB8JPBm</Salt>
-      <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAsiE/Cv57zUSrvediCsEgOgAAAAACAAAAAAAQZgAAAAEAACAAAACjo9m1zrn2yDHu55Tf41OWXeBOX1dxP2NIFTOBibOR/QAAAAAOgAAAAAIAACAAAADLJZP31dpTDNuIpB2hPa0zN0mj4GwSgF9WmookNTTz1jAAAABw5g606018B+0ovToBj5NAInlZHoWKTBgYDsP10lxOcRZ7UHeTRJ5pgF5EIqgN8YtAAAAAHE49a4Pjuabo6rVksugKLeIug+L36GN4YEavonx374VGGY3+wXEmjEq/eTAH9VfrIOYpVdLZCcoGh9KYaIusjQ==</LastKnownProtectedHashedPassword>
+      <Salt>iZr9/nLT</Salt>
+      <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAztvOWO8ue0u0+gVwn6A2dQAAAAACAAAAAAAQZgAAAAEAACAAAAA7bCG6yaQvCk8G/GeeAsfotGWfSMHp2TsblOZ4Zrr3dgAAAAAOgAAAAAIAACAAAADip3MZXgNrYmDi9WMTzR3Wn43Ot5qiL1jio78AlndIZTAAAAAO/ComQe4h+jBfnzcSzNNIZZxP7I0en57BIiO063X6i71VQ6Uexhfqiut3CXPErSFAAAAA6Q11/N4liSn4dYVmQ0pQIp6IRjS3Yq1vW81hbZ6JsIfNj46PO5Z2AjPB+T2bD4caEPVtpeYErDTC3D0yH74u+w==</LastKnownProtectedHashedPassword>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>DateDimension.dtsx</Name>
-      <LastWriteTime>2022-12-20T01:19:02.9343162Z</LastWriteTime>
+      <LastWriteTime>2022-12-21T00:55:21.2185202Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptAllWithPassword</LastKnownProtectionLevel>
-      <Salt>lfqyREMF</Salt>
-      <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAsiE/Cv57zUSrvediCsEgOgAAAAACAAAAAAAQZgAAAAEAACAAAACTETZ8FfEbZe4/J4lzR7NLUU4Azo8Yw+yr6YijvPubXwAAAAAOgAAAAAIAACAAAAB6mApzUtc3qa9Snd26vBdhhQq5ocdLaDLOzi8qQQxVrTAAAAAO8zU7pA/InybLwyplRLrPNh6IF90iKPVIlMnXtFS8FJXIvKBrc8gtItIFZVNAp6hAAAAAfrCEa6uanJ5HStkdXtt3IdMlZ7An7rL6rgf1MDoGFu/RPJdPB2EjaMvmg3wTGgU837PdaNJiggFE0bJLxBfo7g==</LastKnownProtectedHashedPassword>
+      <Salt>CVyo0hVd</Salt>
+      <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAztvOWO8ue0u0+gVwn6A2dQAAAAACAAAAAAAQZgAAAAEAACAAAABm4QS7OgmUccrKOwshI0E4fBEIZm3PJRNYK9V8ucTgKQAAAAAOgAAAAAIAACAAAACTfC1o/bwRnK9AlaDjQSjhyTnK/4NBeuK+aaZTa9gfozAAAACuQ+Xgt3MG0ymz61M8u6A8s4WqrH4xRGt6TDNSYEBH1JxsUC/XRXWfjUtM8X4voYJAAAAA/pFGPF3Y2yNig2vmhW8QBG3dVVnaJLG2jPmLh0SBnLc7mfKfvsh2pdixa2Z5EB8UkQyxC6At+QHRSvaxEjHYQg==</LastKnownProtectedHashedPassword>
     </ProjectBuildItemInfo>
   </LastBuildInfos>
 </BuildLog>
