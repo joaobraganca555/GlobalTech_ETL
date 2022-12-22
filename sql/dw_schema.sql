@@ -569,5 +569,161 @@ SELECT @Date                                             AS [Date]              
         END                                              AS [Fiscal Year Half of Year Key]     -- 20131
      , DATEPART(ISO_WEEK, @Date)                         AS [ISO Week Number]                  -- 1
      ;
+     CREATE TABLE [warehouses] (
+  [sk_warehouse] int PRIMARY KEY,
+  [city] varchar(20) NOT NULL,
+  [name] varchar(20) NOT NULL,
+  [state] varchar(30) NOT NULL,
+  [country] varchar(25) NOT NULL,
+  [region] varchar(25) NOT NULL,
+  [postal_code] int
+)
+GO
+
+CREATE TABLE [product] (
+  [sk_product] int PRIMARY KEY,
+  [name] varchar(45) NOT NULL,
+  [category] varchar(15) NOT NULL,
+  [description] varchar(70) NOT NULL
+)
+GO
+
+CREATE TABLE [customer] (
+  [sk_customer] int PRIMARY KEY,
+  [phone] varchar(16),
+  [name] varchar(40) NOT NULL,
+  [address] varchar(50) NOT NULL,
+  [credit_limit] int NOT NULL
+)
+GO
+
+CREATE TABLE [date] (
+  [sk_date] varchar(8) PRIMARY KEY,
+  [day] int NOT NULL,
+  [is_holiday] bit NOT NULL,
+  [month] int NOT NULL,
+  [week] int NOT NULL,
+  [quarter] int NOT NULL,
+  [year] int NOT NULL
+)
+GO
+
+CREATE TABLE [employee] (
+  [employee_id] int PRIMARY KEY,
+  [sk_empoyee] int NOT NULL,
+  [first_name] varchar(15) NOT NULL,
+  [last_name] varchar(15) NOT NULL,
+  [hire_date] datetime NOT NULL,
+  [manager] int
+)
+GO
+
+CREATE TABLE [order_facts] (
+  [order_id] int,
+  [order_line] int,
+  [sk_warehouse] int NOT NULL,
+  [sk_product] int NOT NULL,
+  [sk_customer] int NOT NULL,
+  [sk_date] varchar(8) NOT NULL,
+  [sk_empoyee] int,
+  [status] varchar(8) NOT NULL,
+  [standard_cost] decimal(9,2) NOT NULL,
+  [unit_price] decimal(9,2) NOT NULL,
+  [quantity] int NOT NULL,
+  PRIMARY KEY ([order_id], [order_line])
+)
+GO
+
+CREATE TABLE [order_payment_facts] (
+  [sk_customer] int NOT NULL,
+  [sk_date] varchar(8) NOT NULL,
+  [sk_empoyee] int NOT NULL,
+  [paymente_method] varchar(15) NOT NULL,
+  [order_id] int,
+  [payment_id] int,
+  [order_status] varchar(8) NOT NULL,
+  [order_date] datetime NOT NULL,
+  [limit_payment_date] datetime NOT NULL,
+  [value] decimal(9,2) NOT NULL,
+  PRIMARY KEY ([order_id], [payment_id])
+)
+GO
+
+CREATE TABLE [shippment_facts] (
+  [sk_product] int NOT NULL,
+  [sk_customer] int NOT NULL,
+  [sk_date] varchar(8) NOT NULL,
+  [sk_empoyee] int NOT NULL,
+  [order_id] int PRIMARY KEY,
+  [shipped_date] datetime NOT NULL,
+  [quantity_shipped] int NOT NULL,
+  [was_received] bit NOT NULL,
+  [reception_date] datetime NOT NULL
+)
+GO
+
+CREATE TABLE [cancellation_facts] (
+  [sk_product] int NOT NULL,
+  [sk_customer] int NOT NULL,
+  [sk_date] varchar(8) NOT NULL,
+  [sk_empoyee] int NOT NULL,
+  [order_id] int PRIMARY KEY,
+  [canceled_date] datetime NOT NULL,
+  [quantity] int NOT NULL,
+  [last_status] varchar(8) NOT NULL
+)
+GO
+
+ALTER TABLE [order_facts] ADD FOREIGN KEY ([sk_warehouse]) REFERENCES [warehouses] ([sk_warehouse])
+GO
+
+ALTER TABLE [order_facts] ADD FOREIGN KEY ([sk_empoyee]) REFERENCES [employee] ([sk_empoyee])
+GO
+
+ALTER TABLE [order_facts] ADD FOREIGN KEY ([sk_date]) REFERENCES [date] ([sk_date])
+GO
+
+ALTER TABLE [order_facts] ADD FOREIGN KEY ([sk_customer]) REFERENCES [customer] ([sk_customer])
+GO
+
+ALTER TABLE [order_facts] ADD FOREIGN KEY ([sk_product]) REFERENCES [product] ([sk_product])
+GO
+
+ALTER TABLE [employee] ADD FOREIGN KEY ([manager]) REFERENCES [employee] ([sk_empoyee])
+GO
+
+ALTER TABLE [order_payment_facts] ADD FOREIGN KEY ([sk_empoyee]) REFERENCES [employee] ([sk_empoyee])
+GO
+
+ALTER TABLE [order_payment_facts] ADD FOREIGN KEY ([sk_date]) REFERENCES [date] ([sk_date])
+GO
+
+ALTER TABLE [order_payment_facts] ADD FOREIGN KEY ([sk_customer]) REFERENCES [customer] ([sk_customer])
+GO
+
+ALTER TABLE [shippment_facts] ADD FOREIGN KEY ([sk_empoyee]) REFERENCES [employee] ([sk_empoyee])
+GO
+
+ALTER TABLE [shippment_facts] ADD FOREIGN KEY ([sk_date]) REFERENCES [date] ([sk_date])
+GO
+
+ALTER TABLE [shippment_facts] ADD FOREIGN KEY ([sk_customer]) REFERENCES [customer] ([sk_customer])
+GO
+
+ALTER TABLE [shippment_facts] ADD FOREIGN KEY ([sk_date]) REFERENCES [product] ([sk_product])
+GO
+
+ALTER TABLE [cancellation_facts] ADD FOREIGN KEY ([sk_empoyee]) REFERENCES [employee] ([sk_empoyee])
+GO
+
+ALTER TABLE [cancellation_facts] ADD FOREIGN KEY ([sk_date]) REFERENCES [date] ([sk_date])
+GO
+
+ALTER TABLE [cancellation_facts] ADD FOREIGN KEY ([sk_customer]) REFERENCES [customer] ([sk_customer])
+GO
+
+ALTER TABLE [cancellation_facts] ADD FOREIGN KEY ([sk_date]) REFERENCES [product] ([sk_product])
+GO
+
 
      ------------------------------------------------------------------------------------------------------------
