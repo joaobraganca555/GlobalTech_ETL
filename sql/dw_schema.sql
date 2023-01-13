@@ -18,87 +18,88 @@ USE DW_GlobalTech
 GO
 
 -------------------------------
-CREATE SCHEMA DW
+CREATE SCHEMA dw
 GO
 
- ------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
 
----- TABLE DateDimension
+---- TABLE DIM_date
 
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TABLE [DW].[DateDimension](
-	[Date] [date],
-	[DateKey] [int] NOT NULL,
-	[Day Number] [int],
-	[Day] [nvarchar](10),
-	[Day of Year] [nvarchar](5),
-	[Day of Year Number] [int],
-	[Day of Week English] [nvarchar](20),
-	[Day of Week Portuguese] [nvarchar](30),
-	[Day of Week Number] [int],
-	[Week of Year] [nvarchar](5),
-	[Month English] [nvarchar](10),
-	[Month Portuguese] [nvarchar](10),
-	[Short Month] [nvarchar](3),
-	[Quarter] [nvarchar](2),
-	[Half of Year] [nvarchar](3),
-	[Beginning of Month] [date],
-	[Beginning of Quarter] [date],
-	[Beginning of Half Year] [date],
-	[Beginning of Year] [date],
-	[Beginning of Month Label] [nvarchar](40),
-	[Beginning of Month Label Short] [nvarchar](40),
-	[Beginning of Quarter Label] [nvarchar](40),
-	[Beginning of Quarter Label Short] [nvarchar](40),
-	[Beginning of Half Year Label] [nvarchar](40),
-	[Beginning of Half Year Label Short] [nvarchar](40),
-	[Beginning of Year Label] [nvarchar](40),
-	[Beginning of Year Label Short] [nvarchar](40),
-	[Calendar Day Label] [nvarchar](20),
-	[Calendar Day Label Short] [nvarchar](20),
-	[Calendar Week Number] [int],
-	[Calendar Week Label] [nvarchar](20),
-	[Calendar Month Number] [int],
-	[Calendar Month Label] [nvarchar](20),
-	[Calendar Month Year Label] [nvarchar](20),
-	[Calendar Quarter Number] [int],
-	[Calendar Quarter Label] [nvarchar](20),
-	[Calendar Quarter Year Label] [nvarchar](20),
-	[Calendar Half of Year Number] [int],
-	[Calendar Half of Year Label] [nvarchar](20),
-	[Calendar Year Half of Year Label] [nvarchar](20),
-	[Calendar Year] [int],
-	[Calendar Year Label] [nvarchar](10),
-	[Fiscal Month Number] [int],
-	[Fiscal Month Label] [nvarchar](20),
-	[Fiscal Quarter Number] [int],
-	[Fiscal Quarter Label] [nvarchar](20),
-	[Fiscal Half of Year Number] [int],
-	[Fiscal Half of Year Label] [nvarchar](20),
-	[Fiscal Year] [int],
-	[Fiscal Year Label] [nvarchar](10),
-	[Date Key] [int],
-	[Year Week Key] [int],
-	[Year Month Key] [int],
-	[Year Quarter Key] [int],
-	[Year Half of Year Key] [int],
-	[Year Key] [int],
-	[Beginning of Month Key] [int],
-	[Beginning of Quarter Key] [int],
-	[Beginning of Half Year Key] [int],
-	[Beginning of Year Key] [int],
-	[Fiscal Year Month Key] [int],
-	[Fiscal Year Quarter Key] [int],
-	[Fiscal Year Half of Year Key] [int],
-	[ISO Week Number] [int],
-	[Portuguese Holiday Flag] [tinyint],
-	[Portuguese Holiday Name] [nvarchar](50) NULL,
-	[Portuguese Holiday Type] [nvarchar](50) NULL,
- CONSTRAINT [PK_DateDimension] PRIMARY KEY CLUSTERED 
+CREATE TABLE [dw].[DIM_date]
 (
-	[DateKey] ASC
+  [Date] [date],
+  [sk_date] [int] NOT NULL,
+  [Day Number] [int],
+  [Day] [nvarchar](10),
+  [Day of Year] [nvarchar](5),
+  [Day of Year Number] [int],
+  [Day of Week English] [nvarchar](20),
+  [Day of Week Portuguese] [nvarchar](30),
+  [Day of Week Number] [int],
+  [Week of Year] [nvarchar](5),
+  [Month English] [nvarchar](10),
+  [Month Portuguese] [nvarchar](10),
+  [Short Month] [nvarchar](3),
+  [Quarter] [nvarchar](2),
+  [Half of Year] [nvarchar](3),
+  [Beginning of Month] [date],
+  [Beginning of Quarter] [date],
+  [Beginning of Half Year] [date],
+  [Beginning of Year] [date],
+  [Beginning of Month Label] [nvarchar](40),
+  [Beginning of Month Label Short] [nvarchar](40),
+  [Beginning of Quarter Label] [nvarchar](40),
+  [Beginning of Quarter Label Short] [nvarchar](40),
+  [Beginning of Half Year Label] [nvarchar](40),
+  [Beginning of Half Year Label Short] [nvarchar](40),
+  [Beginning of Year Label] [nvarchar](40),
+  [Beginning of Year Label Short] [nvarchar](40),
+  [Calendar Day Label] [nvarchar](20),
+  [Calendar Day Label Short] [nvarchar](20),
+  [Calendar Week Number] [int],
+  [Calendar Week Label] [nvarchar](20),
+  [Calendar Month Number] [int],
+  [Calendar Month Label] [nvarchar](20),
+  [Calendar Month Year Label] [nvarchar](20),
+  [Calendar Quarter Number] [int],
+  [Calendar Quarter Label] [nvarchar](20),
+  [Calendar Quarter Year Label] [nvarchar](20),
+  [Calendar Half of Year Number] [int],
+  [Calendar Half of Year Label] [nvarchar](20),
+  [Calendar Year Half of Year Label] [nvarchar](20),
+  [Calendar Year] [int],
+  [Calendar Year Label] [nvarchar](10),
+  [Fiscal Month Number] [int],
+  [Fiscal Month Label] [nvarchar](20),
+  [Fiscal Quarter Number] [int],
+  [Fiscal Quarter Label] [nvarchar](20),
+  [Fiscal Half of Year Number] [int],
+  [Fiscal Half of Year Label] [nvarchar](20),
+  [Fiscal Year] [int],
+  [Fiscal Year Label] [nvarchar](10),
+  [Date Key] [int],
+  [Year Week Key] [int],
+  [Year Month Key] [int],
+  [Year Quarter Key] [int],
+  [Year Half of Year Key] [int],
+  [Year Key] [int],
+  [Beginning of Month Key] [int],
+  [Beginning of Quarter Key] [int],
+  [Beginning of Half Year Key] [int],
+  [Beginning of Year Key] [int],
+  [Fiscal Year Month Key] [int],
+  [Fiscal Year Quarter Key] [int],
+  [Fiscal Year Half of Year Key] [int],
+  [ISO Week Number] [int],
+  [Portuguese Holiday Flag] [tinyint],
+  [Portuguese Holiday Name] [nvarchar](50) NULL,
+  [Portuguese Holiday Type] [nvarchar](50) NULL,
+  CONSTRAINT [PK_DIM_date] PRIMARY KEY CLUSTERED 
+(
+	[sk_date] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
@@ -107,163 +108,163 @@ GO
 
 --PROCEDURE
 
-GO
-/****** Object:  StoredProcedure [Integration].[PopulateDateDimensionForYear]    Script Date: 16/04/2021 12:31:45 ******/
+/****** Object:  StoredProcedure [Integration].[PopulateDIM_dateForYear]    Script Date: 16/04/2021 12:31:45 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE PROCEDURE [PopulateDateDimensionForYear]
-@YearNumber int
-WITH EXECUTE AS OWNER
+CREATE PROCEDURE [PopulateDIM_dateForYear]
+  @YearNumber int
+WITH
+  EXECUTE AS OWNER
 AS
 BEGIN
-    SET NOCOUNT ON;
-    SET XACT_ABORT ON;
+  SET NOCOUNT ON;
+  SET XACT_ABORT ON;
 
-    DECLARE @DateCounter date = DATEFROMPARTS(@YearNumber, 1, 1);
+  DECLARE @DateCounter date = DATEFROMPARTS(@YearNumber, 1, 1);
 
-	CREATE TABLE #DateDimension
-    (
-       [Date] [date],
-		[DateKey] [int] NOT NULL,
-		[Day Number] [int],
-		[Day] [nvarchar](10),
-		[Day of Year] [nvarchar](5),
-		[Day of Year Number] [int],
-		[Day of Week] [nvarchar](20),
-		[Day of Week Number] [int],
-		[Week of Year] [nvarchar](5),
-		[Month] [nvarchar](10),
-		[Short Month] [nvarchar](3),
-		[Quarter] [nvarchar](2),
-		[Half of Year] [nvarchar](3),
-		[Beginning of Month] [date],
-		[Beginning of Quarter] [date],
-		[Beginning of Half Year] [date],
-		[Beginning of Year] [date],
-		[Beginning of Month Label] [nvarchar](40),
-		[Beginning of Month Label Short] [nvarchar](40),
-		[Beginning of Quarter Label] [nvarchar](40),
-		[Beginning of Quarter Label Short] [nvarchar](40),
-		[Beginning of Half Year Label] [nvarchar](40),
-		[Beginning of Half Year Label Short] [nvarchar](40),
-		[Beginning of Year Label] [nvarchar](40),
-		[Beginning of Year Label Short] [nvarchar](40),
-		[Calendar Day Label] [nvarchar](20),
-		[Calendar Day Label Short] [nvarchar](20),
-		[Calendar Week Number] [int],
-		[Calendar Week Label] [nvarchar](20),
-		[Calendar Month Number] [int],
-		[Calendar Month Label] [nvarchar](20),
-		[Calendar Month Year Label] [nvarchar](20),
-		[Calendar Quarter Number] [int],
-		[Calendar Quarter Label] [nvarchar](20),
-		[Calendar Quarter Year Label] [nvarchar](20),
-		[Calendar Half of Year Number] [int],
-		[Calendar Half of Year Label] [nvarchar](20),
-		[Calendar Year Half of Year Label] [nvarchar](20),
-		[Calendar Year] [int],
-		[Calendar Year Label] [nvarchar](10),
-		[Fiscal Month Number] [int],
-		[Fiscal Month Label] [nvarchar](20),
-		[Fiscal Quarter Number] [int],
-		[Fiscal Quarter Label] [nvarchar](20),
-		[Fiscal Half of Year Number] [int],
-		[Fiscal Half of Year Label] [nvarchar](20),
-		[Fiscal Year] [int],
-		[Fiscal Year Label] [nvarchar](10),
-		[Date Key] [int],
-		[Year Week Key] [int],
-		[Year Month Key] [int],
-		[Year Quarter Key] [int],
-		[Year Half of Year Key] [int],
-		[Year Key] [int],
-		[Beginning of Month Key] [int],
-		[Beginning of Quarter Key] [int],
-		[Beginning of Half Year Key] [int],
-		[Beginning of Year Key] [int],
-		[Fiscal Year Month Key] [int],
-		[Fiscal Year Quarter Key] [int],
-		[Fiscal Year Half of Year Key] [int],
-		[ISO Week Number] [int]
-    );
+  CREATE TABLE #DIM_date
+  (
+    [Date] [date],
+    [sk_date] [int] NOT NULL,
+    [Day Number] [int],
+    [Day] [nvarchar](10),
+    [Day of Year] [nvarchar](5),
+    [Day of Year Number] [int],
+    [Day of Week] [nvarchar](20),
+    [Day of Week Number] [int],
+    [Week of Year] [nvarchar](5),
+    [Month] [nvarchar](10),
+    [Short Month] [nvarchar](3),
+    [Quarter] [nvarchar](2),
+    [Half of Year] [nvarchar](3),
+    [Beginning of Month] [date],
+    [Beginning of Quarter] [date],
+    [Beginning of Half Year] [date],
+    [Beginning of Year] [date],
+    [Beginning of Month Label] [nvarchar](40),
+    [Beginning of Month Label Short] [nvarchar](40),
+    [Beginning of Quarter Label] [nvarchar](40),
+    [Beginning of Quarter Label Short] [nvarchar](40),
+    [Beginning of Half Year Label] [nvarchar](40),
+    [Beginning of Half Year Label Short] [nvarchar](40),
+    [Beginning of Year Label] [nvarchar](40),
+    [Beginning of Year Label Short] [nvarchar](40),
+    [Calendar Day Label] [nvarchar](20),
+    [Calendar Day Label Short] [nvarchar](20),
+    [Calendar Week Number] [int],
+    [Calendar Week Label] [nvarchar](20),
+    [Calendar Month Number] [int],
+    [Calendar Month Label] [nvarchar](20),
+    [Calendar Month Year Label] [nvarchar](20),
+    [Calendar Quarter Number] [int],
+    [Calendar Quarter Label] [nvarchar](20),
+    [Calendar Quarter Year Label] [nvarchar](20),
+    [Calendar Half of Year Number] [int],
+    [Calendar Half of Year Label] [nvarchar](20),
+    [Calendar Year Half of Year Label] [nvarchar](20),
+    [Calendar Year] [int],
+    [Calendar Year Label] [nvarchar](10),
+    [Fiscal Month Number] [int],
+    [Fiscal Month Label] [nvarchar](20),
+    [Fiscal Quarter Number] [int],
+    [Fiscal Quarter Label] [nvarchar](20),
+    [Fiscal Half of Year Number] [int],
+    [Fiscal Half of Year Label] [nvarchar](20),
+    [Fiscal Year] [int],
+    [Fiscal Year Label] [nvarchar](10),
+    [Date Key] [int],
+    [Year Week Key] [int],
+    [Year Month Key] [int],
+    [Year Quarter Key] [int],
+    [Year Half of Year Key] [int],
+    [Year Key] [int],
+    [Beginning of Month Key] [int],
+    [Beginning of Quarter Key] [int],
+    [Beginning of Half Year Key] [int],
+    [Beginning of Year Key] [int],
+    [Fiscal Year Month Key] [int],
+    [Fiscal Year Quarter Key] [int],
+    [Fiscal Year Half of Year Key] [int],
+    [ISO Week Number] [int]
+  );
 
 
-    BEGIN TRY;
-
+  BEGIN TRY;
         BEGIN TRAN;
-
         WHILE YEAR(@DateCounter) = @YearNumber
         BEGIN
-            IF NOT EXISTS (SELECT 1 FROM #DateDimension WHERE [Date] = @DateCounter)
+    IF NOT EXISTS (SELECT 1
+    FROM #DIM_date
+    WHERE [Date] = @DateCounter)
             BEGIN
-                INSERT #DateDimension
-                       ( [Date]
-                       , [DateKey]                              
-                       , [Day Number]                        
-                       , [Day]                               
-                       , [Day of Year]                       
-                       , [Day of Year Number]                
-                       , [Day of Week]                       
-                       , [Day of Week Number]                
-                       , [Week of Year]                      
-                       , [Month]                             
-                       , [Short Month]                       
-                       , [Quarter]                           
-                       , [Half of Year]
-                       , [Beginning of Month]
-                       , [Beginning of Quarter]
-                       , [Beginning of Half Year] 
-                       , [Beginning of Year] 
-                       , [Beginning of Month Label]        
-                       , [Beginning of Month Label Short]  
-                       , [Beginning of Quarter Label]      
-                       , [Beginning of Quarter Label Short]
-                       , [Beginning of Half Year Label]         
-                       , [Beginning of Half Year Label Short]                                               
-                       , [Beginning of Year Label]         
-                       , [Beginning of Year Label Short]                                               
-                       , [Calendar Day Label]                
-                       , [Calendar Day Label Short]          
-                       , [Calendar Week Number]              
-                       , [Calendar Week Label]               
-                       , [Calendar Month Number]             
-                       , [Calendar Month Label]              
-                       , [Calendar Month Year Label]         
-                       , [Calendar Quarter Number]           
-                       , [Calendar Quarter Label]            
-                       , [Calendar Quarter Year Label]       
-                       , [Calendar Half of Year Number]      
-                       , [Calendar Half of Year Label]       
-                       , [Calendar Year Half of Year Label]  
-                       , [Calendar Year]                     
-                       , [Calendar Year Label]               
-                       , [Fiscal Month Number]               
-                       , [Fiscal Month Label]                
-                       , [Fiscal Quarter Number]             
-                       , [Fiscal Quarter Label]              
-                       , [Fiscal Half of Year Number]        
-                       , [Fiscal Half of Year Label]         
-                       , [Fiscal Year]                       
-                       , [Fiscal Year Label]                 
-                       , [Date Key]                          
-                       , [Year Week Key]                     
-                       , [Year Month Key]                    
-                       , [Year Quarter Key]                  
-                       , [Year Half of Year Key]
-                       , [Year Key]    
-                       , [Beginning of Month Key]   
-                       , [Beginning of Quarter Key] 
-                       , [Beginning of Half Year Key]             
-                       , [Beginning of Year Key]             
-                       , [Fiscal Year Month Key]             
-                       , [Fiscal Year Quarter Key] 
-                       , [Fiscal Year Half of Year Key]          
-                       , [ISO Week Number]                   
-                       )
-                SELECT [Date] 
-                       , [DateKey]                             
+      INSERT #DIM_date
+        ( [Date]
+        , [sk_date]
+        , [Day Number]
+        , [Day]
+        , [Day of Year]
+        , [Day of Year Number]
+        , [Day of Week]
+        , [Day of Week Number]
+        , [Week of Year]
+        , [Month]
+        , [Short Month]
+        , [Quarter]
+        , [Half of Year]
+        , [Beginning of Month]
+        , [Beginning of Quarter]
+        , [Beginning of Half Year]
+        , [Beginning of Year]
+        , [Beginning of Month Label]
+        , [Beginning of Month Label Short]
+        , [Beginning of Quarter Label]
+        , [Beginning of Quarter Label Short]
+        , [Beginning of Half Year Label]
+        , [Beginning of Half Year Label Short]
+        , [Beginning of Year Label]
+        , [Beginning of Year Label Short]
+        , [Calendar Day Label]
+        , [Calendar Day Label Short]
+        , [Calendar Week Number]
+        , [Calendar Week Label]
+        , [Calendar Month Number]
+        , [Calendar Month Label]
+        , [Calendar Month Year Label]
+        , [Calendar Quarter Number]
+        , [Calendar Quarter Label]
+        , [Calendar Quarter Year Label]
+        , [Calendar Half of Year Number]
+        , [Calendar Half of Year Label]
+        , [Calendar Year Half of Year Label]
+        , [Calendar Year]
+        , [Calendar Year Label]
+        , [Fiscal Month Number]
+        , [Fiscal Month Label]
+        , [Fiscal Quarter Number]
+        , [Fiscal Quarter Label]
+        , [Fiscal Half of Year Number]
+        , [Fiscal Half of Year Label]
+        , [Fiscal Year]
+        , [Fiscal Year Label]
+        , [Date Key]
+        , [Year Week Key]
+        , [Year Month Key]
+        , [Year Quarter Key]
+        , [Year Half of Year Key]
+        , [Year Key]
+        , [Beginning of Month Key]
+        , [Beginning of Quarter Key]
+        , [Beginning of Half Year Key]
+        , [Beginning of Year Key]
+        , [Fiscal Year Month Key]
+        , [Fiscal Year Quarter Key]
+        , [Fiscal Year Half of Year Key]
+        , [ISO Week Number]
+        )
+      SELECT [Date] 
+                       , [sk_date]                             
                        , [Day Number]                        
                        , [Day]                               
                        , [Day of Year]                       
@@ -323,11 +324,11 @@ BEGIN
                        , [Fiscal Year Month Key]             
                        , [Fiscal Year Quarter Key]
                        , [Fiscal Year Half of Year Key]           
-                       , [ISO Week Number]                   
-                    FROM GenerateDateDimensionColumns(@DateCounter);
-            END;
-            SET @DateCounter = DATEADD(day, 1, @DateCounter);
-        END;
+                       , [ISO Week Number]
+      FROM GenerateDIM_dateColumns(@DateCounter);
+    END;
+    SET @DateCounter = DATEADD(day, 1, @DateCounter);
+  END;
 
         COMMIT;
     END TRY
@@ -338,10 +339,10 @@ BEGIN
         RETURN -1;
     END CATCH;
 
-	SELECT *
-	FROM #DateDimension;
+  SELECT *
+  FROM #DIM_date;
 
-	DROP TABLE #DateDimension;
+  DROP TABLE #DIM_date;
 END;
 
  ------------------------------------------------------------------------------------------------------------
@@ -349,19 +350,19 @@ END;
 --FUNCTION
 
 GO
-/****** Object:  UserDefinedFunction [Integration].[GenerateDateDimensionColumns]    Script Date: 16/04/2021 12:37:17 ******/
+/****** Object:  UserDefinedFunction [Integration].[GenerateDIM_dateColumns]    Script Date: 16/04/2021 12:37:17 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE FUNCTION [GenerateDateDimensionColumns](@Date date)
+CREATE FUNCTION [GenerateDIM_dateColumns](@Date date)
 RETURNS TABLE
 AS
 RETURN 
 SELECT @Date                                             AS [Date]                             -- 2013-01-01
      , YEAR(@Date) * 10000                                                                     
-       + MONTH(@Date) * 100 + DAY(@Date)                 AS [DateKey]                          -- 20130101 (to 20131231)          
+       + MONTH(@Date) * 100 + DAY(@Date)                 AS [sk_date]                          -- 20130101 (to 20131231)          
      , DAY(@Date)                                        AS [Day Number]                       -- 1 (to last day of month)
      , DATENAME(day, @Date)                              AS [Day]                              -- 1 (to last day of month)
      , CAST(DATEPART(dy, @Date) AS NVARCHAR(5))          AS [Day of Year]                      -- 1 (to 365)
@@ -567,9 +568,12 @@ SELECT @Date                                             AS [Date]              
             THEN ((YEAR(@Date) + 1 ) * 10) + 1
             ELSE (YEAR(@Date) * 10) + 2
         END                                              AS [Fiscal Year Half of Year Key]     -- 20131
-     , DATEPART(ISO_WEEK, @Date)                         AS [ISO Week Number]                  -- 1
-     ;
-     CREATE TABLE [warehouses] (
+     , DATEPART(ISO_WEEK, @Date)                         AS [ISO Week Number]
+-- 1
+;
+GO
+
+CREATE TABLE [DIM_warehouses] (
   [sk_warehouse] int PRIMARY KEY,
   [city] varchar(20) NOT NULL,
   [name] varchar(20) NOT NULL,
@@ -580,7 +584,7 @@ SELECT @Date                                             AS [Date]              
 )
 GO
 
-CREATE TABLE [product] (
+CREATE TABLE [DIM_product] (
   [sk_product] int PRIMARY KEY,
   [name] varchar(45) NOT NULL,
   [category] varchar(15) NOT NULL,
@@ -588,7 +592,7 @@ CREATE TABLE [product] (
 )
 GO
 
-CREATE TABLE [customer] (
+CREATE TABLE [DIM_customer] (
   [sk_customer] int PRIMARY KEY,
   [phone] varchar(16),
   [name] varchar(40) NOT NULL,
@@ -597,133 +601,156 @@ CREATE TABLE [customer] (
 )
 GO
 
-CREATE TABLE [date] (
-  [sk_date] varchar(8) PRIMARY KEY,
-  [day] int NOT NULL,
-  [is_holiday] bit NOT NULL,
-  [month] int NOT NULL,
-  [week] int NOT NULL,
-  [quarter] int NOT NULL,
-  [year] int NOT NULL
-)
-GO
-
-CREATE TABLE [employee] (
+CREATE TABLE [DIM_employee] (
   [employee_id] int PRIMARY KEY,
   [sk_empoyee] int NOT NULL,
   [first_name] varchar(15) NOT NULL,
   [last_name] varchar(15) NOT NULL,
-  [hire_date] datetime NOT NULL,
+  [hire_date] int NOT NULL,
   [manager] int
 )
 GO
 
-CREATE TABLE [order_facts] (
+CREATE TABLE [FACT_order] (
   [order_id] int,
   [order_line] int,
   [sk_warehouse] int NOT NULL,
   [sk_product] int NOT NULL,
   [sk_customer] int NOT NULL,
-  [sk_date] varchar(8) NOT NULL,
-  [sk_empoyee] int,
+  [sk_date] int NOT NULL,
+  [sk_empoyee] int NOT NULL,
   [status] varchar(8) NOT NULL,
   [standard_cost] decimal(9,2) NOT NULL,
   [unit_price] decimal(9,2) NOT NULL,
   [quantity] int NOT NULL,
+  [total_amount] decimal(9,2) NOT NULL,
+  [profit] decimal(9,2) NOT NULL,
   PRIMARY KEY ([order_id], [order_line])
 )
 GO
 
-CREATE TABLE [order_payment_facts] (
+CREATE TABLE [FACT_order_payment] (
   [sk_customer] int NOT NULL,
-  [sk_date] varchar(8) NOT NULL,
+  [sk_payment_date] int NOT NULL,
+  [sk_order_date] int NOT NULL,
+  [sk_limit_payment_date] int NOT NULL,
   [sk_empoyee] int NOT NULL,
   [paymente_method] varchar(15) NOT NULL,
   [order_id] int,
   [payment_id] int,
   [order_status] varchar(8) NOT NULL,
-  [order_date] datetime NOT NULL,
-  [limit_payment_date] datetime NOT NULL,
+  [payment_order_completed] bit NOT NULL,
   [value] decimal(9,2) NOT NULL,
+  [paid_amount] decimal(9,2) NOT NULL,
   PRIMARY KEY ([order_id], [payment_id])
 )
 GO
 
-CREATE TABLE [shippment_facts] (
+CREATE TABLE [FACT_shippment] (
   [sk_product] int NOT NULL,
   [sk_customer] int NOT NULL,
-  [sk_date] varchar(8) NOT NULL,
-  [sk_empoyee] int NOT NULL,
+  [sk_date] int NOT NULL,
+  [sk_warehouse] int NOT NULL,
   [order_id] int PRIMARY KEY,
-  [shipped_date] datetime NOT NULL,
-  [quantity_shipped] int NOT NULL,
+  [was_fully_paid] bit NOT NULL,
+  [paid_amount] decimal(9,2) NOT NULL,
+  [n_days_until_shipment] int NOT NULL
+)
+GO
+
+CREATE TABLE [FACT_cancellation] (
+  [sk_product] int NOT NULL,
+  [sk_customer] int NOT NULL,
+  [sk_date] int NOT NULL,
+  [sk_empoyee] int NOT NULL,
+  [sk_warehouse] int NOT NULL,
+  [order_id] int PRIMARY KEY,
+  [last_status] varchar(8) NOT NULL,
   [was_received] bit NOT NULL,
-  [reception_date] datetime NOT NULL
+  [n_days_until_cancellation] int NOT NULL
 )
 GO
 
-CREATE TABLE [cancellation_facts] (
-  [sk_product] int NOT NULL,
-  [sk_customer] int NOT NULL,
-  [sk_date] varchar(8) NOT NULL,
-  [sk_empoyee] int NOT NULL,
-  [order_id] int PRIMARY KEY,
-  [canceled_date] datetime NOT NULL,
-  [quantity] int NOT NULL,
-  [last_status] varchar(8) NOT NULL
-)
+EXEC sp_addextendedproperty
+@name = N'Column_Description',
+@value = '1 if is completed or 0 otherwise',
+@level0type = N'Schema', @level0name = 'dbo',
+@level1type = N'Table',  @level1name = 'FACT_order_payment',
+@level2type = N'Column', @level2name = 'payment_order_completed';
 GO
 
-ALTER TABLE [order_facts] ADD FOREIGN KEY ([sk_warehouse]) REFERENCES [warehouses] ([sk_warehouse])
+EXEC sp_addextendedproperty
+@name = N'Column_Description',
+@value = '1 if received 0 otherwise',
+@level0type = N'Schema', @level0name = 'dbo',
+@level1type = N'Table',  @level1name = 'FACT_cancellation',
+@level2type = N'Column', @level2name = 'was_received';
 GO
 
-ALTER TABLE [order_facts] ADD FOREIGN KEY ([sk_empoyee]) REFERENCES [employee] ([sk_empoyee])
+ALTER TABLE [FACT_order] ADD FOREIGN KEY ([sk_warehouse]) REFERENCES [DIM_warehouses] ([sk_warehouse])
 GO
 
-ALTER TABLE [order_facts] ADD FOREIGN KEY ([sk_date]) REFERENCES [date] ([sk_date])
+ALTER TABLE [FACT_order] ADD FOREIGN KEY ([sk_empoyee]) REFERENCES [DIM_employee] ([sk_empoyee])
 GO
 
-ALTER TABLE [order_facts] ADD FOREIGN KEY ([sk_customer]) REFERENCES [customer] ([sk_customer])
+ALTER TABLE [FACT_order] ADD FOREIGN KEY ([sk_date]) REFERENCES [DIM_date] ([sk_date])
 GO
 
-ALTER TABLE [order_facts] ADD FOREIGN KEY ([sk_product]) REFERENCES [product] ([sk_product])
+ALTER TABLE [FACT_order] ADD FOREIGN KEY ([sk_customer]) REFERENCES [DIM_customer] ([sk_customer])
 GO
 
-ALTER TABLE [employee] ADD FOREIGN KEY ([manager]) REFERENCES [employee] ([sk_empoyee])
+ALTER TABLE [FACT_order] ADD FOREIGN KEY ([sk_product]) REFERENCES [DIM_product] ([sk_product])
 GO
 
-ALTER TABLE [order_payment_facts] ADD FOREIGN KEY ([sk_empoyee]) REFERENCES [employee] ([sk_empoyee])
+ALTER TABLE [DIM_employee] ADD FOREIGN KEY ([manager]) REFERENCES [DIM_employee] ([sk_empoyee])
 GO
 
-ALTER TABLE [order_payment_facts] ADD FOREIGN KEY ([sk_date]) REFERENCES [date] ([sk_date])
+ALTER TABLE [FACT_order_payment] ADD FOREIGN KEY ([sk_empoyee]) REFERENCES [DIM_employee] ([sk_empoyee])
 GO
 
-ALTER TABLE [order_payment_facts] ADD FOREIGN KEY ([sk_customer]) REFERENCES [customer] ([sk_customer])
+ALTER TABLE [FACT_order_payment] ADD FOREIGN KEY ([sk_payment_date]) REFERENCES [DIM_date] ([sk_date])
 GO
 
-ALTER TABLE [shippment_facts] ADD FOREIGN KEY ([sk_empoyee]) REFERENCES [employee] ([sk_empoyee])
+ALTER TABLE [FACT_order_payment] ADD FOREIGN KEY ([sk_order_date]) REFERENCES [DIM_date] ([sk_date])
 GO
 
-ALTER TABLE [shippment_facts] ADD FOREIGN KEY ([sk_date]) REFERENCES [date] ([sk_date])
+ALTER TABLE [FACT_order_payment] ADD FOREIGN KEY ([sk_limit_payment_date]) REFERENCES [DIM_date] ([sk_date])
 GO
 
-ALTER TABLE [shippment_facts] ADD FOREIGN KEY ([sk_customer]) REFERENCES [customer] ([sk_customer])
+ALTER TABLE [FACT_order_payment] ADD FOREIGN KEY ([sk_customer]) REFERENCES [DIM_customer] ([sk_customer])
 GO
 
-ALTER TABLE [shippment_facts] ADD FOREIGN KEY ([sk_date]) REFERENCES [product] ([sk_product])
+ALTER TABLE [FACT_shippment] ADD FOREIGN KEY ([sk_warehouse]) REFERENCES [DIM_warehouses] ([sk_warehouse])
 GO
 
-ALTER TABLE [cancellation_facts] ADD FOREIGN KEY ([sk_empoyee]) REFERENCES [employee] ([sk_empoyee])
+ALTER TABLE [FACT_shippment] ADD FOREIGN KEY ([sk_date]) REFERENCES [DIM_date] ([sk_date])
 GO
 
-ALTER TABLE [cancellation_facts] ADD FOREIGN KEY ([sk_date]) REFERENCES [date] ([sk_date])
+ALTER TABLE [FACT_shippment] ADD FOREIGN KEY ([sk_customer]) REFERENCES [DIM_customer] ([sk_customer])
 GO
 
-ALTER TABLE [cancellation_facts] ADD FOREIGN KEY ([sk_customer]) REFERENCES [customer] ([sk_customer])
+ALTER TABLE [FACT_shippment] ADD FOREIGN KEY ([sk_date]) REFERENCES [DIM_product] ([sk_product])
 GO
 
-ALTER TABLE [cancellation_facts] ADD FOREIGN KEY ([sk_date]) REFERENCES [product] ([sk_product])
+ALTER TABLE [FACT_shippment] ADD FOREIGN KEY ([sk_product]) REFERENCES [DIM_product] ([sk_product])
+GO
+
+ALTER TABLE [FACT_cancellation] ADD FOREIGN KEY ([sk_empoyee]) REFERENCES [DIM_employee] ([sk_empoyee])
+GO
+
+ALTER TABLE [FACT_cancellation] ADD FOREIGN KEY ([sk_product]) REFERENCES [DIM_product] ([sk_product])
+GO
+
+ALTER TABLE [FACT_cancellation] ADD FOREIGN KEY ([sk_date]) REFERENCES [DIM_date] ([sk_date])
+GO
+
+ALTER TABLE [FACT_cancellation] ADD FOREIGN KEY ([sk_customer]) REFERENCES [DIM_customer] ([sk_customer])
+GO
+
+ALTER TABLE [FACT_cancellation] ADD FOREIGN KEY ([sk_date]) REFERENCES [DIM_product] ([sk_product])
+GO
+
+ALTER TABLE [FACT_cancellation] ADD FOREIGN KEY ([sk_warehouse]) REFERENCES [DIM_warehouses] ([sk_warehouse])
 GO
 
 
-     ------------------------------------------------------------------------------------------------------------
