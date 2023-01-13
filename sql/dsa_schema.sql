@@ -1,3 +1,6 @@
+USE DW_GlobalTech
+GO
+
 CREATE SCHEMA dsa
 GO
 
