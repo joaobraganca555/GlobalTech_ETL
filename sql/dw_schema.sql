@@ -574,9 +574,10 @@ SELECT @Date                                             AS [Date]              
 ;
 GO
 
-CREATE TABLE [dw].[DIM_warehouses]
+CREATE TABLE [dw].[DIM_warehouse]
 (
-  [sk_warehouse] int PRIMARY KEY,
+  [sk_warehouse] int IDENTITY(1,1) PRIMARY KEY NOT NULL,
+  [bk_warehouse] int NOT NULL,
   [city] varchar(20) NOT NULL,
   [name] varchar(20) NOT NULL,
   [state] varchar(30) NOT NULL,
@@ -588,7 +589,8 @@ GO
 
 CREATE TABLE [dw].[DIM_product]
 (
-  [sk_product] int PRIMARY KEY,
+  [sk_product] int IDENTITY(1,1) PRIMARY KEY NOT NULL,
+  [bk_product] int NOT NULL,
   [name] varchar(45) NOT NULL,
   [category] varchar(15) NOT NULL,
   [description] varchar(70) NOT NULL
@@ -611,8 +613,8 @@ GO
 
 CREATE TABLE [dw].[DIM_employee]
 (
-  [employee_id] int NOT NULL,
-  [sk_employee] int PRIMARY KEY,
+  [sk_employee] int IDENTITY(1,1) PRIMARY KEY NOT NULL,
+  [bk_employee] int NOT NULL,
   [first_name] varchar(15) NOT NULL,
   [last_name] varchar(15) NOT NULL,
   [hire_date] int NOT NULL,
