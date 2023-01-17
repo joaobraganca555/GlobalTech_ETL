@@ -1,5 +1,5 @@
 -- Deve ser criado na fonte
-USE DW_sakila
+USE DW_GlobalTech
 GO
 
 CREATE SCHEMA Integration

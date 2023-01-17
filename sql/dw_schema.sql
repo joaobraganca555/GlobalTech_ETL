@@ -597,11 +597,14 @@ GO
 
 CREATE TABLE [dw].[DIM_customer]
 (
-  [sk_customer] int PRIMARY KEY,
+  [sk_customer] int IDENTITY(1,1) PRIMARY KEY NOT NULL,
+  [bk_customer] int NOT NULL,
   [phone] varchar(16),
   [name] varchar(40) NOT NULL,
   [address] varchar(50) NOT NULL,
-  [credit_limit] int NOT NULL
+  [credit_limit] int NOT NULL,
+  [validFrom] DATETIME2,
+  [validTo] DATETIME2
 )
 GO
 
@@ -696,70 +699,3 @@ EXEC sp_addextendedproperty
 @level1type = N'Table',  @level1name = 'FACT_cancellation',
 @level2type = N'Column', @level2name = 'was_received';
 GO
-
-ALTER TABLE [dw].[FACT_order] ADD FOREIGN KEY ([sk_warehouse]) REFERENCES [dw].[DIM_warehouses] ([sk_warehouse])
-GO
-
-ALTER TABLE [dw].[FACT_order] ADD FOREIGN KEY ([sk_employee]) REFERENCES [dw].[DIM_employee] ([sk_employee])
-GO
-
-ALTER TABLE [dw].[FACT_order] ADD FOREIGN KEY ([sk_date]) REFERENCES [dw].[DIM_date] ([sk_date])
-GO
-
-ALTER TABLE [dw].[FACT_order] ADD FOREIGN KEY ([sk_customer]) REFERENCES [dw].[DIM_customer] ([sk_customer])
-GO
-
-ALTER TABLE [dw].[FACT_order] ADD FOREIGN KEY ([sk_product]) REFERENCES [dw].[DIM_product] ([sk_product])
-GO
-
-ALTER TABLE [dw].[DIM_employee] ADD FOREIGN KEY ([manager]) REFERENCES [dw].[DIM_employee] ([sk_employee])
-GO
-
-ALTER TABLE [dw].[FACT_order_payment] ADD FOREIGN KEY ([sk_employee]) REFERENCES [dw].[DIM_employee] ([sk_employee])
-GO
-
-ALTER TABLE [dw].[FACT_order_payment] ADD FOREIGN KEY ([sk_payment_date]) REFERENCES [dw].[DIM_date] ([sk_date])
-GO
-
-ALTER TABLE [dw].[FACT_order_payment] ADD FOREIGN KEY ([sk_order_date]) REFERENCES [dw].[DIM_date] ([sk_date])
-GO
-
-ALTER TABLE [dw].[FACT_order_payment] ADD FOREIGN KEY ([sk_limit_payment_date]) REFERENCES [dw].[DIM_date] ([sk_date])
-GO
-
-ALTER TABLE [dw].[FACT_order_payment] ADD FOREIGN KEY ([sk_customer]) REFERENCES [dw].[DIM_customer] ([sk_customer])
-GO
-
-ALTER TABLE [dw].[FACT_shippment] ADD FOREIGN KEY ([sk_warehouse]) REFERENCES [dw].[DIM_warehouses] ([sk_warehouse])
-GO
-
-ALTER TABLE [dw].[FACT_shippment] ADD FOREIGN KEY ([sk_date]) REFERENCES [dw].[DIM_date] ([sk_date])
-GO
-
-ALTER TABLE [dw].[FACT_shippment] ADD FOREIGN KEY ([sk_customer]) REFERENCES [dw].[DIM_customer] ([sk_customer])
-GO
-
-ALTER TABLE [dw].[FACT_shippment] ADD FOREIGN KEY ([sk_date]) REFERENCES [dw].[DIM_product] ([sk_product])
-GO
-
-ALTER TABLE [dw].[FACT_shippment] ADD FOREIGN KEY ([sk_product]) REFERENCES [dw].[DIM_product] ([sk_product])
-GO
-
-ALTER TABLE [dw].[FACT_cancellation] ADD FOREIGN KEY ([sk_employee]) REFERENCES [dw].[DIM_employee] ([sk_employee])
-GO
-
-ALTER TABLE [dw].[FACT_cancellation] ADD FOREIGN KEY ([sk_product]) REFERENCES [dw].[DIM_product] ([sk_product])
-GO
-
-ALTER TABLE [dw].[FACT_cancellation] ADD FOREIGN KEY ([sk_date]) REFERENCES [dw].[DIM_date] ([sk_date])
-GO
-
-ALTER TABLE [dw].[FACT_cancellation] ADD FOREIGN KEY ([sk_customer]) REFERENCES [dw].[DIM_customer] ([sk_customer])
-GO
-
-ALTER TABLE [dw].[FACT_cancellation] ADD FOREIGN KEY ([sk_date]) REFERENCES [dw].[DIM_product] ([sk_product])
-GO
-
-ALTER TABLE [dw].[FACT_cancellation] ADD FOREIGN KEY ([sk_warehouse]) REFERENCES [dw].[DIM_warehouses] ([sk_warehouse])
-GO
-
