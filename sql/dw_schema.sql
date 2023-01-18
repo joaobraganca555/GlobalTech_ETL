@@ -583,7 +583,7 @@ CREATE TABLE [dw].[DIM_warehouse]
   [state] varchar(30) NOT NULL,
   [country] varchar(25) NOT NULL,
   [region] varchar(25) NOT NULL,
-  [postal_code] int
+  [postal_code] varchar(25)
 )
 GO
 
@@ -604,7 +604,7 @@ CREATE TABLE [dw].[DIM_customer]
   [phone] varchar(16),
   [name] varchar(40) NOT NULL,
   [address] varchar(50) NOT NULL,
-  [credit_limit] int NOT NULL,
+  [credit_limit] DECIMAL(8,2) NOT NULL,
   [validFrom] DATETIME2,
   [validTo] DATETIME2
 )
@@ -617,7 +617,7 @@ CREATE TABLE [dw].[DIM_employee]
   [bk_employee] int NOT NULL,
   [first_name] varchar(15) NOT NULL,
   [last_name] varchar(15) NOT NULL,
-  [hire_date] int NOT NULL,
+  [hire_date] datetime NOT NULL,
   [manager] int
 )
 GO
@@ -633,8 +633,8 @@ CREATE TABLE [dw].[FACT_order]
   [sk_employee] int NOT NULL,
   [status] varchar(8) NOT NULL,
   [standard_cost] decimal(9,2) NOT NULL,
-  [unit_price] decimal(9,2) NOT NULL,
-  [quantity] int NOT NULL,
+  [unit_price] decimal(8,2) NOT NULL,
+  [quantity] decimal(8,2) NOT NULL,
   [total_amount] decimal(9,2) NOT NULL,
   [profit] decimal(9,2) NOT NULL,
   PRIMARY KEY ([order_id], [order_line])
@@ -653,7 +653,7 @@ CREATE TABLE [dw].[FACT_order_payment]
   [payment_id] int,
   [order_status] varchar(8) NOT NULL,
   [payment_order_completed] bit NOT NULL,
-  [value] decimal(9,2) NOT NULL,
+  [value] decimal(8,2) NOT NULL,
   [paid_amount] decimal(9,2) NOT NULL,
   PRIMARY KEY ([order_id], [payment_id])
 )
