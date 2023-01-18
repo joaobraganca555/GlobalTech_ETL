@@ -17,6 +17,8 @@ FROM Integration.[ETL_Cutoffs])
 RETURN 0;
 END;
 
+GO
+
 CREATE TABLE [Integration].[ETL_Cutoffs](
 [id] [int] IDENTITY(1,1) NOT NULL,
 [cutOff] [datetime] NULL,
