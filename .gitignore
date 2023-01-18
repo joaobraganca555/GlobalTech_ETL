@@ -5,3 +5,4 @@ __pycache__
 *.bkp
 *.dtmp
 ~$delivery_orders.xlsx
+docs/~$documentacao.xlsx

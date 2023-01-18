@@ -580,7 +580,7 @@ CREATE TABLE [dw].[DIM_warehouse]
   [bk_warehouse] int NOT NULL,
   [city] varchar(20) NOT NULL,
   [name] varchar(20) NOT NULL,
-  [state] varchar(30) NOT NULL,
+  [state] varchar(30),
   [country] varchar(25) NOT NULL,
   [region] varchar(25) NOT NULL,
   [postal_code] varchar(25)
