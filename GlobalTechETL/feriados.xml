@@ -61,4 +61,26 @@
       <Type>National</Type>
     </Holiday>
   </GetNationalHolidaysResult>
+</GetNationalHolidaysResponse>prática, passou-se a usar o 1 de Novembro para visitar e recordar os falecidos.</Description>
+      <Type>National</Type>
+    </Holiday>
+    <Holiday>
+      <Name>Restauração da Independência</Name>
+      <Date>2030-12-01T00:00:00</Date>
+      <Description>A Restauração da Independência é a instauração da casa de Bragança face à dinastia filipina em 1 de dezembro de 1640, que durante 60 anos regeu o país. É comemorada anualmente em Portugal por um feriado no dia 1 de Dezembro.</Description>
+      <Type>National</Type>
+    </Holiday>
+    <Holiday>
+      <Name>Imaculada Conceição</Name>
+      <Date>2030-12-08T00:00:00</Date>
+      <Description>Padroeira do Reino de Portugal desde 1646. A Imaculada Conceição é um dogma da Igreja Católica Romana. Definido no século XIX, sua festa litúrgica é celebrada em 8 de Dezembro. Segundo esse dogma, a Virgem Maria foi preservada do pecado original desde o primeiro instante de sua existência. Nascida há dois mil anos atrás, na zona da Palestina.</Description>
+      <Type>National</Type>
+    </Holiday>
+    <Holiday>
+      <Name>Natal</Name>
+      <Date>2030-12-25T00:00:00</Date>
+      <Description>A noite de 24 para 25, conhecida como Consoada, é marcada com uma reunião familiar, com um jantar que varia de região para região, embora o bacalhau com batatas se tenha tornado cada vez mais popular. No final da refeição, é servido o Bolo Rei, incluído entre muitos doces e sobremesas típicas destas festas. No final do jantar ou após a meia-noite do dia 25, trocam-se presentes.</Description>
+      <Type>National</Type>
+    </Holiday>
+  </GetNationalHolidaysResult>
 </GetNationalHolidaysResponse>
