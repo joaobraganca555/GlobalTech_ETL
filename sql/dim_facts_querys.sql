@@ -30,3 +30,12 @@ FROM dsa.warehouses as w
 	JOIN dsa.locations as l on w.location_id = l.location_id 
 	JOIN dsa.countries as c on l.country_id = c.country_id 
 	JOIN dsa.regions as r on c.region_id = r.region_id
+
+-- DIM Employee
+SELECT
+	employee_id,
+	first_name,
+	last_name,
+	hire_date,
+	manager_id 
+FROM dsa.employees
