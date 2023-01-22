@@ -31,14 +31,16 @@ GO
 
 CREATE TABLE [dw].[DIM_date]
 (
-	[date] [date],
+	[Date] [date],
 	[sk_date] [int] IDENTITY(1,1) NOT NULL,
 	[day] [int],
 	[dayOfWeek] [int],
 	[month] [int],
 	[trimester] [int],
 	[year] [int],
-	[Portuguese Holiday Flag] [tinyint],
+	[is_holiday] [bit],
+  [portugueseWeekName] nvarchar(50),
+  [portugueseMonthName] nvarchar(50)
   CONSTRAINT [PK_DIM_date] PRIMARY KEY CLUSTERED 
 (
 	[sk_date] ASC
@@ -68,13 +70,13 @@ BEGIN
 
   CREATE TABLE #DIM_date
   (
-    [date] [date],
+    [Date] [date],
     [sk_date] [int] NOT NULL,
     [day] [int],
     [dayOfWeek] [int],
     [month] [int],
     [trimester] [int],
-    [year] [int],
+    [year] [int]
   );
 
   BEGIN TRY;
@@ -86,7 +88,7 @@ BEGIN
     WHERE [date] = @DateCounter)
             BEGIN
       INSERT #DIM_date
-        ( [date]
+        ( [Date]
         , [sk_date]
         , [day]
         , [dayOfWeek]
@@ -94,7 +96,7 @@ BEGIN
         , [trimester]
         , [year]
         )
-      SELECT [date] 
+      SELECT [Date] 
             , [sk_date]                               
 			, [day]
 			, [dayOfWeek]
@@ -136,7 +138,7 @@ CREATE FUNCTION [dw].[GenerateDIM_dateColumns](@Date date)
 RETURNS TABLE
 AS
 RETURN 
-SELECT @Date                                             AS [date]                             -- 2013-01-01
+SELECT @Date                                             AS [Date]                             -- 2013-01-01
      , YEAR(@Date) * 10000                                                                     
        + MONTH(@Date) * 100 + DAY(@Date)                 AS [sk_date]                          -- 20130101 (to 20131231)          
      , DAY(@Date)                                        AS [day]                              -- 1 (to last day of month)

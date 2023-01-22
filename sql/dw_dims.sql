@@ -34,8 +34,7 @@ FROM dsa.warehouses as w
 -- DIM Employee
 SELECT
 	employee_id,
-	first_name,
-	last_name,
+	CONCAT(dsa.employees.first_name, ' ', dsa.employees.last_name) as name,
 	hire_date,
 	manager_id 
 FROM dsa.employees

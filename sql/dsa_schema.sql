@@ -101,3 +101,41 @@ CREATE TABLE [dsa].[deliveries_excel](
 	[order_id] [int],
 	[was_received] [bit],
 	[delivery_date] [datetime] NULL)
+
+CREATE TABLE [dsa].[WeekDictionary]
+(
+	[week_day] INT,
+	[portuguese_week] NVARCHAR(50)
+);
+
+INSERT INTO [dsa].[WeekDictionary] ([week_day], [portuguese_week])
+VALUES 
+	(1, 'Domingo'),
+	(2, 'Segunda-feira'),
+	(3, 'Terça-feira'),
+	(4, 'Quarta-feira'),
+	(5, 'Quinta-feira'),
+	(6, 'Sexta-feira'),
+	(7, 'Sábado')
+
+CREATE TABLE [dsa].[MonthDictionary]
+(
+	[month_day] INT,
+	[portuguese_month] NVARCHAR(50)
+);
+
+
+INSERT INTO [dsa].[MonthDictionary] ([month_day], [portuguese_month])
+VALUES 
+	(1, 'Janeiro'),
+	(2, 'Fevereiro'),
+	(3, 'Março'),
+	(4, 'Abril'),
+	(5, 'Maio'),
+	(6, 'Junho'),
+	(7, 'Julho'),
+	(8, 'Agosto'),
+	(9, 'Setembro'),
+	(10, 'Outubro'),
+	(11, 'Novembro'),
+	(12, 'Dezembro')
