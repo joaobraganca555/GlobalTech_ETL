@@ -31,19 +31,14 @@ GO
 
 CREATE TABLE [dw].[DIM_date]
 (
-	[Date] [date],
+	[date] [date],
 	[sk_date] [int] IDENTITY(1,1) NOT NULL,
-	[Day Number] [int],
-	[Day of Week] [nvarchar](20),
-	[Day of Week Number] [int],
-	[Month] [nvarchar](10),
-	[Calendar Week Number] [int],
-	[Calendar Month Number] [int],
-	[Calendar Quarter Number] [int],
-	[Calendar Year] [int],
+	[day] [int],
+	[dayOfWeek] [int],
+	[month] [int],
+	[trimester] [int],
+	[year] [int],
 	[Portuguese Holiday Flag] [tinyint],
-	[Portuguese Holiday Name] [nvarchar](50) NULL,
-	[Portuguese Holiday Type] [nvarchar](50) NULL,
   CONSTRAINT [PK_DIM_date] PRIMARY KEY CLUSTERED 
 (
 	[sk_date] ASC
@@ -73,16 +68,13 @@ BEGIN
 
   CREATE TABLE #DIM_date
   (
-    [Date] [date],
+    [date] [date],
     [sk_date] [int] NOT NULL,
-    [Day Number] [int],
-    [Day of Week] [nvarchar](20),
-    [Day of Week Number] [int],
-    [Month] [nvarchar](10),
-    [Calendar Week Number] [int],
-    [Calendar Month Number] [int],
-    [Calendar Quarter Number] [int],
-    [Calendar Year] [int],
+    [day] [int],
+    [dayOfWeek] [int],
+    [month] [int],
+    [trimester] [int],
+    [year] [int],
   );
 
   BEGIN TRY;
@@ -91,30 +83,24 @@ BEGIN
         BEGIN
     IF NOT EXISTS (SELECT 1
     FROM #DIM_date
-    WHERE [Date] = @DateCounter)
+    WHERE [date] = @DateCounter)
             BEGIN
       INSERT #DIM_date
-        ( [Date]
+        ( [date]
         , [sk_date]
-        , [Day Number]
-        , [Day of Week]
-        , [Day of Week Number]
-        , [Month]
-        , [Calendar Week Number]
-        , [Calendar Month Number]
-        , [Calendar Quarter Number]
-        , [Calendar Year]
+        , [day]
+        , [dayOfWeek]
+        , [month]
+        , [trimester]
+        , [year]
         )
-      SELECT [Date] 
+      SELECT [date] 
             , [sk_date]                               
-			, [Day Number]
-			, [Day of Week]
-			, [Day of Week Number]
-			, [Month]
-			, [Calendar Week Number]
-			, [Calendar Month Number]
-			, [Calendar Quarter Number]
-			, [Calendar Year]
+			, [day]
+			, [dayOfWeek]
+			, [month]
+			, [trimester]
+			, [year]
       FROM GenerateDIM_dateColumns(@DateCounter);
     END;
     SET @DateCounter = DATEADD(day, 1, @DateCounter);
@@ -150,18 +136,14 @@ CREATE FUNCTION [dw].[GenerateDIM_dateColumns](@Date date)
 RETURNS TABLE
 AS
 RETURN 
-SELECT @Date                                             AS [Date]                             -- 2013-01-01
+SELECT @Date                                             AS [date]                             -- 2013-01-01
      , YEAR(@Date) * 10000                                                                     
        + MONTH(@Date) * 100 + DAY(@Date)                 AS [sk_date]                          -- 20130101 (to 20131231)          
-     , DAY(@Date)                                        AS [Day Number]                       -- 1 (to last day of month)
-     , DATENAME(weekday, @Date)                          AS [Day of Week]                      -- Tuesday
-     , DATEPART(weekday, @Date)                          AS [Day of Week Number]               -- 3
-     , DATENAME(month, @Date)                            AS [Month]                            -- January
-     , DATEPART(week, @Date)                             AS [Calendar Week Number]             -- 1
-     , MONTH(@Date)                                      AS [Calendar Month Number]            -- 1 (to 12)
-     , DATEPART(quarter, @Date)                          AS [Calendar Quarter Number]          -- 1 (to 4)
-     , YEAR(@Date)                                       AS [Calendar Year]                    -- 2013
--- 1
+     , DAY(@Date)                                        AS [day]                              -- 1 (to last day of month)
+     , DATEPART(weekday, @Date)                          AS [dayOfWeek]                        -- 3
+     , MONTH(@Date)                                      AS [month]                            -- 1 (to 12)
+     , DATEPART(quarter, @Date)                          AS [trimester]                        -- 1 (to 4)
+     , YEAR(@Date)                                       AS [year]                             -- 2013
 ;
 GO
 
@@ -169,12 +151,12 @@ CREATE TABLE [dw].[DIM_warehouse]
 (
   [sk_warehouse] int IDENTITY(1,1) PRIMARY KEY NOT NULL,
   [bk_warehouse] int NOT NULL,
-  [city] varchar(20) NOT NULL,
-  [name] varchar(20) NOT NULL,
-  [state] varchar(30),
-  [country] varchar(25) NOT NULL,
-  [region] varchar(25) NOT NULL,
-  [postal_code] varchar(25)
+  [city] varchar(50) NOT NULL,
+  [name] varchar(255) NOT NULL,
+  [state] varchar(50),
+  [country] varchar(40) NOT NULL,
+  [region] varchar(50) NOT NULL,
+  [postal_code] varchar(20)
 )
 GO
 
@@ -182,9 +164,9 @@ CREATE TABLE [dw].[DIM_product]
 (
   [sk_product] int IDENTITY(1,1) PRIMARY KEY NOT NULL,
   [bk_product] int NOT NULL,
-  [name] varchar(45) NOT NULL,
-  [category] varchar(15) NOT NULL,
-  [description] varchar(70) NOT NULL
+  [name] varchar(255) NOT NULL,
+  [category] varchar(255) NOT NULL,
+  [description] varchar(2000) NOT NULL
 )
 GO
 
@@ -192,12 +174,12 @@ CREATE TABLE [dw].[DIM_customer]
 (
   [sk_customer] int IDENTITY(1,1) PRIMARY KEY NOT NULL,
   [bk_customer] int NOT NULL,
-  [phone] varchar(16),
-  [name] varchar(40) NOT NULL,
-  [address] varchar(50) NOT NULL,
+  [phone] varchar(20),
+  [name] varchar(255) NOT NULL,
+  [address] varchar(255) NOT NULL,
   [credit_limit] DECIMAL(8,2) NOT NULL,
-  [validFrom] DATETIME2,
-  [validTo] DATETIME2
+  [validFrom] DATETIME,
+  [validTo] DATETIME
 )
 GO
 
@@ -206,8 +188,7 @@ CREATE TABLE [dw].[DIM_employee]
 (
   [sk_employee] int IDENTITY(1,1) PRIMARY KEY NOT NULL,
   [bk_employee] int NOT NULL,
-  [first_name] varchar(15) NOT NULL,
-  [last_name] varchar(15) NOT NULL,
+  [name] varchar(255) NOT NULL,
   [hire_date] datetime NOT NULL,
   [manager] int
 )
@@ -222,7 +203,7 @@ CREATE TABLE [dw].[FACT_order]
   [sk_customer] int NOT NULL,
   [sk_date] int NOT NULL,
   [sk_employee] int NOT NULL,
-  [status] varchar(8) NOT NULL,
+  [status] varchar(20) NOT NULL,
   [standard_cost] decimal(9,2) NOT NULL,
   [unit_price] decimal(8,2) NOT NULL,
   [quantity] decimal(8,2) NOT NULL,
@@ -239,10 +220,10 @@ CREATE TABLE [dw].[FACT_order_payment]
   [sk_order_date] int NOT NULL,
   [sk_limit_payment_date] int NOT NULL,
   [sk_employee] int NOT NULL,
-  [paymente_method] varchar(15) NOT NULL,
+  [paymente_method] varchar(20) NOT NULL,
   [order_id] int,
   [payment_id] int,
-  [order_status] varchar(8) NOT NULL,
+  [order_status] varchar(20) NOT NULL,
   [payment_order_completed] bit NOT NULL,
   [value] decimal(8,2) NOT NULL,
   [paid_amount] decimal(9,2) NOT NULL,
@@ -271,7 +252,7 @@ CREATE TABLE [dw].[FACT_cancellation]
   [sk_employee] int NOT NULL,
   [sk_warehouse] int NOT NULL,
   [order_id] int PRIMARY KEY,
-  [last_status] varchar(8) NOT NULL,
+  [last_status] varchar(20) NOT NULL,
   [was_received] bit NOT NULL,
   [n_days_until_cancellation] int NOT NULL
 )

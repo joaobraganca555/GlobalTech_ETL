@@ -3,11 +3,10 @@ GO
 
 
 --FACT ORDER
-DELETE FROM dw.FACT_order
-GO
-INSERT INTO dw.FACT_order
+-- DELETE FROM dw.FACT_order
+-- GO
+-- INSERT INTO dw.FACT_order
 SELECT dsa_ord.order_id,
-    order_line = 1,
     ISNULL(dim_war.sk_warehouse, 0) sk_warehouse,
     dim_pro.sk_product,
     dim_cust.bk_customer,
@@ -30,9 +29,9 @@ GO
 
 
 --FACT CANCELATION
-DELETE FROM dw.FACT_cancellation
-GO
-INSERT INTO dw.FACT_cancellation
+-- DELETE FROM dw.FACT_cancellation
+-- GO
+-- INSERT INTO dw.FACT_cancellation
 SELECT dim_pro.sk_product,
     dim_cust.sk_customer,
     11111111 AS sk_date,
@@ -56,9 +55,9 @@ GO
 
 
 --FACT ORDER PAYMENT
-DELETE FROM dw.FACT_order_payment
-GO
-INSERT INTO dw.FACT_order_payment
+-- DELETE FROM dw.FACT_order_payment
+-- GO
+-- INSERT INTO dw.FACT_order_payment
 SELECT dim_cust.sk_customer,
     11 AS sk_payment_date,
     11 AS sk_order_date,
