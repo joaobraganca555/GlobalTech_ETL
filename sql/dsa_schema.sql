@@ -94,7 +94,8 @@ CREATE TABLE [dsa].[regions](
 CREATE TABLE [dsa].[warehouses](
 	[warehouse_id] [int] IDENTITY(1,1) NOT NULL,
 	[warehouse_name] [varchar](255) NULL,
-	[location_id] [int] NULL)
+	[location_id] [int] NULL
+	);
 
 
 CREATE TABLE [dsa].[deliveries_excel](
@@ -102,11 +103,13 @@ CREATE TABLE [dsa].[deliveries_excel](
 	[was_received] [bit],
 	[delivery_date] [datetime] NULL)
 
+	GO
 CREATE TABLE [dsa].[WeekDictionary]
 (
 	[week_day] INT,
 	[portuguese_week] NVARCHAR(50)
 );
+
 
 INSERT INTO [dsa].[WeekDictionary] ([week_day], [portuguese_week])
 VALUES 
