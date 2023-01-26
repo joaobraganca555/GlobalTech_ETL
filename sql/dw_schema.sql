@@ -199,7 +199,6 @@ GO
 CREATE TABLE [dw].[FACT_order]
 (
   [order_id] int,
-  [order_line] int,
   [sk_warehouse] int NOT NULL,
   [sk_product] int NOT NULL,
   [sk_customer] int NOT NULL,
@@ -211,7 +210,7 @@ CREATE TABLE [dw].[FACT_order]
   [quantity] decimal(8,2) NOT NULL,
   [total_amount] decimal(9,2) NOT NULL,
   [profit] decimal(9,2) NOT NULL,
-  PRIMARY KEY ([order_id], [order_line])
+  PRIMARY KEY ([order_id])
 )
 GO
 
@@ -222,7 +221,7 @@ CREATE TABLE [dw].[FACT_order_payment]
   [sk_order_date] int NOT NULL,
   [sk_limit_payment_date] int NOT NULL,
   [sk_employee] int NOT NULL,
-  [paymente_method] varchar(20) NOT NULL,
+  [payment_method] varchar(20) NOT NULL,
   [order_id] int,
   [payment_id] int,
   [order_status] varchar(20) NOT NULL,
@@ -254,7 +253,7 @@ CREATE TABLE [dw].[FACT_cancellation]
   [sk_employee] int NOT NULL,
   [sk_warehouse] int NOT NULL,
   [order_id] int PRIMARY KEY,
-  [last_status] varchar(20) NOT NULL,
+  [last_status] nvarchar(20) NOT NULL,
   [was_received] bit NOT NULL,
   [n_days_until_cancellation] int NOT NULL
 )

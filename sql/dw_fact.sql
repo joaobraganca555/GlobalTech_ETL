@@ -40,7 +40,7 @@ SELECT dim_pro.sk_product,
     dsa_ord.order_id,
     CASE WHEN dsa_ord.shipped_date IS NULL THEN N'Pending' ELSE N'Shipped' END AS last_status,
     ISNULL(dsa_excel.was_received, 0) AS was_received,
-    DATEDIFF(DAY, dsa_ord.order_date, dsa_ord.canceled_date) AS n_days_until_cancelation
+    DATEDIFF(DAY, dsa_ord.order_date, dsa_ord.canceled_date) AS n_days_until_cancellation
 FROM dsa.orders AS dsa_ord
     LEFT JOIN dsa.deliveries_excel AS dsa_excel ON dsa_ord.order_id=dsa_excel.order_id
     LEFT JOIN dsa.order_items AS dsa_ite ON dsa_ite.order_id = dsa_ord.order_id
@@ -66,7 +66,7 @@ SELECT dim_cust.sk_customer,
     dsa_payM.method AS payment_method,
     dsa_ord.order_id,
     dsa_pay.payment_id,
-    dsa_ord.[status] AS order_satus,
+    dsa_ord.[status] AS order_status,
     CASE WHEN dsa_ite.unit_price * dsa_ite.quantity <= (SELECT ISNULL(SUM([value]), 0)
     FROM dsa.payments AS dsa_payA
     WHERE order_id=dsa_pay.order_id AND ( dsa_pay.payment_date >= dsa_payA.payment_date)) THEN 1 ELSE 0 END AS payment_order_completed,
