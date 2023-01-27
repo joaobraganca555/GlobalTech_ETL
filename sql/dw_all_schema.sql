@@ -31,17 +31,17 @@ GO
 
 CREATE TABLE [dw].[DIM_date]
 (
-	[Date] [date],
-	[sk_date] [int] IDENTITY(1,1) NOT NULL,
-	[day] [int],
-	[dayOfWeek] [int],
-	[month] [int],
-	[trimester] [int],
-	[year] [int],
-	[is_holiday] [bit],
+  [Date] [date],
+  [sk_date] [int] IDENTITY(1,1) NOT NULL,
+  [day] [int],
+  [dayOfWeek] [int],
+  [month] [int],
+  [trimester] [int],
+  [year] [int],
+  [is_holiday] [bit],
   [portugueseWeekName] nvarchar(50),
   [portugueseMonthName] nvarchar(50)
-  CONSTRAINT [PK_DIM_date] PRIMARY KEY CLUSTERED 
+    CONSTRAINT [PK_DIM_date] PRIMARY KEY CLUSTERED 
 (
 	[sk_date] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
@@ -277,173 +277,213 @@ GO
 
 ----------------------------------------------------
 
-CREATE SCHEMA Integration
+IF NOT EXISTS ( SELECT *
+FROM sys.schemas
+WHERE   name = N'Integration' ) 
+    EXEC('CREATE SCHEMA [Integration]');
 GO
+
 
 CREATE PROCEDURE [Integration].[GetLastETLCutoffTime]
 AS
 BEGIN
-SET NOCOUNT ON;
-SET XACT_ABORT ON;
-SELECT [cutOff] AS CutoffTime
-FROM Integration.[ETL_Cutoffs]
-WHERE cutOff = (SELECT MAX([cutOff])
-FROM Integration.[ETL_Cutoffs])
-RETURN 0;
+  SET NOCOUNT ON;
+  SET XACT_ABORT ON;
+  SELECT [cutOff] AS CutoffTime
+  FROM Integration.[ETL_Cutoffs]
+  WHERE cutOff = (SELECT MAX([cutOff])
+  FROM Integration.[ETL_Cutoffs])
+  RETURN 0;
 END;
 
 GO
 
-CREATE TABLE [Integration].[ETL_Cutoffs](
-[id] [int] IDENTITY(1,1) NOT NULL,
-[cutOff] [datetime] NULL,
-PRIMARY KEY CLUSTERED
+CREATE TABLE [Integration].[ETL_Cutoffs]
+(
+  [id] [int] IDENTITY(1,1) NOT NULL,
+  [cutOff] [datetime] NULL,
+  PRIMARY KEY CLUSTERED
 (
 [id] ASC
-))
-GO;
+)
+)
 
 ----------------------------------------------------
 
-CREATE SCHEMA dsa
+IF NOT EXISTS ( SELECT *
+FROM sys.schemas
+WHERE   name = N'dsa' ) 
+    EXEC('CREATE SCHEMA [dsa]');
 GO
 
-CREATE TABLE [dsa].[contacts](
-	[contact_id] [int] IDENTITY(1,1) NOT NULL,
-	[first_name] [varchar](255) NOT NULL,
-	[last_name] [varchar](255) NOT NULL,
-	[email] [varchar](255) NOT NULL,
-	[phone] [varchar](20) NULL,
-	[customer_id] [int] NULL)
 
-CREATE TABLE [dsa].[countries](
-	[country_id] [char](2) NOT NULL,
-	[country_name] [varchar](40) NOT NULL,
-	[region_id] [int] NULL)
+CREATE TABLE [dsa].[contacts]
+(
+  [contact_id] [int] IDENTITY(1,1) NOT NULL,
+  [first_name] [varchar](255) NOT NULL,
+  [last_name] [varchar](255) NOT NULL,
+  [email] [varchar](255) NOT NULL,
+  [phone] [varchar](20) NULL,
+  [customer_id] [int] NULL
+)
 
-CREATE TABLE [dsa].[customers](
-	[customer_id] [int] IDENTITY(1,1) NOT NULL,
-	[name] [varchar](255) NOT NULL,
-	[address] [varchar](255) NULL,
-	[website] [varchar](255) NULL,
-	[credit_limit] [decimal](8, 2) NULL)
+CREATE TABLE [dsa].[countries]
+(
+  [country_id] [char](2) NOT NULL,
+  [country_name] [varchar](40) NOT NULL,
+  [region_id] [int] NULL
+)
 
-CREATE TABLE [dsa].[employees](
-	[employee_id] [int] IDENTITY(1,1) NOT NULL,
-	[first_name] [varchar](255) NOT NULL,
-	[last_name] [varchar](255) NOT NULL,
-	[email] [varchar](255) NOT NULL,
-	[phone] [varchar](50) NOT NULL,
-	[hire_date] [datetime] NOT NULL,
-	[manager_id] [int] NULL,
-	[job_title] [varchar](255) NOT NULL)
+CREATE TABLE [dsa].[customers]
+(
+  [customer_id] [int] IDENTITY(1,1) NOT NULL,
+  [name] [varchar](255) NOT NULL,
+  [address] [varchar](255) NULL,
+  [website] [varchar](255) NULL,
+  [credit_limit] [decimal](8, 2) NULL
+)
 
-CREATE TABLE [dsa].[inventories](
-	[product_id] [int] IDENTITY(1,1) NOT NULL,
-	[warehouse_id] [int] NOT NULL,
-	[quantity] [int] NOT NULL)
+CREATE TABLE [dsa].[employees]
+(
+  [employee_id] [int] IDENTITY(1,1) NOT NULL,
+  [first_name] [varchar](255) NOT NULL,
+  [last_name] [varchar](255) NOT NULL,
+  [email] [varchar](255) NOT NULL,
+  [phone] [varchar](50) NOT NULL,
+  [hire_date] [datetime] NOT NULL,
+  [manager_id] [int] NULL,
+  [job_title] [varchar](255) NOT NULL
+)
 
-CREATE TABLE [dsa].[locations](
-	[location_id] [int] IDENTITY(1,1) NOT NULL,
-	[address] [varchar](255) NOT NULL,
-	[postal_code] [varchar](20) NULL,
-	[city] [varchar](50) NULL,
-	[state] [varchar](50) NULL,
-	[country_id] [char](2) NULL)
+CREATE TABLE [dsa].[inventories]
+(
+  [product_id] [int] IDENTITY(1,1) NOT NULL,
+  [warehouse_id] [int] NOT NULL,
+  [quantity] [int] NOT NULL
+)
 
-CREATE TABLE [dsa].[order_items](
-	[order_id] [int] IDENTITY(1,1) NOT NULL,
-	[item_id] [bigint] NOT NULL,
-	[product_id] [int] NOT NULL,
-	[quantity] [decimal](8, 2) NOT NULL,
-	[unit_price] [decimal](8, 2) NOT NULL)
+CREATE TABLE [dsa].[locations]
+(
+  [location_id] [int] IDENTITY(1,1) NOT NULL,
+  [address] [varchar](255) NOT NULL,
+  [postal_code] [varchar](20) NULL,
+  [city] [varchar](50) NULL,
+  [state] [varchar](50) NULL,
+  [country_id] [char](2) NULL
+)
 
-CREATE TABLE [dsa].[orders](
-	[order_id] [int] IDENTITY(1,1) NOT NULL,
-	[customer_id] [int] NOT NULL,
-	[status] [varchar](20) NOT NULL,
-	[salesman_id] [int] NULL,
-	[order_date] [datetime] NOT NULL,
-	[shipped_date] [datetime] NULL,
-	[canceled_date] [datetime] NULL,
-	[limit_payment_date] [datetime] NULL)
+CREATE TABLE [dsa].[order_items]
+(
+  [order_id] [int] IDENTITY(1,1) NOT NULL,
+  [item_id] [bigint] NOT NULL,
+  [product_id] [int] NOT NULL,
+  [quantity] [decimal](8, 2) NOT NULL,
+  [unit_price] [decimal](8, 2) NOT NULL
+)
 
-CREATE TABLE [dsa].[payment_methods](
-	[method_id] [int] IDENTITY(1,1) NOT NULL,
-	[method] [varchar](20) NOT NULL)
+CREATE TABLE [dsa].[orders]
+(
+  [order_id] [int] IDENTITY(1,1) NOT NULL,
+  [customer_id] [int] NOT NULL,
+  [status] [varchar](20) NOT NULL,
+  [salesman_id] [int] NULL,
+  [order_date] [datetime] NOT NULL,
+  [shipped_date] [datetime] NULL,
+  [canceled_date] [datetime] NULL,
+  [limit_payment_date] [datetime] NULL
+)
 
-CREATE TABLE [dsa].[payments](
-	[payment_id] [int] IDENTITY(1,1) NOT NULL,
-	[order_id] [int] NOT NULL,
-	[method_id] [int] NOT NULL,
-	[payment_date] [datetime] NOT NULL,
-	[value] [decimal](8, 2) NOT NULL)
+CREATE TABLE [dsa].[payment_methods]
+(
+  [method_id] [int] IDENTITY(1,1) NOT NULL,
+  [method] [varchar](20) NOT NULL
+)
 
-CREATE TABLE [dsa].[product_categories](
-	[category_id] [int] IDENTITY(1,1) NOT NULL,
-	[category_name] [varchar](255) NOT NULL)
+CREATE TABLE [dsa].[payments]
+(
+  [payment_id] [int] IDENTITY(1,1) NOT NULL,
+  [order_id] [int] NOT NULL,
+  [method_id] [int] NOT NULL,
+  [payment_date] [datetime] NOT NULL,
+  [value] [decimal](8, 2) NOT NULL
+)
 
-CREATE TABLE [dsa].[products](
-	[product_id] [int] IDENTITY(1,1) NOT NULL,
-	[product_name] [varchar](255) NOT NULL,
-	[description] [varchar](2000) NULL,
-	[standard_cost] [decimal](9, 2) NULL,
-	[list_price] [decimal](9, 2) NULL,
-	[category_id] [int] NOT NULL)
+CREATE TABLE [dsa].[product_categories]
+(
+  [category_id] [int] IDENTITY(1,1) NOT NULL,
+  [category_name] [varchar](255) NOT NULL
+)
 
-CREATE TABLE [dsa].[regions](
-	[region_id] [int] IDENTITY(1,1) NOT NULL,
-	[region_name] [varchar](50) NOT NULL)
+CREATE TABLE [dsa].[products]
+(
+  [product_id] [int] IDENTITY(1,1) NOT NULL,
+  [product_name] [varchar](255) NOT NULL,
+  [description] [varchar](2000) NULL,
+  [standard_cost] [decimal](9, 2) NULL,
+  [list_price] [decimal](9, 2) NULL,
+  [category_id] [int] NOT NULL
+)
 
-CREATE TABLE [dsa].[warehouses](
-	[warehouse_id] [int] IDENTITY(1,1) NOT NULL,
-	[warehouse_name] [varchar](255) NULL,
-	[location_id] [int] NULL
-	);
+CREATE TABLE [dsa].[regions]
+(
+  [region_id] [int] IDENTITY(1,1) NOT NULL,
+  [region_name] [varchar](50) NOT NULL
+)
+
+CREATE TABLE [dsa].[warehouses]
+(
+  [warehouse_id] [int] IDENTITY(1,1) NOT NULL,
+  [warehouse_name] [varchar](255) NULL,
+  [location_id] [int] NULL
+);
 
 
-CREATE TABLE [dsa].[deliveries_excel](
-	[order_id] [int],
-	[was_received] [bit],
-	[delivery_date] [datetime] NULL)
+CREATE TABLE [dsa].[deliveries_excel]
+(
+  [order_id] [int],
+  [was_received] [bit],
+  [delivery_date] [datetime] NULL
+)
 
 	GO
 CREATE TABLE [dsa].[WeekDictionary]
 (
-	[week_day] INT,
-	[portuguese_week] NVARCHAR(50)
+  [week_day] INT,
+  [portuguese_week] NVARCHAR(50)
 );
 
 
-INSERT INTO [dsa].[WeekDictionary] ([week_day], [portuguese_week])
-VALUES 
-	(1, 'Domingo'),
-	(2, 'Segunda-feira'),
-	(3, 'Terça-feira'),
-	(4, 'Quarta-feira'),
-	(5, 'Quinta-feira'),
-	(6, 'Sexta-feira'),
-	(7, 'Sábado')
+INSERT INTO [dsa].[WeekDictionary]
+  ([week_day], [portuguese_week])
+VALUES
+  (1, 'Domingo'),
+  (2, 'Segunda-feira'),
+  (3, 'Terça-feira'),
+  (4, 'Quarta-feira'),
+  (5, 'Quinta-feira'),
+  (6, 'Sexta-feira'),
+  (7, 'Sábado')
 
 CREATE TABLE [dsa].[MonthDictionary]
 (
-	[month_day] INT,
-	[portuguese_month] NVARCHAR(50)
+  [month_day] INT,
+  [portuguese_month] NVARCHAR(50)
 );
 
 
-INSERT INTO [dsa].[MonthDictionary] ([month_day], [portuguese_month])
-VALUES 
-	(1, 'Janeiro'),
-	(2, 'Fevereiro'),
-	(3, 'Março'),
-	(4, 'Abril'),
-	(5, 'Maio'),
-	(6, 'Junho'),
-	(7, 'Julho'),
-	(8, 'Agosto'),
-	(9, 'Setembro'),
-	(10, 'Outubro'),
-	(11, 'Novembro'),
-	(12, 'Dezembro')
+INSERT INTO [dsa].[MonthDictionary]
+  ([month_day], [portuguese_month])
+VALUES
+  (1, 'Janeiro'),
+  (2, 'Fevereiro'),
+  (3, 'Março'),
+  (4, 'Abril'),
+  (5, 'Maio'),
+  (6, 'Junho'),
+  (7, 'Julho'),
+  (8, 'Agosto'),
+  (9, 'Setembro'),
+  (10, 'Outubro'),
+  (11, 'Novembro'),
+  (12, 'Dezembro')
 
