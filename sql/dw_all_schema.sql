@@ -31,17 +31,17 @@ GO
 
 CREATE TABLE [dw].[DIM_date]
 (
-	[Date] [date],
-	[sk_date] [int] IDENTITY(1,1) NOT NULL,
-	[day] [int],
-	[dayOfWeek] [int],
-	[month] [int],
-	[trimester] [int],
-	[year] [int],
-	[is_holiday] [bit],
+  [Date] [date],
+  [sk_date] [int] IDENTITY(1,1) NOT NULL,
+  [day] [int],
+  [dayOfWeek] [int],
+  [month] [int],
+  [trimester] [int],
+  [year] [int],
+  [is_holiday] [bit],
   [portugueseWeekName] nvarchar(50),
   [portugueseMonthName] nvarchar(50)
-  CONSTRAINT [PK_DIM_date] PRIMARY KEY CLUSTERED 
+    CONSTRAINT [PK_DIM_date] PRIMARY KEY CLUSTERED 
 (
 	[sk_date] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
@@ -275,86 +275,215 @@ EXEC sp_addextendedproperty
 @level2type = N'Column', @level2name = 'was_received';
 GO
 
-ALTER TABLE [dw].[FACT_order] ADD CONSTRAINT fk_fact_order_warehouse FOREIGN KEY ([sk_warehouse]) REFERENCES [dw].[DIM_warehouse] ([sk_warehouse]);
-GO
-ALTER TABLE [dw].[FACT_order] ADD CONSTRAINT fk_fact_order_employee FOREIGN KEY ([sk_employee]) REFERENCES [dw].[DIM_employee] ([sk_employee]);
-GO
-ALTER TABLE [dw].[FACT_order] ADD CONSTRAINT fk_fact_order_date FOREIGN KEY ([sk_date]) REFERENCES [dw].[DIM_date] ([sk_date]);
-GO
-ALTER TABLE [dw].[FACT_order] ADD CONSTRAINT fk_fact_order_customer FOREIGN KEY ([sk_customer]) REFERENCES [dw].[DIM_customer] ([sk_customer]);
-GO
-ALTER TABLE [dw].[FACT_order] ADD CONSTRAINT fk_fact_order_product FOREIGN KEY ([sk_product]) REFERENCES [dw].[DIM_product] ([sk_product]);
-GO
-ALTER TABLE [dw].[DIM_employee] ADD CONSTRAINT fk_dim_employee_manager FOREIGN KEY ([manager]) REFERENCES [dw].[DIM_employee] ([sk_employee]);
-GO
-ALTER TABLE [dw].[FACT_order_payment] ADD CONSTRAINT fk_fact_order_payment_employee FOREIGN KEY ([sk_employee]) REFERENCES [dw].[DIM_employee] ([sk_employee]);
-GO
-ALTER TABLE [dw].[FACT_order_payment] ADD CONSTRAINT fk_fact_order_payment_payment_date FOREIGN KEY ([sk_payment_date]) REFERENCES [dw].[DIM_date] ([sk_date]);
-GO
-ALTER TABLE [dw].[FACT_order_payment] ADD CONSTRAINT fk_fact_order_payment_order_date FOREIGN KEY ([sk_order_date]) REFERENCES [dw].[DIM_date] ([sk_date]);
-GO
-ALTER TABLE [dw].[FACT_order_payment] ADD CONSTRAINT fk_fact_order_payment_limit_payment_date FOREIGN KEY ([sk_limit_payment_date]) REFERENCES [dw].[DIM_date] ([sk_date]);
-GO
-ALTER TABLE [dw].[FACT_order_payment] ADD CONSTRAINT fk_fact_order_payment_customer FOREIGN KEY ([sk_customer]) REFERENCES [dw].[DIM_customer] ([sk_customer]);
-GO
-ALTER TABLE [dw].[FACT_shippment] ADD CONSTRAINT fk_warehouse_shipment FOREIGN KEY ([sk_warehouse]) REFERENCES [dw].[DIM_warehouse] ([sk_warehouse])
-GO
-ALTER TABLE [dw].[FACT_shippment] ADD CONSTRAINT fk_date_shipment FOREIGN KEY ([sk_date]) REFERENCES [dw].[DIM_date] ([sk_date])
-GO
-ALTER TABLE [dw].[FACT_shippment] ADD CONSTRAINT fk_customer_shipment FOREIGN KEY ([sk_customer]) REFERENCES [dw].[DIM_customer] ([sk_customer])
-GO
-ALTER TABLE [dw].[FACT_shippment] ADD CONSTRAINT fk_product_shipment FOREIGN KEY ([sk_product]) REFERENCES [dw].[DIM_product] ([sk_product])
-GO
-ALTER TABLE [dw].[FACT_cancellation] ADD CONSTRAINT fk_employee_cancel FOREIGN KEY ([sk_employee]) REFERENCES [dw].[DIM_employee] ([sk_employee])
-GO
-ALTER TABLE [dw].[FACT_cancellation] ADD CONSTRAINT fk_product_cancel FOREIGN KEY ([sk_product]) REFERENCES [dw].[DIM_product] ([sk_product])
-GO
-ALTER TABLE [dw].[FACT_cancellation] ADD CONSTRAINT fk_date_cancel FOREIGN KEY ([sk_date]) REFERENCES [dw].[DIM_date] ([sk_date])
-GO
-ALTER TABLE [dw].[FACT_cancellation] ADD CONSTRAINT fk_customer_cancel FOREIGN KEY ([sk_customer]) REFERENCES [dw].[DIM_customer] ([sk_customer])
-GO
-ALTER TABLE [dw].[FACT_cancellation] ADD CONSTRAINT fk_warehouse_cancel FOREIGN KEY ([sk_warehouse]) REFERENCES [dw].[DIM_warehouse] ([sk_warehouse])
+----------------------------------------------------
+
+IF NOT EXISTS ( SELECT *
+FROM sys.schemas
+WHERE   name = N'Integration' ) 
+    EXEC('CREATE SCHEMA [Integration]');
 GO
 
-ALTER TABLE [dw].[FACT_order] CHECK CONSTRAINT fk_fact_order_warehouse 
-ALTER TABLE [dw].[FACT_order] CHECK CONSTRAINT fk_fact_order_employee 
-ALTER TABLE [dw].[FACT_order] CHECK CONSTRAINT fk_fact_order_date 
-ALTER TABLE [dw].[FACT_order] CHECK CONSTRAINT fk_fact_order_customer 
-ALTER TABLE [dw].[FACT_order] CHECK CONSTRAINT fk_fact_order_product 
-ALTER TABLE [dw].[DIM_employee] CHECK CONSTRAINT fk_dim_employee_manager 
-ALTER TABLE [dw].[FACT_order_payment] CHECK CONSTRAINT fk_fact_order_payment_employee 
-ALTER TABLE [dw].[FACT_order_payment] CHECK CONSTRAINT fk_fact_order_payment_payment_date 
-ALTER TABLE [dw].[FACT_order_payment] CHECK CONSTRAINT fk_fact_order_payment_order_date 
-ALTER TABLE [dw].[FACT_order_payment] CHECK CONSTRAINT fk_fact_order_payment_limit_payment_date 
-ALTER TABLE [dw].[FACT_order_payment] CHECK CONSTRAINT fk_fact_order_payment_customer 
-ALTER TABLE [dw].[FACT_shippment] CHECK CONSTRAINT fk_warehouse_shipment 
-ALTER TABLE [dw].[FACT_shippment] CHECK CONSTRAINT fk_date_shipment
-ALTER TABLE [dw].[FACT_shippment] CHECK CONSTRAINT fk_customer_shipment 
-ALTER TABLE [dw].[FACT_shippment] CHECK CONSTRAINT fk_product_shipment 
-ALTER TABLE [dw].[FACT_cancellation] CHECK CONSTRAINT fk_employee_cancel
-ALTER TABLE [dw].[FACT_cancellation] CHECK CONSTRAINT fk_product_cancel 
-ALTER TABLE [dw].[FACT_cancellation] CHECK CONSTRAINT fk_date_cancel 
-ALTER TABLE [dw].[FACT_cancellation] CHECK CONSTRAINT fk_customer_cancel 
-ALTER TABLE [dw].[FACT_cancellation] CHECK CONSTRAINT fk_warehouse_cancel 
+
+CREATE PROCEDURE [Integration].[GetLastETLCutoffTime]
+AS
+BEGIN
+  SET NOCOUNT ON;
+  SET XACT_ABORT ON;
+  SELECT [cutOff] AS CutoffTime
+  FROM Integration.[ETL_Cutoffs]
+  WHERE cutOff = (SELECT MAX([cutOff])
+  FROM Integration.[ETL_Cutoffs])
+  RETURN 0;
+END;
+
+GO
+
+CREATE TABLE [Integration].[ETL_Cutoffs]
+(
+  [id] [int] IDENTITY(1,1) NOT NULL,
+  [cutOff] [datetime] NULL,
+  PRIMARY KEY CLUSTERED
+(
+[id] ASC
+)
+)
+
+----------------------------------------------------
+
+IF NOT EXISTS ( SELECT *
+FROM sys.schemas
+WHERE   name = N'dsa' ) 
+    EXEC('CREATE SCHEMA [dsa]');
+GO
 
 
-ALTER TABLE [dw].[FACT_order] NOCHECK CONSTRAINT fk_fact_order_warehouse 
-ALTER TABLE [dw].[FACT_order] NOCHECK CONSTRAINT fk_fact_order_employee 
-ALTER TABLE [dw].[FACT_order] NOCHECK CONSTRAINT fk_fact_order_date 
-ALTER TABLE [dw].[FACT_order] NOCHECK CONSTRAINT fk_fact_order_customer 
-ALTER TABLE [dw].[FACT_order] NOCHECK CONSTRAINT fk_fact_order_product 
-ALTER TABLE [dw].[DIM_employee] NOCHECK CONSTRAINT fk_dim_employee_manager 
-ALTER TABLE [dw].[FACT_order_payment] NOCHECK CONSTRAINT fk_fact_order_payment_employee 
-ALTER TABLE [dw].[FACT_order_payment] NOCHECK CONSTRAINT fk_fact_order_payment_payment_date 
-ALTER TABLE [dw].[FACT_order_payment] NOCHECK CONSTRAINT fk_fact_order_payment_order_date 
-ALTER TABLE [dw].[FACT_order_payment] NOCHECK CONSTRAINT fk_fact_order_payment_limit_payment_date 
-ALTER TABLE [dw].[FACT_order_payment] NOCHECK CONSTRAINT fk_fact_order_payment_customer 
-ALTER TABLE [dw].[FACT_shippment] NOCHECK CONSTRAINT fk_warehouse_shipment 
-ALTER TABLE [dw].[FACT_shippment] NOCHECK CONSTRAINT fk_date_shipment
-ALTER TABLE [dw].[FACT_shippment] NOCHECK CONSTRAINT fk_customer_shipment 
-ALTER TABLE [dw].[FACT_shippment] NOCHECK CONSTRAINT fk_product_shipment 
-ALTER TABLE [dw].[FACT_cancellation] NOCHECK CONSTRAINT fk_employee_cancel
-ALTER TABLE [dw].[FACT_cancellation] NOCHECK CONSTRAINT fk_product_cancel 
-ALTER TABLE [dw].[FACT_cancellation] NOCHECK CONSTRAINT fk_date_cancel 
-ALTER TABLE [dw].[FACT_cancellation] NOCHECK CONSTRAINT fk_customer_cancel 
-ALTER TABLE [dw].[FACT_cancellation] NOCHECK CONSTRAINT fk_warehouse_cancel 
+CREATE TABLE [dsa].[contacts]
+(
+  [contact_id] [int] IDENTITY(1,1) NOT NULL,
+  [first_name] [varchar](255) NOT NULL,
+  [last_name] [varchar](255) NOT NULL,
+  [email] [varchar](255) NOT NULL,
+  [phone] [varchar](20) NULL,
+  [customer_id] [int] NULL
+)
+
+CREATE TABLE [dsa].[countries]
+(
+  [country_id] [char](2) NOT NULL,
+  [country_name] [varchar](40) NOT NULL,
+  [region_id] [int] NULL
+)
+
+CREATE TABLE [dsa].[customers]
+(
+  [customer_id] [int] IDENTITY(1,1) NOT NULL,
+  [name] [varchar](255) NOT NULL,
+  [address] [varchar](255) NULL,
+  [website] [varchar](255) NULL,
+  [credit_limit] [decimal](8, 2) NULL
+)
+
+CREATE TABLE [dsa].[employees]
+(
+  [employee_id] [int] IDENTITY(1,1) NOT NULL,
+  [first_name] [varchar](255) NOT NULL,
+  [last_name] [varchar](255) NOT NULL,
+  [email] [varchar](255) NOT NULL,
+  [phone] [varchar](50) NOT NULL,
+  [hire_date] [datetime] NOT NULL,
+  [manager_id] [int] NULL,
+  [job_title] [varchar](255) NOT NULL
+)
+
+CREATE TABLE [dsa].[inventories]
+(
+  [product_id] [int] IDENTITY(1,1) NOT NULL,
+  [warehouse_id] [int] NOT NULL,
+  [quantity] [int] NOT NULL
+)
+
+CREATE TABLE [dsa].[locations]
+(
+  [location_id] [int] IDENTITY(1,1) NOT NULL,
+  [address] [varchar](255) NOT NULL,
+  [postal_code] [varchar](20) NULL,
+  [city] [varchar](50) NULL,
+  [state] [varchar](50) NULL,
+  [country_id] [char](2) NULL
+)
+
+CREATE TABLE [dsa].[order_items]
+(
+  [order_id] [int] IDENTITY(1,1) NOT NULL,
+  [item_id] [bigint] NOT NULL,
+  [product_id] [int] NOT NULL,
+  [quantity] [decimal](8, 2) NOT NULL,
+  [unit_price] [decimal](8, 2) NOT NULL
+)
+
+CREATE TABLE [dsa].[orders]
+(
+  [order_id] [int] IDENTITY(1,1) NOT NULL,
+  [customer_id] [int] NOT NULL,
+  [status] [varchar](20) NOT NULL,
+  [salesman_id] [int] NULL,
+  [order_date] [datetime] NOT NULL,
+  [shipped_date] [datetime] NULL,
+  [canceled_date] [datetime] NULL,
+  [limit_payment_date] [datetime] NULL
+)
+
+CREATE TABLE [dsa].[payment_methods]
+(
+  [method_id] [int] IDENTITY(1,1) NOT NULL,
+  [method] [varchar](20) NOT NULL
+)
+
+CREATE TABLE [dsa].[payments]
+(
+  [payment_id] [int] IDENTITY(1,1) NOT NULL,
+  [order_id] [int] NOT NULL,
+  [method_id] [int] NOT NULL,
+  [payment_date] [datetime] NOT NULL,
+  [value] [decimal](8, 2) NOT NULL
+)
+
+CREATE TABLE [dsa].[product_categories]
+(
+  [category_id] [int] IDENTITY(1,1) NOT NULL,
+  [category_name] [varchar](255) NOT NULL
+)
+
+CREATE TABLE [dsa].[products]
+(
+  [product_id] [int] IDENTITY(1,1) NOT NULL,
+  [product_name] [varchar](255) NOT NULL,
+  [description] [varchar](2000) NULL,
+  [standard_cost] [decimal](9, 2) NULL,
+  [list_price] [decimal](9, 2) NULL,
+  [category_id] [int] NOT NULL
+)
+
+CREATE TABLE [dsa].[regions]
+(
+  [region_id] [int] IDENTITY(1,1) NOT NULL,
+  [region_name] [varchar](50) NOT NULL
+)
+
+CREATE TABLE [dsa].[warehouses]
+(
+  [warehouse_id] [int] IDENTITY(1,1) NOT NULL,
+  [warehouse_name] [varchar](255) NULL,
+  [location_id] [int] NULL
+);
+
+
+CREATE TABLE [dsa].[deliveries_excel]
+(
+  [order_id] [int],
+  [was_received] [bit],
+  [delivery_date] [datetime] NULL
+)
+
+	GO
+CREATE TABLE [dsa].[WeekDictionary]
+(
+  [week_day] INT,
+  [portuguese_week] NVARCHAR(50)
+);
+
+
+INSERT INTO [dsa].[WeekDictionary]
+  ([week_day], [portuguese_week])
+VALUES
+  (1, 'Domingo'),
+  (2, 'Segunda-feira'),
+  (3, 'Terça-feira'),
+  (4, 'Quarta-feira'),
+  (5, 'Quinta-feira'),
+  (6, 'Sexta-feira'),
+  (7, 'Sábado')
+
+CREATE TABLE [dsa].[MonthDictionary]
+(
+  [month_day] INT,
+  [portuguese_month] NVARCHAR(50)
+);
+
+
+INSERT INTO [dsa].[MonthDictionary]
+  ([month_day], [portuguese_month])
+VALUES
+  (1, 'Janeiro'),
+  (2, 'Fevereiro'),
+  (3, 'Março'),
+  (4, 'Abril'),
+  (5, 'Maio'),
+  (6, 'Junho'),
+  (7, 'Julho'),
+  (8, 'Agosto'),
+  (9, 'Setembro'),
+  (10, 'Outubro'),
+  (11, 'Novembro'),
+  (12, 'Dezembro')
+
