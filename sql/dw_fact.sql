@@ -18,13 +18,13 @@ SELECT dsa_ord.order_id, --REVER SE FICA OU SE TIRA, DEIXEI PQ A MINHA TABELA DE
     dsa_ite.unit_price * dsa_ite.quantity AS total_amount,
     (dsa_ite.unit_price - dsa_prod.standard_cost) * dsa_ite.quantity AS profit
 FROM dsa.orders AS dsa_ord
-    LEFT JOIN dsa.order_items AS dsa_ite ON dsa_ite.order_id = dsa_ord.order_id
-    LEFT JOIN dw.DIM_product AS dim_pro ON dim_pro.bk_product=dsa_ite.product_id
-    LEFT JOIN dsa.inventories AS dsa_inv ON dsa_inv.product_id= dsa_ite.product_id
-    LEFT JOIN dw.DIM_warehouse AS dim_war ON dim_war.bk_warehouse=dsa_inv.warehouse_id
-    LEFT JOIN dw.DIM_employee AS dim_emp ON dim_emp.bk_employee=dsa_ord.salesman_id
-    LEFT JOIN dw.DIM_customer AS dim_cust ON dim_cust.bk_customer=dsa_ord.customer_id AND dim_cust.validTo IS NULL
-    LEFT JOIN dsa.products AS dsa_prod ON dsa_prod.product_id=dsa_ite.product_id
+    JOIN dsa.order_items AS dsa_ite ON dsa_ite.order_id = dsa_ord.order_id
+    JOIN dw.DIM_product AS dim_pro ON dim_pro.bk_product=dsa_ite.product_id
+    JOIN dsa.inventories AS dsa_inv ON dsa_inv.product_id= dsa_ite.product_id
+    JOIN dw.DIM_warehouse AS dim_war ON dim_war.bk_warehouse=dsa_inv.warehouse_id
+    JOIN dw.DIM_employee AS dim_emp ON dim_emp.bk_employee=dsa_ord.salesman_id
+    JOIN dw.DIM_customer AS dim_cust ON dim_cust.bk_customer=dsa_ord.customer_id AND dim_cust.validTo IS NULL
+    JOIN dsa.products AS dsa_prod ON dsa_prod.product_id=dsa_ite.product_id
 GO
 
 
@@ -43,12 +43,12 @@ SELECT dim_pro.sk_product,
     DATEDIFF(DAY, dsa_ord.order_date, dsa_ord.canceled_date) AS n_days_until_cancellation
 FROM dsa.orders AS dsa_ord
     LEFT JOIN dsa.deliveries_excel AS dsa_excel ON dsa_ord.order_id=dsa_excel.order_id
-    LEFT JOIN dsa.order_items AS dsa_ite ON dsa_ite.order_id = dsa_ord.order_id
-    LEFT JOIN dw.DIM_product AS dim_pro ON dim_pro.bk_product=dsa_ite.product_id
-    LEFT JOIN dw.DIM_customer AS dim_cust ON dim_cust.bk_customer=dsa_ord.customer_id
-    LEFT JOIN dw.DIM_employee AS dim_emp ON dim_emp.bk_employee=dsa_ord.salesman_id
-    LEFT JOIN dsa.inventories AS dsa_inv ON dsa_inv.product_id= dsa_ite.product_id
-    LEFT JOIN dw.DIM_warehouse AS dim_war ON dim_war.bk_warehouse=dsa_inv.warehouse_id
+    JOIN dsa.order_items AS dsa_ite ON dsa_ite.order_id = dsa_ord.order_id
+    JOIN dw.DIM_product AS dim_pro ON dim_pro.bk_product=dsa_ite.product_id
+    JOIN dw.DIM_customer AS dim_cust ON dim_cust.bk_customer=dsa_ord.customer_id
+    JOIN dw.DIM_employee AS dim_emp ON dim_emp.bk_employee=dsa_ord.salesman_id
+    JOIN dsa.inventories AS dsa_inv ON dsa_inv.product_id= dsa_ite.product_id
+    JOIN dw.DIM_warehouse AS dim_war ON dim_war.bk_warehouse=dsa_inv.warehouse_id
 WHERE dsa_ord.status=N'Canceled'
 ORDER By dsa_ord.order_id
 GO
@@ -75,12 +75,12 @@ SELECT dim_cust.sk_customer,
     FROM dsa.payments AS dsa_payA
     WHERE order_id=dsa_pay.order_id AND ( dsa_pay.payment_date >= dsa_payA.payment_date)) AS paid_amount
 FROM dsa.payments AS dsa_pay
-    LEFT JOIN dsa.orders AS dsa_ord ON dsa_ord.order_id=dsa_pay.order_id
-    LEFT JOIN dw.DIM_customer AS dim_cust ON dim_cust.bk_customer=dsa_ord.customer_id
-    LEFT JOIN dw.DIM_employee AS dim_emp ON dim_emp.bk_employee=dsa_ord.salesman_id
+    JOIN dsa.orders AS dsa_ord ON dsa_ord.order_id=dsa_pay.order_id
+    JOIN dw.DIM_customer AS dim_cust ON dim_cust.bk_customer=dsa_ord.customer_id
+    JOIN dw.DIM_employee AS dim_emp ON dim_emp.bk_employee=dsa_ord.salesman_id
     JOIN dsa.payment_methods AS dsa_payM ON dsa_payM.method_id=dsa_pay.method_id
-    LEFT JOIN dsa.order_items AS dsa_ite ON dsa_ite.order_id = dsa_ord.order_id
-    LEFT JOIN dw.DIM_product AS dim_pro ON dim_pro.bk_product=dsa_ite.product_id
+    JOIN dsa.order_items AS dsa_ite ON dsa_ite.order_id = dsa_ord.order_id
+    JOIN dw.DIM_product AS dim_pro ON dim_pro.bk_product=dsa_ite.product_id
 ORDER BY dsa_pay.order_id
 
 --FACT SHIPPMENT
