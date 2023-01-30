@@ -7,7 +7,7 @@ INSERT INTO orders
     )
 VALUES
     ( -- first row: values for the columns in the list above
-        106	, 18	, Pending	, 54	, '2016-11-17 00:00:00.000'	, NULL	, NULL	, '2017-02-17 00:00:00.000'
+        107	, 18	, 'Pending'	, 54	, '2016-11-17 00:00:00.000'	, NULL	, NULL	, '2017-02-17 00:00:00.000'
 )
 -- add more rows here
 GO
@@ -20,7 +20,7 @@ INSERT INTO order_items
     )
 VALUES
     ( -- first row: values for the columns in the list above
-        106, 5, 103, 80.00, 900.00
+        107, 5, 103, 80.00, 900.00
 )   
 -- add more rows here
 GO
