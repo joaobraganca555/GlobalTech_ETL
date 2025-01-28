@@ -10,3 +10,13 @@ The project includes a sample SSIS package that demonstrates the ETL process. Th
 - Visual Studio
 - SQL Server Integration Services (SSIS)
 - SQL Server
+
+## Video Showcasing
+- Initial ETL data load
+- Incremental data load with new order (id: 107)
+- Real-time visualization of the incremental change reflected in Power BI sales analytics dashboard
+
+https://github.com/user-attachments/assets/adfc7acd-6968-44f2-8262-84282e44238c
+
+
+
